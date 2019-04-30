@@ -8,8 +8,11 @@ namespace ITgestao
 {
     class Program
     {
+        static Equipamento[] _equip;
         static void Main(string[] args)
         {
+
+            
         }
     }
 }
