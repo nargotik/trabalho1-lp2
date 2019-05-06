@@ -37,4 +37,12 @@ namespace ITgestao
 
         }
     }
+
+    class InvalidEquipamentoException : ApplicationException
+    {
+        public InvalidEquipamentoException(string _s = "Não implementado") : base(_s)
+        {
+
+        }
+    }
 }

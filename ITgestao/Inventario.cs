@@ -10,7 +10,11 @@ namespace ITgestao
     /// <summary>
     /// 
     /// </summary>
-    class Equipamento
+    /// 
+
+    public enum TipoEquipamento { Rede, Computador }
+    [Serializable]
+    public class Equipamento
     {
         int id;
         int localizacao;
@@ -27,7 +31,7 @@ namespace ITgestao
         /// 
         /// </summary>
         /// <param name="_id"></param>
-        public Equipamento(int _id = 10)
+        public Equipamento(TipoEquipamento _tipo, int _id = 10)
 
         {
 
@@ -41,6 +45,10 @@ namespace ITgestao
             }
         }
 
+        public TipoEquipamento Tipo
+        {
+            get;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -52,31 +60,38 @@ namespace ITgestao
             }
         }
 
+        [Serializable]
+        public class Rede : Equipamento
+        {
+            public string serial;
+            public Rede(int _id = 0, string _serial = "123") : base(TipoEquipamento.Rede, _id)
+            {
+                serial = _serial;
+            }
+
+        }
+
     }
 
     /// <summary>
     /// 
     /// </summary>
-    class Rede:Equipamento
-    {
-        public string serial;
-        public Rede(int _id = 0, string _serial="123") : base(_id)
-        {
-            serial = _serial;
-        }
 
-        public bool Adiciona()
-        {
-            return true;
-        }
-    }
 
     /// <summary>
     /// 
     /// </summary>
-    class Computador:Equipamento
+    public sealed class Computador : Equipamento
     {
+        public Computador(int _id = 0, string _serial = "123") : base(TipoEquipamento.Computador, _id)
+        {
+            Serial = _serial;
+        }
 
+        public string Serial
+        {
+            get; private set;
+        }
     }
 
     /// <summary>
@@ -111,9 +126,14 @@ namespace ITgestao
         /// <returns></returns>
         public bool Add(object _obj)
         {
-            if (_obj is Rede) {
+            if (_obj.GetType().IsAssignableFrom(typeof(Equipamento)))
+            {
+                throw new InvalidEquipamentoException("Objecto não é um equipamento");
+
+            } else if (_obj is Equipamento.Rede) {
                 Console.WriteLine("Rede a Adicionar...");
             } else if (_obj is Computador) {
+                // Adiciona na lista de Computadores
                 Console.WriteLine("Computador a Adicionar...");
             } else {
                 throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
