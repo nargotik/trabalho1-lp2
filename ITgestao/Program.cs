@@ -18,7 +18,7 @@ namespace ITgestao
         {
             int pubDate = pub.Id;
             Console.WriteLine($"{pub.Id}");
-            
+
             Console.WriteLine($"{pub.ToString()}");
             // WriteLine($"{pub.Title}, " +
             //           $"{(pubDate == "NYP" ? "Not Yet Published" : "published on " + pubDate):d} by {pub.Publisher}");
@@ -26,12 +26,13 @@ namespace ITgestao
         static void Main(string[] args)
         {
             Computador _com = new Computador(12, "222");
+            _
             ShowEquipamento(_com);
             Console.WriteLine($"{_com.ToString()}");
             Console.WriteLine($"Serial: {_com.Serial}");
             Console.ReadKey();
 
-
+            
             Console.WriteLine("Insira o id > 0: ");
             int id = Convert.ToInt32(Console.ReadLine());
 

@@ -85,6 +85,22 @@ namespace ITgestao
     {
         public Computador(int _id = 0, string _serial = "123") : base(TipoEquipamento.Computador, _id)
         {
+
+            this.Serial = _serial;
+
+        }
+
+        public string Serial
+        {
+            get; private set;
+        }
+
+    }
+
+    public sealed class Periferico : Equipamento
+    {
+        public Periferico(int _id = 0, string _serial = "123") : base(TipoEquipamento.Computador, _id)
+        {
             Serial = _serial;
         }
 
@@ -124,18 +140,21 @@ namespace ITgestao
         /// </summary>
         /// <param name="_obj"></param>
         /// <returns></returns>
-        public bool Add(object _obj)
+        public bool Adiciona(object _obj)
         {
-            if (_obj.GetType().IsAssignableFrom(typeof(Equipamento)))
+            if (!(_obj.GetType().IsAssignableFrom(typeof(Equipamento))))
             {
+                // A classe objecto não é ascendente de Equipamento
                 throw new InvalidEquipamentoException("Objecto não é um equipamento");
 
             } else if (_obj is Equipamento.Rede) {
+                // O objecto passado é de rede
                 Console.WriteLine("Rede a Adicionar...");
             } else if (_obj is Computador) {
                 // Adiciona na lista de Computadores
                 Console.WriteLine("Computador a Adicionar...");
             } else {
+                // Not implemented object
                 throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
             }
             
