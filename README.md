@@ -1,10 +1,8 @@
-
-# Relatório Trabalho Prático LP2
+# Relatório Trabalho Prático LP1
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
 ___Daniel Filipe Oliveira Torres <a17442@alunos.ipca.pt>___
 ___Oscar Daniel Moreira Silva <a14383@alunos.ipca.pt>___
-
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de desenvolverem metodologias para o controle do seu espólio material.
 
@@ -14,7 +12,6 @@ A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez
 
 Os resultados a obter com o desenvolvimento desta solução é criação de uma aplicação versátil e adaptativa às necessidades das diferentes entidades e deverá potencializar uma melhor organização do parque informáticos.
 ## Método de Trabalho adotado
-
 Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite a todos os membros do grupo desenvolvam simultaneamente a aplicação e que haja um controle de versões desenvolvidas através do Git. 
 Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo desenvolva uma classe específica da aplicação
 
@@ -32,9 +29,9 @@ Permite ainda dividir a carga de trabalho pois permite que cada elemento do grup
  
 ---
 
-### Equipamento
-A classe Equipamento é a classe que define e cria os objetos do tipo equipamento.
-É a classe responsável por armazenar e tratar um objeto do tipo equipamento o mais genérico possível.
+### Item
+A classe Item é a classe que define e cria os objetos do tipo Item.
+É a classe responsável por armazenar e tratar um objeto do tipo Item o mais genérico possível.
 
 1. Atributos
 	ID - Valor único 
@@ -42,28 +39,37 @@ A classe Equipamento é a classe que define e cria os objetos do tipo equipamento
 
 ---
 #### Computador
-É uma subclasse de Equipamento
+É uma subclasse de Item
 
 ---
 #### Rede
-Resumir a classe computador
+É uma subclasse de Item
 
-### Periferico
+#### Periferico
+É uma subclasse de Item
 
-### Impressora
+#### Impressora
+É uma subclasse de Item
 
 ---
 ### Inventário
-Resumir classe inventário
+Resumir classe inventário (classe encarregue de armazenar Items)
 
 ---
 ### Cliente
-Resumir classe cliente
+Resumir classe cliente (classe encarregue de armazenar um cliente)
 
 ---
 ### Clientes
-Resumir classe clientes
+Resumir classe clientes (classe encarregue de armazenar um clientes)
 
+---
+### Config
+Classe de configurações
+---
+### Exceptions
+Classe de excepções
+---
 
 
 --- 
