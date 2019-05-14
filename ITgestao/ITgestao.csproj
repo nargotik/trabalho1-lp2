@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Items\Computador.cs" />
+    <Compile Include="Items\Generico.cs" />
+    <Compile Include="Items\Impressora.cs" />
+    <Compile Include="Items\Rede.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Inventario.cs" />
     <Compile Include="Program.cs" />

@@ -8,15 +8,25 @@ using ITgestao;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Collections;
 
 namespace ITgestao
 {
+
+
+
     class Program
     {
         
-        static Equipamento[] _equip;
-        public static void ShowEquipamento(Equipamento pub)
+        static Item[] _equip;
+        public static void ShowEquipamento(Item pub)
         {
+
+
+
+
+
+
             int pubDate = pub.Id;
             Console.WriteLine($"{pub.Id}");
 
@@ -26,7 +36,6 @@ namespace ITgestao
         }
         static void Main(string[] args)
         {
-            
 
             Computador _com = new Computador(12, "222");
             
@@ -64,7 +73,7 @@ namespace ITgestao
                 try
             {
                 // Tenta inicializar um equipamento 
-                Equipamento equi = new Equipamento(TipoEquipamento.Computador , id);
+                Item equi = new Item(TipoItem.Computador , id);
                 // Mostra a mensagem de sucesso
                 Console.WriteLine($"Foi criado {equi.Id}");
 
@@ -84,7 +93,7 @@ namespace ITgestao
 
             try
             {
-                Equipamento.Rede _rede = new Equipamento.Rede(66, "1234");
+                Rede _rede = new Rede(66, "1234");
                 Console.WriteLine($"Foi criado {_rede.Id}");
                 Console.WriteLine($"Foi criado {Utils.HasMethod(_rede, "Adiciona")}");
             } catch(InitBadException)
