@@ -11,11 +11,50 @@ namespace ITgestao
     /// 
     /// </summary>
     /// 
+    public sealed class Config
+    {
+        private Config()
+        {
+        }
+        private static Config instance = null;
+        public static Config Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Config();
+                return instance;
+            }
+        }
+
+        private List<Type> allowedtypes = new List<Type>();
+
+        public void AddAuthorizedType(object _tipo)
+        {
+            // Adiciona o tipo de objecto aos permitidos desde que não exista na lista
+            if (AuthorizedType(_tipo) != _tipo.GetType())
+                allowedtypes.Add(_tipo.GetType());
+        }
+
+        public Type AuthorizedType(object _tipo)
+        {
+            // Adiciona o tipo de objecto aos permitidos desde que não exista na lista
+            if (allowedtypes.Contains(_tipo.GetType()))
+            {
+                return _tipo.GetType();
+            } else
+            {
+                return null;
+            }
+        }
+    }
 
     public enum TipoEquipamento { Rede, Computador }
     [Serializable]
     public class Equipamento
     {
+        
+
         int id;
         int localizacao;
 
@@ -83,8 +122,10 @@ namespace ITgestao
     /// </summary>
     public sealed class Computador : Equipamento
     {
+
         public Computador(int _id = 0, string _serial = "123") : base(TipoEquipamento.Computador, _id)
         {
+            Config.Instance.AddAuthorizedType(this);
 
             this.Serial = _serial;
 
@@ -123,7 +164,9 @@ namespace ITgestao
     /// </summary>
     class Inventario
     {
-        int empresa;
+        
+
+        private int empresa;
         List<Equipamento> equipamentos = new List<Equipamento>();
         
         /// <summary>
@@ -132,7 +175,7 @@ namespace ITgestao
         /// <param name="empresa"></param>
         public Inventario(int empresa = 0)
         {
-
+  
         }
 
         /// <summary>
@@ -142,6 +185,16 @@ namespace ITgestao
         /// <returns></returns>
         public bool Adiciona(object _obj)
         {
+            if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
+            {
+                Console.WriteLine("Adicionar algo...");
+            } else
+            {
+                // Not implemented object
+                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
+            }
+
+
             if (!(_obj.GetType().IsAssignableFrom(typeof(Equipamento))))
             {
                 // A classe objecto não é ascendente de Equipamento
@@ -154,8 +207,7 @@ namespace ITgestao
                 // Adiciona na lista de Computadores
                 Console.WriteLine("Computador a Adicionar...");
             } else {
-                // Not implemented object
-                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
+                
             }
             
             return true;

@@ -13,6 +13,7 @@ namespace ITgestao
 {
     class Program
     {
+        
         static Equipamento[] _equip;
         public static void ShowEquipamento(Equipamento pub)
         {
@@ -25,9 +26,12 @@ namespace ITgestao
         }
         static void Main(string[] args)
         {
+            
+
             Computador _com = new Computador(12, "222");
-            _
+            
             ShowEquipamento(_com);
+
             Console.WriteLine($"{_com.ToString()}");
             Console.WriteLine($"Serial: {_com.Serial}");
             Console.ReadKey();
@@ -35,18 +39,19 @@ namespace ITgestao
             
             Console.WriteLine("Insira o id > 0: ");
             int id = Convert.ToInt32(Console.ReadLine());
-
+            
             try
             {
-                Inventario inv = new Inventario(10);
-                Equipamento.Rede _rede = new Equipamento.Rede(12);
-                inv.Add(_rede);
+                Inventario inv = new Inventario(id);
+                inv.Adiciona(_com);
+               //Equipamento.Rede _rede = new Equipamento.Rede(12);
+                //inv.Adiciona(_rede);
 
-                IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(@"ExampleNew.txt", FileMode.Create, FileAccess.Write);
+                //IFormatter formatter = new BinaryFormatter();
+                //Stream stream = new FileStream(@"ExampleNew.txt", FileMode.Create, FileAccess.Write);
 
-                formatter.Serialize(stream, _rede);
-                stream.Close();
+                //formatter.Serialize(stream, _rede);
+                //stream.Close();
             }
             catch (Exception ex)
             {
