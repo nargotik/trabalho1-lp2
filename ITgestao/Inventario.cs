@@ -24,6 +24,8 @@ namespace ITgestao
         /// <param name="empresa"></param>
         public Inventario(int _empresa = 0)
         {
+            if (_empresa < 0)
+                throw new IdBadException("Id Inválido");
             this.empresa = _empresa;
         }
 
