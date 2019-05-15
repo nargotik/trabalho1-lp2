@@ -16,7 +16,12 @@ Os resultados a obter com o desenvolvimento desta solução é criação de uma aplic
 Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite a todos os membros do grupo desenvolvam simultaneamente a aplicação e que haja um controle de versões desenvolvidas através do Git. 
 Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo desenvolva uma classe específica da aplicação
 
+## Diagrama de Objectos
+![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/Image/diagram.png?raw=true)
+
+
 ## Classes
+
 
  - Equipamento
 	 - Rede
