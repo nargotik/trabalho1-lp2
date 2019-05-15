@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ITgestao.App.Config">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAABABAAAQAAgAAAAAAA=</HashCode>
+      <FileName>App\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.IdDuplicatedException" Collapsed="true">
+    <Position X="4.25" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.IdBadException" Collapsed="true">
+    <Position X="4.25" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.InitBadException" Collapsed="true">
+    <Position X="4.25" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.NotImplementedException" Collapsed="true">
+    <Position X="4.25" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.InvalidEquipamentoException" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.Inventario">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQAAAAAAAAAAhABAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Inventario\Inventario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.ItemsNS.Item">
+    <Position X="2.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAAAAAAAAAEAACgAAAAggQ=</HashCode>
+      <FileName>Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.ItemsNS.Computador" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Tipos\Computador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.ItemsNS.Generico" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Tipos\Generico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITgestao.ItemsNS.Rede" Collapsed="true">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items\Tipos\Rede.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITGestao.ClientesNS.Cliente">
+    <Position X="0.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Clientes\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITGestao.ClientesNS.Clientes">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABABAAAAIAAAAAAAAAAAAAQQAA=</HashCode>
+      <FileName>Clientes\Clientes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITGestao.LocalizacoesNS.Localizacao">
+    <Position X="2.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Localizacoes\Localizacao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITGestao.LocalizacoesNS.Localizacoes">
+    <Position X="2.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABABAAAAIIAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Localizacoes\Localizacoes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TipoItem" Collapsed="true">
+    <Position X="6.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAIAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App\Config.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

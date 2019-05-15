@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ITgestao;
+using ITgestao.ItemsNS;
 using UtilsNS;
 
 namespace UI.Cli
@@ -66,7 +67,7 @@ namespace UI.Cli
             try
             {
                 // Tenta inicializar um equipamento 
-                Item equi = new Item(TipoItem.Computador, id);
+                Item equi = new Generico(1, "123");
                 // Mostra a mensagem de sucesso
                 Console.WriteLine($"Foi criado {equi.Id}");
 

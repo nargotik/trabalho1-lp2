@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-public enum TipoItem { Rede, Computador, Generico }
+public enum TipoItem
+{ /// <summary>
+  /// s
+  /// </summary>
+    Rede, Computador, Generico }
 
-namespace ITgestao
+namespace ITgestao.App
 {
     /// <summary>
     /// 
