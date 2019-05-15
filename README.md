@@ -1,130 +1,81 @@
-Ôªø
-# Relat√≥rio Trabalho Pr√°tico LP1
-A aplica√ß√£o a ser desenvolvida no decorrer deste trabalho pr√°tico tem como finalidade a gest√£o de parques inform√°ticos de uma ou v√°rias entidades.
+# RelatÛrio Trabalho Pr·tico LP1
+A aplicaÁ„o a ser desenvolvida no decorrer deste trabalho pr·tico tem como finalidade a gest„o de parques inform·ticos de uma ou v·rias entidades.
 
 - ___Daniel Torres (<a17442@alunos.ipca.pt>)___
 - ___Oscar Daniel Moreira Silva (<a14383@alunos.ipca.pt>)___
+## IntroduÁ„o
+A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de desenvolverem metodologias para o controle do seu espÛlio material.
 
-## Introdu√ß√£o
-A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de desenvolverem metodologias para o controle do seu esp√≥lio material.
+- A aplicaÁ„o a desenvolver dever· permitir a adiÁ„o de novos equipamentos ao invent·rio, a sua remoÁ„o e a pesquisa de equipamentos atravÈs do campo ID. Ter· que ser capaz ainda de dividir o material consoante o seu tipo.
+- A gest„o de equipamentos dever· ser feita na lista equipamentos que estar· declarada na classe Inventario.
+- A aplicaÁ„o deve ainda ser vers·til de modo a adaptar-se ‡s necessidades das empresas.
 
-- A aplica√ß√£o a desenvolver dever√° permitir a adi√ß√£o de novos equipamentos ao invent√°rio, a sua remo√ß√£o e a pesquisa de equipamentos atrav√©s do campo ID. Ter√° que ser capaz ainda de dividir o material consoante o seu tipo.
-- A gest√£o de equipamentos dever√° ser feita na lista equipamentos que estar√° declarada na classe Inventario.
-- A aplica√ß√£o deve ainda ser vers√°til de modo a adaptar-se √†s necessidades das empresas.
-
-Os resultados a obter com o desenvolvimento desta solu√ß√£o √© cria√ß√£o de uma aplica√ß√£o vers√°til e adaptativa √†s necessidades das diferentes entidades e dever√° potencializar uma melhor organiza√ß√£o do parque inform√°ticos.
-## M√©todo de Trabalho adotado
-Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite a todos os membros do grupo desenvolvam simultaneamente a aplica√ß√£o e que haja um controle de vers√µes desenvolvidas atrav√©s do Git. 
-Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo desenvolva uma classe espec√≠fica da aplica√ß√£o.
-
-
-
-## Diagrama de Objectos
-![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
-
+Os resultados a obter com o desenvolvimento desta soluÁ„o È criaÁ„o de uma aplicaÁ„o vers·til e adaptativa ‡s necessidades das diferentes entidades e dever· potencializar uma melhor organizaÁ„o do parque inform·ticos.
+## MÈtodo de Trabalho adotado
+Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite a todos os membros do grupo desenvolvam simultaneamente a aplicaÁ„o e que haja um controle de versıes desenvolvidas atravÈs do Git. 
+Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo desenvolva uma classe especÌfica da aplicaÁ„o
 
 ## Classes
 
-
- - Item
+ - Equipamento
 	 - Rede
 	 - Computador
-	 - Generico
- - Inventario
+	 - Periferico
+	 - Impressora
  
+ - Inventario
  - Localizacao
  - Localizacoes
- - Cliente
- - Clientes
- - Config
- - Exceptions
  
 ---
 
 ### Item
-A classe Item √© a classe que define e cria os objetos do tipo Item.
-√â a classe respons√°vel por armazenar e tratar um objeto do tipo Item o mais gen√©rico poss√≠vel.
+A classe Item È a classe que define e cria os objetos do tipo Item.
+… a classe respons·vel por armazenar e tratar um objeto do tipo Item o mais genÈrico possÌvel.
 
 1. Atributos
-	- id - Valor √∫nico que identifica o item;
-	- idCliente - Valor √∫nico que identifica o cliente;
-	- idLocalizacao - Valor que identifica a localiza√ß√£o do objeto.
-	
-2. M√©todos
-	- Item() - Construtor que permite a adi√ß√£o de um objeto sem passagem de argumentos;
-	 - Item(TipoItem  _tipo, int  _id  =  10) - Construtor que permite a adi√ß√£o de um objeto com a passagem dos argumentos _Tipo e _id;
-	- AddAuthorizedType(object  _obj) - M√©todo que permite adicionar um novo tipo de objeto autorizado;
-	- Type  AuthorizedType(object  _obj) - ??
+	ID - Valor ˙nico 
+2. MÈtodos
 
-##### Computador
-√â uma subclasse de Item.
-√â a classe que trata da informa√ß√£o de um computador.
-
-1. M√©todos
-	- Computador(int  _id  =  0, string  _serial  =  "123") - M√©todo que adiciona um objeto do tipo Computador e que insere um serial a esse objeto
-
-##### Rede
-√â uma subclasse de Item.
-√â a classe que trata da informa√ß√£o de um dispositivo de rede.
-
-1. M√©todos
-	- Rede(int  _id  =  0, string  _serial  =  "0") - M√©todo que adiciona um objeto do tipo Rede e que insere um serial a esse objeto
-
-##### Gen√©rico
-√â uma subclasse de Item.
-√â a classe que trata da informa√ß√£o de um item que n√£o se enquadra nas restantes "categorias" definidas.
-
-1. M√©todos
-	- Generico(int  _id  =  0, string  _serial  =  "123") - ??
 ---
-### Invent√°rio
-A classe Invent√°rio √© a classe que encarregue de armazenar os itens.
+#### Computador
+… uma subclasse de Item
 
-1. Atributos
-	- empresa - Valor √∫nico que identifica uma empresa;
-	- itens - Lista de objetos do tipo Item;
-2. M√©todos
-	- Adiciona(object  _obj) - M√©todo que adiciona um objeto ao invent√°rio;
-	- Remove(object  _obj) - M√©todo que elimina um objeto do invent√°rio;
-	- Edita(object  _obj) - M√©todo que edita um objeto do invent√°rio
+---
+#### Rede
+… uma subclasse de Item
+
+#### Periferico
+… uma subclasse de Item
+
+#### Impressora
+… uma subclasse de Item
+
+---
+### Invent·rio
+Resumir classe invent·rio (classe encarregue de armazenar Items)
 
 ---
 ### Cliente
-A classe Cliente √© a classe que define e cria os objetos do tipo Cliente.
+Resumir classe cliente (classe encarregue de armazenar um cliente)
 
-1. Atributos
-	- id - Valor √∫nico de identifica um cliente;
-	- nome - Primeiro nome do cliente;
-	- apelido - Apelido do cliente.
 ---
 ### Clientes
-A classe Clientes √© a classe que encarregue de armazenar objetos do tipo Cliente.
-
-1. Atributos
-	- clientes- Lista de objetos do tipo Cliente;
-
-2. M√©todos
-	- Adiciona(object  _obj) - M√©todo que adiciona um cliente √† lista clientes;
-	- Remove(object  _obj) - M√©todo que elimina um cliente √† lista clientes;
-	- Edita(object  _obj) - M√©todo que edita um cliente √† lista clientes
+Resumir classe clientes (classe encarregue de armazenar um clientes)
 
 ---
 ### Config
-Classe de configura√ß√µes ??
+Classe de configuraÁıes
 
 ---
 ### Exceptions
-Classe que permite lidar com erros que ocorrem durante a execu√ß√£o da aplica√ß√£o.
-
-Algumas das exce√ß√µes j√° tratadas:
-- ID duplicado;
-- ID inv√°lido;
-- Tentativa de inicia√ß√£o de objeto com argumentos em falta. 
+Classe de excepÁıes
 
 ---
 
-## Bibliografia / Refer√™ncias
 
-- 
-- 
+--- 
+## Bibliografia / ReferÍncias
+- https://www.blah.com
 
+- [https://pt.scribd.com/document/28343721/Relatorio-Programacao-Trabalho-Pratico-2](https://pt.scribd.com/document/28343721/Relatorio-Programacao-Trabalho-Pratico-2) (Ignorar)
