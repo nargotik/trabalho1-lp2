@@ -1,8 +1,8 @@
 # Relatório Trabalho Prático LP1
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
-___Daniel Filipe Oliveira Torres <a17442@alunos.ipca.pt>___
-___Oscar Daniel Moreira Silva <a14383@alunos.ipca.pt>___
+- ___Daniel Torres (<a17442@alunos.ipca.pt>)___
+- ___Oscar Daniel Moreira Silva (<a14383@alunos.ipca.pt>)___
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de desenvolverem metodologias para o controle do seu espólio material.
 
@@ -66,9 +66,11 @@ Resumir classe clientes (classe encarregue de armazenar um clientes)
 ---
 ### Config
 Classe de configurações
+
 ---
 ### Exceptions
 Classe de excepções
+
 ---
 
 
