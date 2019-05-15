@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITgestao
+namespace ITgestao.ItemsNS
 {
     /// <summary>
     /// Classe que trata da informação de um computador
@@ -12,9 +12,9 @@ namespace ITgestao
     public sealed class Rede : Item
     {
 
-        public Rede(int _id = 0, string _serial = "123") : base(TipoItem.Computador, _id)
+        public Rede(int _id = 0, string _serial = "0") : base(TipoItem.Computador, _id)
         {
-            Config.Instance.AddAuthorizedType(this);
+            Item.AddAuthorizedType(this);
             this.Serial = _serial;
 
         }

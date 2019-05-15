@@ -3,6 +3,7 @@ A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como final
 
 - ___Daniel Torres (<a17442@alunos.ipca.pt>)___
 - ___Oscar Daniel Moreira Silva (<a14383@alunos.ipca.pt>)___
+
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de desenvolverem metodologias para o controle do seu espólio material.
 
@@ -75,7 +76,7 @@ Classe de excepções
 
 
 --- 
+
 ## Bibliografia / Referências
 - https://www.blah.com
-
 - [https://pt.scribd.com/document/28343721/Relatorio-Programacao-Trabalho-Pratico-2](https://pt.scribd.com/document/28343721/Relatorio-Programacao-Trabalho-Pratico-2) (Ignorar)

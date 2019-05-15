@@ -41,15 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="Exceptions.cs" />
-    <Compile Include="Inventario.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Items\Rede.cs" />
-    <Compile Include="Items\Computador.cs" />
-    <Compile Include="Items\Generico.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Clientes\Cliente.cs" />
+    <Compile Include="Clientes\Clientes.cs" />
+    <Compile Include="App\Config.cs" />
+    <Compile Include="App\Exceptions.cs" />
+    <Compile Include="Inventario\Inventario.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Tipos\Rede.cs" />
+    <Compile Include="Items\Tipos\Computador.cs" />
+    <Compile Include="Items\Tipos\Generico.cs" />
+    <Compile Include="Localizacoes\Localizacao.cs" />
+    <Compile Include="Localizacoes\Localizacoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="DiagramaDeClasses.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

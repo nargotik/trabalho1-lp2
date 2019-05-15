@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// App subclasses
+using ITgestao.App;
 
-
-namespace ITgestao
+namespace ITgestao.ItemsNS
 {
     [Serializable]
-    public class Item
+    public abstract class Item
     {
         private int id;
+        private int idlocalizacao;
+        private int idcliente;
 
         /// <summary>
         /// 
@@ -53,14 +56,22 @@ namespace ITgestao
             }
         }
 
-        public void AddAuthorizedType(object _obj)
+        public int IdLocalizacao
         {
-            Config.Instance.AddAuthorizedType(this);
+            get
+            {
+                return this.id;
+            }
         }
 
-        public Type AuthorizedType(object _obj)
+        static public void AddAuthorizedType(object _obj)
         {
-            return Config.Instance.AuthorizedType(this);
+            Config.Instance.AddAuthorizedType(_obj);
+        }
+
+        static public Type AuthorizedType(object _obj)
+        {
+            return Config.Instance.AuthorizedType(_obj);
         }
 
 
