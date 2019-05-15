@@ -21,6 +21,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{68BFBFD3-06BE-466B-BC69-CE23311E7F11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{D819F483-090F-4030-85CE-CB6BEDE14778}"
+	ProjectSection(SolutionItems) = preProject
+		Doc\Image\DiagramaDeClasses.png = Doc\Image\DiagramaDeClasses.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
