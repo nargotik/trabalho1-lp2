@@ -17,21 +17,23 @@ Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite a 
 Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo desenvolva uma classe específica da aplicação
 
 ## Diagrama de Objectos
-![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/Image/diagram.png?raw=true)
+![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
 
 
 ## Classes
 
 
- - Equipamento
+ - Item
 	 - Rede
 	 - Computador
-	 - Periferico
-	 - Impressora
- 
+	 - Generico
  - Inventario
  - Localizacao
  - Localizacoes
+ - Cliente
+ - Clientes
+ - Config
+ - Exceptions
  
 ---
 
