@@ -7,6 +7,7 @@ namespace Tests
     [TestClass]
     public class InventarioTests
     {
+
         [TestMethod]
         public void Create_Inventario()
         {
@@ -15,12 +16,13 @@ namespace Tests
             var _inv = new Inventario(id);
             Assert.AreEqual(_inv.Empresa, expected);
         }
+
         [TestMethod]
         [ExpectedException(typeof(IdBadException))]
         public void Create_Inventario_IdBad_Trows()
         {
-            int id = -20;
-            var _inv = new Inventario(id);
+            // Id negativo
+            var _inv = new Inventario(-23);
         }
     }
 }
