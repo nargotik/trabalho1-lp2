@@ -12,7 +12,7 @@ namespace ITgestao
         public Generico(int _id = 0, string _serial = "123") : base(TipoItem.Generico, _id)
         {
             Config.Instance.AddAuthorizedType(this);
-         }
+        }
 
     }
 }

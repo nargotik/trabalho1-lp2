@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace ITgestao
 {
 
@@ -12,7 +11,7 @@ namespace ITgestao
     /// <summary>
     /// 
     /// </summary>
-    class Inventario
+    public class Inventario
     {
 
 

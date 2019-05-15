@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITgestao
+namespace UtilsNS
 {
-    static class Utils
+    static public class Utils
     {
         public static bool HasMethod(this object objectToCheck, string methodName)
         {
@@ -17,8 +17,6 @@ namespace ITgestao
             }
             catch (Exception ex)
             {
-                // ambiguous means there is more than one result,
-                // which means: a method with that name does exist
                 return true;
             }
         }

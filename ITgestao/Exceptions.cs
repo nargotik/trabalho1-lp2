@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ITgestao
 {
-    class IdDuplicatedException : ApplicationException
+    public class IdDuplicatedException : ApplicationException
     {
         public IdDuplicatedException(string _s = "Id Duplicado") : base(_s)
         {
@@ -14,7 +14,7 @@ namespace ITgestao
         }
     }
 
-    class IdBadException : ApplicationException
+    public class IdBadException : ApplicationException
     {
         public IdBadException(string _s = "Id não válido") : base(_s)
         {
@@ -22,7 +22,7 @@ namespace ITgestao
         }
     }
 
-    class InitBadException : ApplicationException
+    public class InitBadException : ApplicationException
     {
         public InitBadException(string _s = "Inicialização do objecto com argumentos em falta") : base(_s)
         {
@@ -30,7 +30,7 @@ namespace ITgestao
         }
     }
 
-    class NotImplementedException : ApplicationException
+    public class NotImplementedException : ApplicationException
     {
         public NotImplementedException(string _s = "Não implementado") : base(_s)
         {
@@ -38,7 +38,7 @@ namespace ITgestao
         }
     }
 
-    class InvalidEquipamentoException : ApplicationException
+    public class InvalidEquipamentoException : ApplicationException
     {
         public InvalidEquipamentoException(string _s = "Não implementado") : base(_s)
         {

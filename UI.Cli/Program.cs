@@ -4,20 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ITgestao;
+using UtilsNS;
 
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using System.Collections;
-
-namespace ITgestao
+namespace UI.Cli
 {
-
-
-
     class Program
     {
-        
+
         static Item[] _equip;
         public static void ShowEquipamento(Item pub)
         {
@@ -38,22 +31,22 @@ namespace ITgestao
         {
 
             Computador _com = new Computador(12, "222");
-            
+
             ShowEquipamento(_com);
 
             Console.WriteLine($"{_com.ToString()}");
             Console.WriteLine($"Serial: {_com.Serial}");
             Console.ReadKey();
 
-            
+
             Console.WriteLine("Insira o id > 0: ");
             int id = Convert.ToInt32(Console.ReadLine());
-            
+
             try
             {
                 Inventario inv = new Inventario(id);
                 inv.Adiciona(_com);
-               //Equipamento.Rede _rede = new Equipamento.Rede(12);
+                //Equipamento.Rede _rede = new Equipamento.Rede(12);
                 //inv.Adiciona(_rede);
 
                 //IFormatter formatter = new BinaryFormatter();
@@ -70,22 +63,25 @@ namespace ITgestao
             }
 
 
-                try
+            try
             {
                 // Tenta inicializar um equipamento 
-                Item equi = new Item(TipoItem.Computador , id);
+                Item equi = new Item(TipoItem.Computador, id);
                 // Mostra a mensagem de sucesso
                 Console.WriteLine($"Foi criado {equi.Id}");
 
                 // Adiciona à lista de equipamentos
 
 
-            } catch (IdBadException ex) {
+            }
+            catch (IdBadException ex)
+            {
                 // Exception that comes from creation of Equipment
                 Console.WriteLine("Não foi criado");
                 Console.WriteLine(ex.Message);
-            } catch (IdDuplicatedException ex)
-                // Exeption that comes from equipments handler for a duplicate entry
+            }
+            catch (IdDuplicatedException ex)
+            // Exeption that comes from equipments handler for a duplicate entry
 
             {
 
@@ -96,13 +92,14 @@ namespace ITgestao
                 Rede _rede = new Rede(66, "1234");
                 Console.WriteLine($"Foi criado {_rede.Id}");
                 Console.WriteLine($"Foi criado {Utils.HasMethod(_rede, "Adiciona")}");
-            } catch(InitBadException)
+            }
+            catch (InitBadException)
             {
 
             }
 
 
-            
+
 
 
 
@@ -112,6 +109,6 @@ namespace ITgestao
         }
 
 
-        
+
     }
 }

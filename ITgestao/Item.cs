@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ITgestao
 {
     [Serializable]
@@ -52,7 +53,18 @@ namespace ITgestao
             }
         }
 
-        
+        public void AddAuthorizedType(object _obj)
+        {
+            Config.Instance.AddAuthorizedType(this);
+        }
+
+        public Type AuthorizedType(object _obj)
+        {
+            return Config.Instance.AuthorizedType(this);
+        }
+
+
+
 
     }
 }

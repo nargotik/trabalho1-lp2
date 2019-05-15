@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 namespace ITgestao
 {
     /// <summary>
-    /// Objecto que trata da informação de um equipamento de Rede
+    /// Classe que trata da informação de um computador
     /// </summary>
     public sealed class Rede : Item
     {
 
-        public Rede(int _id = 0, string _serial = "123") : base(TipoItem.Rede, _id)
+        public Rede(int _id = 0, string _serial = "123") : base(TipoItem.Computador, _id)
         {
             Config.Instance.AddAuthorizedType(this);
-
             this.Serial = _serial;
 
         }
