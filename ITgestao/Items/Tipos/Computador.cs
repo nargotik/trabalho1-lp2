@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ITgestao.ItemsNS
 {
-    [Serializable]
+
     /// <summary>
     /// Classe que trata da informação de um computador
     /// </summary>
+    [Serializable]
     public sealed class Computador : Item
     {
 

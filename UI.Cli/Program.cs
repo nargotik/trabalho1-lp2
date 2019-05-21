@@ -40,15 +40,35 @@ namespace UI.Cli
             //Console.ReadKey();
 
 
-            Console.WriteLine("Insira o id > 0: ");
-
-            int id = Convert.ToInt32(Console.ReadLine());
+            
 
             try
             {
+                Console.WriteLine("Insira o id da entidade > 0: ");
+                int id = Convert.ToInt32(Console.ReadLine());
                 Inventario inv = new Inventario(id);
-                inv.Adiciona(_com);
-                Console.WriteLine("Adicionado Computador...");
+
+                Console.WriteLine("Insira o numero de computadores/rede/generico random a inserir: ");
+                int numero = Convert.ToInt32(Console.ReadLine());
+                for (int i=1;i<=numero;i++)
+                {
+                    inv.Adiciona(new Computador(i, i.ToString()));
+                    Console.WriteLine($"Adicionado Computador {i}...");
+                }
+
+                for (int i = 1+1000; i <= numero+1000; i++)
+                {
+                    inv.Adiciona(new Rede(i, i.ToString()));
+                    Console.WriteLine($"Adicionado Rede {i}...");
+                }
+
+                for (int i = 1+2000; i <= numero+2000; i++)
+                {
+                    inv.Adiciona(new Generico(i, i.ToString()));
+                    Console.WriteLine($"Adicionado Generico {i}...");
+                }
+
+
                 //Equipamento.Rede _rede = new Equipamento.Rede(12);
                 //inv.Adiciona(_rede);
 

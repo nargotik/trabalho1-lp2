@@ -64,11 +64,11 @@ namespace ITgestao.App
             }
         }
 
-        public string Path
+        public string DataPath
         {
             get
             {
-                return this.path;
+                return $"{this.path}";
             }
         } 
     }

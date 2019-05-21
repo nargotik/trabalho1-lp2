@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -21,19 +22,18 @@ namespace ITgestao
     [Serializable]
     public class Inventario
     {
-
-
         private int entidade;
 
         [NonSerialized]
         private string data;
 
-        List<object> items = new List<object>();
+
+        Hashtable items = new Hashtable();
 
         /// <summary>
         /// Construtor que inicializa um inventário
         /// </summary>
-        /// <param name="_entidade">Entidade do inevtário</param>
+        /// <param name="_entidade">Entidade do inventário</param>
         public Inventario(int _entidade = 0)
         {
             if (_entidade < 0)
@@ -59,7 +59,7 @@ namespace ITgestao
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
             {
                 // Adiciona o item ao inventário de items
-                items.Add(_obj);
+                items.Add( ((Item)_obj).Id , _obj);
                 SaveData();
                 return true;
             }
@@ -82,22 +82,69 @@ namespace ITgestao
         /// <returns></returns>
         public bool Remove(object _obj)
         {
-            // @todo
-            return true;
+            if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
+            {
+                // O item existe na hashtable ?
+                if (items.Contains(((Item)_obj).Id))
+                {
+                    // Remove o item ao inventário de items
+                    items.Remove(((Item)_obj).Id);
+                    SaveData();
+                    return true;
+                } else
+                {
+                    return false;
+                }
+                
+            }
+            else if (!(_obj.GetType().IsAssignableFrom(typeof(Item))))
+            {
+                // A classe objecto não é ascendente de Equipamento
+                throw new InvalidEquipamentoException("Objecto não é um item");
+            }
+            else
+            {
+                // Not implemented object
+                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
+            }
         }
 
+        /// <summary>
+        /// Remove um item do inventário por id
+        /// </summary>
+        /// <param name="_id">Id do item do inventário a remover</param>
+        /// <returns></returns>
+        public bool RemoveById(string _id)
+        {
+            // O item existe na hashtable ?
+            if (items.Contains(_id))
+            {
+                // Remove o item ao inventário de items
+                items.Remove(_id);
+                SaveData();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Guarda a informação da lista de items no ficheiro presistente
+        /// </summary>
+        /// <returns></returns>
         private bool SaveData()
         {
             // Console.WriteLine($"DEBUG: {this.InventoryFile} Criado");
             try
             {
-                Utils.SerializeList(items, this.InventoryFile);
-            } catch (InvalidOperationException ex)
+                Utils.SerializeHashtable(items, this.InventoryFile);
+                return true;
+            } catch (Exception ex)
             {
                 throw ex;
-            }
-            
-            return true;
+            }  
         }
 
         /// <summary>
@@ -108,14 +155,15 @@ namespace ITgestao
         {
             if (File.Exists(this.InventoryFile))
             {
-                Console.WriteLine($"DEBUG: {this.InventoryFile} Lido");
+                // Limpa a hashtable
+                this.items.Clear();
                 // Load existing data
-                Utils.DeserializeList(this.items, this.InventoryFile);
+                this.items = Utils.DeserializeHashtable(this.InventoryFile);
                 return true;
             } else
             {
                 // Inicializa um novo ficheiro uma vez que não existe
-                SaveData();
+                //SaveData();
                 return false;
             }
             
@@ -130,13 +178,13 @@ namespace ITgestao
         private string InventoryFile
         {
             get {
-                return $"{Config.Instance.Path}\\inventario_{entidade}.dat";
+                return $"{Config.Instance.DataPath}\\inventario_{entidade}.dat";
             }
            
         }
 
         /// <summary>
-        /// 
+        /// Edita um objecto
         /// </summary>
         /// <param name="_obj"></param>
         /// <returns></returns>

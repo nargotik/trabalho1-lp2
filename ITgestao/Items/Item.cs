@@ -74,6 +74,10 @@ namespace ITgestao.ItemsNS
             return Config.Instance.AuthorizedType(_obj);
         }
 
+        public sealed override string ToString()
+        {
+            return this.Id.ToString();
+        }
 
 
 

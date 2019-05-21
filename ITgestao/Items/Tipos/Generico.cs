@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ITgestao.ItemsNS
 {
+    [Serializable]
     public sealed class Generico : Item
     {
 
@@ -13,6 +14,8 @@ namespace ITgestao.ItemsNS
         {
             Item.AddAuthorizedType(this);
         }
+
+        
 
     }
 }

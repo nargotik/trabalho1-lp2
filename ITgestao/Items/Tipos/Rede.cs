@@ -9,6 +9,7 @@ namespace ITgestao.ItemsNS
     /// <summary>
     /// Classe que trata da informação de um computador
     /// </summary>
+    [Serializable]
     public sealed class Rede : Item
     {
 
