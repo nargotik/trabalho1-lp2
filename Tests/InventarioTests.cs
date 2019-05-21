@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using ITgestao;
 
 namespace Tests
@@ -15,6 +16,7 @@ namespace Tests
             int expected = 20;
             var _inv = new Inventario(id);
             Assert.AreEqual(_inv.Empresa, expected);
+            
         }
 
         [TestMethod]

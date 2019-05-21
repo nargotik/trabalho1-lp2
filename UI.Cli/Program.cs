@@ -37,16 +37,18 @@ namespace UI.Cli
 
             Console.WriteLine($"{_com.ToString()}");
             Console.WriteLine($"Serial: {_com.Serial}");
-            Console.ReadKey();
+            //Console.ReadKey();
 
 
             Console.WriteLine("Insira o id > 0: ");
+
             int id = Convert.ToInt32(Console.ReadLine());
 
             try
             {
                 Inventario inv = new Inventario(id);
                 inv.Adiciona(_com);
+                Console.WriteLine("Adicionado Computador...");
                 //Equipamento.Rede _rede = new Equipamento.Rede(12);
                 //inv.Adiciona(_rede);
 
@@ -59,8 +61,9 @@ namespace UI.Cli
             catch (Exception ex)
             {
                 // Exception that comes from creation of Equipment
-                Console.WriteLine("Não foi criado");
+                Console.WriteLine("==========\nNão foi criado");
                 Console.WriteLine(ex.Message);
+                Console.WriteLine("==========\n");
             }
 
 

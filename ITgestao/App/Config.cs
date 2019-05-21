@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 public enum TipoItem
-{ /// <summary>
-  /// s
-  /// </summary>
+{ 
     Rede, Computador, Generico }
 
 namespace ITgestao.App
@@ -17,8 +16,11 @@ namespace ITgestao.App
     /// 
     public sealed class Config
     {
+        private string path; 
+
         private Config()
         {
+            this.path = Directory.GetCurrentDirectory();
         }
         private static Config instance = null;
         public static Config Instance
@@ -61,5 +63,13 @@ namespace ITgestao.App
                 return null;
             }
         }
+
+        public string Path
+        {
+            get
+            {
+                return this.path;
+            }
+        } 
     }
 }

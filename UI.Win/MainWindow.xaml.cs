@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ITgestao;
+using ITgestao.ItemsNS;
 
 namespace UI.Win
 {
@@ -23,9 +25,32 @@ namespace UI.Win
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int entidade = Int32.Parse(txtEntidade.Text);
+                
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine($"Unable to parse '{txtEntidade.Text}'");
+            }
+            catch
+            {
+
+            }
+
+
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
