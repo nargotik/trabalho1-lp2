@@ -11,14 +11,23 @@ using System.Xml.Serialization;
 
 namespace UtilsNS
 {
+    /// <summary>
+    /// Classe com utilitários a serem usados pelo programa
+    /// </summary>
     static public class Utils
     {
-        public static bool HasMethod(this object objectToCheck, string methodName)
+        /// <summary>
+        /// Metodo que verifica se um determinado metodo dando uma string existe.
+        /// </summary>
+        /// <param name="objectToCheck">Objecto a ser verificado</param>
+        /// <param name="methodName">Nome do método (string)</param>
+        /// <returns></returns>
+        public static bool HasMethod(this object _objectToCheck, string _methodName)
         {
             try
             {
-                var type = objectToCheck.GetType();
-                return type.GetMethod(methodName) != null;
+                var type = _objectToCheck.GetType();
+                return type.GetMethod(_methodName) != null;
             }
             catch (Exception ex)
             {
@@ -26,24 +35,27 @@ namespace UtilsNS
             }
         }
 
-
-
-        public static void SerializeHashtable(this Hashtable list, string fileName)
+        /// <summary>
+        /// Serializa uma hashtable e grava em ficheiro
+        /// </summary>
+        /// <param name="list">Hashtable a serializar</param>
+        /// <param name="fileName">Nome do ficheiro a gravar</param>
+        public static void SerializeHashtable(this Hashtable _list, string _fileName)
         {
             var serializador = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-            Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-            serializador.Serialize(stream, list);
+            Stream stream = new FileStream(_fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            serializador.Serialize(stream, _list);
             stream.Close();
         }
 
         /// <summary>
-        /// Serializador 
+        /// DesSerializador de Hashtable
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="_fileName">Nome do ficheiro</param>
         /// <returns></returns>
-        public static Hashtable DeserializeHashtable(string fileName)
+        public static Hashtable DeserializeHashtable(string _fileName)
         {
-            using (Stream stream = File.Open(fileName, FileMode.Open))
+            using (Stream stream = File.Open(_fileName, FileMode.Open))
             {
                 var serializador = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 return (Hashtable)serializador.Deserialize(stream);

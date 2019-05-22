@@ -12,6 +12,7 @@ using ITgestao.App;
 using ITgestao.ItemsNS;
 using UtilsNS;
 
+
 namespace ITgestao
 {
 
@@ -22,11 +23,9 @@ namespace ITgestao
     [Serializable]
     public class Inventario
     {
-        private int entidade;
+        private readonly int entidade;
 
         [NonSerialized]
-        private string data;
-
 
         Hashtable items = new Hashtable();
 
@@ -59,8 +58,19 @@ namespace ITgestao
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
             {
                 // Adiciona o item ao inventário de items
-                items.Add( ((Item)_obj).Id , _obj);
-                SaveData();
+                try
+                {
+                    items.Add(((Item)_obj).Id, _obj);
+                    SaveData();
+                } catch (ArgumentException ex)
+                {
+                    throw ex;
+                } 
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
                 return true;
             }
             else if (!(_obj.GetType().IsAssignableFrom(typeof(Item))))
@@ -87,6 +97,7 @@ namespace ITgestao
                 // O item existe na hashtable ?
                 if (items.Contains(((Item)_obj).Id))
                 {
+
                     // Remove o item ao inventário de items
                     items.Remove(((Item)_obj).Id);
                     SaveData();
@@ -110,11 +121,27 @@ namespace ITgestao
         }
 
         /// <summary>
+        /// Devolve um item atravez de um id
+        /// </summary>
+        /// <param name="_id"></param>
+        /// <returns></returns>
+        public object GetItemById(int _id)
+        {
+            if (items.Contains(_id))
+            {
+                return items[_id];
+            } else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Remove um item do inventário por id
         /// </summary>
         /// <param name="_id">Id do item do inventário a remover</param>
         /// <returns></returns>
-        public bool RemoveById(string _id)
+        public bool RemoveById(int _id)
         {
             // O item existe na hashtable ?
             if (items.Contains(_id))
@@ -190,6 +217,18 @@ namespace ITgestao
         /// <returns></returns>
         public bool Edita(object _obj)
         {
+            if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
+            {
+                // O item existe na hashtable ?
+                if (this.Remove(_obj))
+                {
+                    // Caso o objecto seja removido existe logo volta a adicionar
+                    this.Adiciona(_obj);
+                } else
+                {
+                    throw new NotExists("Item não encontrado");
+                }
+            }
             // @todo
             return true;
         }

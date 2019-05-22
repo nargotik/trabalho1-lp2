@@ -27,7 +27,7 @@ namespace ITgestao.ItemsNS
         /// 
         /// </summary>
         /// <param name="_id"></param>
-        public Item(TipoItem _tipo, int _id = 10)
+        public Item(TipoItem _tipo, int _id = 0)
 
         {
 
@@ -79,6 +79,7 @@ namespace ITgestao.ItemsNS
             return this.Id.ToString();
         }
 
+        
 
 
     }

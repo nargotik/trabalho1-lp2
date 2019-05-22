@@ -45,4 +45,12 @@ namespace ITgestao
 
         }
     }
+
+    public class NotExists : ApplicationException
+    {
+        public NotExists(string _s = "Item não existe") : base(_s)
+        {
+
+        }
+    }
 }
