@@ -224,17 +224,20 @@ namespace ITgestao
                 {
                     // Caso o objecto seja removido existe logo volta a adicionar
                     this.Adiciona(_obj);
+                    return true;
                 } else
                 {
                     throw new NotExists("Item não encontrado");
                 }
+            } else
+            {
+                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
             }
-            // @todo
-            return true;
+
         }
 
         /// <summary>
-        /// 
+        /// Getter
         /// </summary>
         public int Empresa
         {
