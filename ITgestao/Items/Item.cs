@@ -28,9 +28,9 @@ namespace ITgestao.ItemsNS
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
-        public TipoItem Tipo
+        public Type Tipo
         {
-            get;
+            get => this.tipo;
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace ITgestao.ItemsNS
         /// <returns>True/False</returns>
         public bool AddToInventario(int _entidade)
         {
-            return Inventario.getInstance(_entidade).Remove(this);
+            return Inventario.getInstance(_entidade).Adiciona(this);
         }
 
         /// <summary>
@@ -136,6 +136,7 @@ namespace ITgestao.ItemsNS
         {
             return _inv.Remove(this);
         }
+
         /// <summary>
         /// Remove o item de um inventário
         /// </summary>
@@ -146,12 +147,15 @@ namespace ITgestao.ItemsNS
             return Inventario.getInstance(_entidade).Remove(this);
         }
 
+        /// <summary>
+        /// Recebe informação do child
+        /// </summary>
+        /// <param name="_item"></param>
         public void InformBase(Item _item)
         {
             this.tipo = _item.GetType();
             Item.AddAuthorizedType(_item);
             this.initialized = true;
-            //Console.WriteLine($"--- {_item.GetType()}");
         }
 
         #endregion

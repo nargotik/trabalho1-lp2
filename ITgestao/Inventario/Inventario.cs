@@ -213,6 +213,15 @@ namespace ITgestao
         }
 
         /// <summary>
+        /// REmove todos os items do inventário
+        /// </summary>
+        public void RemoveAll()
+        {
+            items.Clear();
+            SaveData();
+        }
+
+        /// <summary>
         /// Edita um objecto
         /// </summary>
         /// <param name="_obj"></param>

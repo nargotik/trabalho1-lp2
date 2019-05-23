@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-public enum TipoItem
-{ 
-    Rede, Computador, Generico }
-
 
 
 namespace ITgestao.App

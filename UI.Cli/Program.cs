@@ -25,8 +25,6 @@ namespace UI.Cli
             Console.WriteLine($"{pub.Id}");
 
             Console.WriteLine($"{pub.ToString()}");
-            // WriteLine($"{pub.Title}, " +
-            //           $"{(pubDate == "NYP" ? "Not Yet Published" : "published on " + pubDate):d} by {pub.Publisher}");
         }
         static void Main(string[] args)
         {
@@ -39,7 +37,7 @@ namespace UI.Cli
             Console.WriteLine($"Serial: {_com.Serial}");
             //Console.ReadKey();
 
-            Console.WriteLine($"Convert {Utils.ConverteMemoria(Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB, 10024)}");
+            Console.WriteLine($"Convert {Utils.ConverteMemoria(10024, Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB)}");
             
 
             try
@@ -128,12 +126,6 @@ namespace UI.Cli
             {
 
             }
-
-
-
-
-
-
 
             Console.ReadKey();
 

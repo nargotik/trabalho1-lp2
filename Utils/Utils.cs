@@ -71,11 +71,11 @@ namespace UtilsNS
         /// <summary>
         /// Converte entre bases de memória em Bytes
         /// </summary>
-        /// <param name="_from"></param>
-        /// <param name="_to"></param>
-        /// <param name="_valor"></param>
-        /// <returns></returns>
-        public static int ConverteMemoria(MedidasMemoria _from, MedidasMemoria _to, int _valor)
+        /// /// <param name="_valor">Valor a converter </param>
+        /// <param name="_from">Medida de entreda</param>
+        /// <param name="_to">Medida de Saída (Default MB)</param>
+        /// <returns>Valor inteiro na medido de saida</returns>
+        public static int ConverteMemoria(int _valor, MedidasMemoria _from, MedidasMemoria _to = MedidasMemoria.MB)
         {
             if (_valor == 0)
                 return 0;
