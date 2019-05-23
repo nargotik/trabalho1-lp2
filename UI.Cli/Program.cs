@@ -39,14 +39,17 @@ namespace UI.Cli
             Console.WriteLine($"Serial: {_com.Serial}");
             //Console.ReadKey();
 
-
+            Console.WriteLine($"Convert {Utils.ConverteMemoria(Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB, 10024)}");
             
 
             try
             {
                 Console.WriteLine("Insira o id da entidade > 0: ");
                 int id = Convert.ToInt32(Console.ReadLine());
-                Inventario inv = new Inventario(id);
+
+                Inventario inv = Inventario.getInstance(id);
+
+                
 
                 Console.WriteLine("Insira o numero de computadores/rede/generico random a inserir: ");
                 int numero = Convert.ToInt32(Console.ReadLine());
@@ -54,6 +57,10 @@ namespace UI.Cli
                 {
                     inv.Adiciona(new Computador(i, i.ToString()));
                     Console.WriteLine($"Adicionado Computador {i}...");
+                    Inventario.getInstance(28).Adiciona(new Computador(i, i.ToString()));
+
+                    (new Computador(i, i.ToString())).AddToInventario(Inventario.getInstance(30));
+
                 }
 
                 for (int i = 1+1000; i <= numero+1000; i++)

@@ -15,14 +15,12 @@ namespace Tests
         [TestMethod]
         public void RemoveItemNotExistente_Inventario()
         {
-            int id = 20;
-            var _inv = new Inventario(id);
 
             var _item1 = new Generico(1, "Serial 1");
             //_inv.Adiciona(_item1);
 
             Assert.IsFalse(
-                _inv.Remove(_item1)
+                Inventario.getInstance().Remove(_item1)
                 );
 
         }
@@ -33,14 +31,13 @@ namespace Tests
         [TestMethod]
         public void RemoveItemExistente_Inventario()
         {
-            int id = 20;
-            var _inv = new Inventario(id);
 
             var _item1 = new Generico(1, "Serial 1");
-            _inv.Adiciona(_item1);
+            Inventario.getInstance().Adiciona(_item1);
+
 
             Assert.IsTrue(
-                _inv.Remove(_item1)
+                Inventario.getInstance().Remove(_item1)
                 );
 
         }
@@ -51,15 +48,18 @@ namespace Tests
         [TestMethod]
         public void RemoveItemExistenteById_Inventario()
         {
-            int id = 20;
-            var _inv = new Inventario(id);
 
-            var _item1 = new Generico(1, "Serial 1");
-            _inv.Adiciona(_item1);
+            {
+                Inventario inv = Inventario.getInstance();
 
-            Assert.IsTrue(
-                _inv.RemoveById(1)
-                );
+                var _item1 = new Generico(1, "Serial 1");
+                inv.Adiciona(_item1);
+
+                Assert.IsTrue(
+                    inv.RemoveById(1)
+                    );
+            }
+            
 
         }
 
@@ -69,12 +69,13 @@ namespace Tests
         [TestMethod]
         public void RemoveItemInexistenteById_Inventario()
         {
-            int id = 20;
-            var _inv = new Inventario(id);
-
-            Assert.IsFalse(
-                _inv.RemoveById(9999)
-                );
+            {
+                Inventario _inv = Inventario.getInstance();
+                Assert.IsFalse(
+                    _inv.RemoveById(9999)
+                    );
+            }
+            
 
         }
 
@@ -86,7 +87,7 @@ namespace Tests
         public void EditaItem_Inventario()
         {
             int id = 20;
-            var _inv = new Inventario(id);
+            var _inv = Inventario.getInstance(id);
 
             var _item1 = new Generico(1, "Serial 1");
             _inv.Adiciona(_item1);
@@ -111,7 +112,7 @@ namespace Tests
         {
             int id = 20;
             int expected = 20;
-            var _inv = new Inventario(id);
+            var _inv = Inventario.getInstance(id);
             Assert.AreEqual(_inv.Empresa, expected);
 
         }
@@ -124,7 +125,7 @@ namespace Tests
         public void Create_Inventario_IdBad_Trows()
         {
             // Id negativo
-            var _inv = new Inventario(-23);
+            var _inv = Inventario.getInstance(-23);
         }
 
         /// <summary>
@@ -134,10 +135,21 @@ namespace Tests
         [ExpectedException(typeof(InvalidEquipamentoException))]
         public void AdicionaInventarioBadObject_Trows()
         {
-            
-            var _inv = new Inventario(20);
+            var _inv = Inventario.getInstance(10);
             // Tenta adicionar um inventário no inventário
-            _inv.Adiciona(_inv);
+            Inventario.getInstance(20).Adiciona(_inv);
+        }
+
+        /// <summary>
+        /// Teste adicionar ao inventário um item nulo 
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void AdicionaInventarioNullObject_Trows()
+        {
+            //var _inv = Inventario.getInstance(10);
+            // Tenta adicionar um inventário no inventário
+            Inventario.getInstance(20).Adiciona(null);
         }
 
         /// <summary>
@@ -148,7 +160,7 @@ namespace Tests
         public void AdicionaInventarioDuplicate_Trows()
         {
 
-            var _inv = new Inventario(20);
+            var _inv = Inventario.getInstance(20);
             var item1 = new Generico(1);
             var item2 = new Generico(1);
             // Tenta adicionar um inventário no inventário
@@ -164,9 +176,8 @@ namespace Tests
         public void EditNotExists_Trows()
         {
 
-            var _inv = new Inventario(20);
-            var item1 = new Generico(1);
-            // Tenta adicionar um inventário no inventário
+            var _inv = Inventario.getInstance(20);
+            var item1 = new Generico(22);
             _inv.Edita(item1);
         }
 

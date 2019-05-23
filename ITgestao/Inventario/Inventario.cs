@@ -15,38 +15,90 @@ using UtilsNS;
 
 namespace ITgestao
 {
-
-
     /// <summary>
     /// Classe que irá conter o inventário de uma determinada entidade/empresa
     /// </summary>
     [Serializable]
     public class Inventario
     {
+
+        #region ==================== ATRIBUTOS ====================
         private readonly int entidade;
 
-        [NonSerialized]
+        private const int entidadePredefinida = 0;
 
+
+        /// <summary>
+        /// Hashtable que guarda as instancias da classe inicializadas
+        /// </summary>
+        static Hashtable instancias = new Hashtable();
+
+        /// <summary>
+        /// Hashtable que guarda os items
+        /// </summary>
         Hashtable items = new Hashtable();
+
+        #endregion
+
+        #region ==================== GETTERS/SETTERS ====================
+        /// <summary>
+        /// Getter
+        /// </summary>
+        public int Empresa
+        {
+            get
+            {
+                return entidade;
+            }
+        }
+
+        
+        
+        #endregion
+
+        #region ==================== CONSTRUCTORS ====================
 
         /// <summary>
         /// Construtor que inicializa um inventário
         /// </summary>
         /// <param name="_entidade">Entidade do inventário</param>
-        public Inventario(int _entidade = 0)
+        private Inventario(int _entidade = entidadePredefinida)
         {
             if (_entidade < 0)
             {
                 throw new IdBadException("Entidade Inválida");
-            } else
+            }
+            else
             {
                 // Verifica se a entidade já contem dados armazenados em ficheiro serialized
                 LoadData();
                 this.entidade = _entidade;
             }
-                
-            
+
+
         }
+
+        /// <summary>
+        /// Metodo de implementação singleton de instancias com um parametro
+        /// O parametro deve ser o id da entidade do inventario
+        /// </summary>
+        /// <param name="_entidade"></param>
+        /// <returns>Entidade do inventário</returns>
+        public static Inventario getInstance(int _entidade = entidadePredefinida)
+        {
+            if (!instancias.Contains(_entidade))
+            {
+                instancias.Add(
+                    _entidade,
+                    new Inventario(_entidade)
+                    );
+            }
+            return (instancias[_entidade] as Inventario);
+        }
+        #endregion
+
+        #region ==================== PUBLIC METHODS ====================
+
 
         /// <summary>
         /// Adiciona um item ao inventário
@@ -62,10 +114,11 @@ namespace ITgestao
                 {
                     items.Add(((Item)_obj).Id, _obj);
                     SaveData();
-                } catch (ArgumentException ex)
+                }
+                catch (ArgumentException ex)
                 {
                     throw ex;
-                } 
+                }
                 catch (Exception ex)
                 {
                     throw ex;
@@ -102,11 +155,12 @@ namespace ITgestao
                     items.Remove(((Item)_obj).Id);
                     SaveData();
                     return true;
-                } else
+                }
+                else
                 {
                     return false;
                 }
-                
+
             }
             else if (!(_obj.GetType().IsAssignableFrom(typeof(Item))))
             {
@@ -130,7 +184,8 @@ namespace ITgestao
             if (items.Contains(_id))
             {
                 return items[_id];
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -158,6 +213,36 @@ namespace ITgestao
         }
 
         /// <summary>
+        /// Edita um objecto
+        /// </summary>
+        /// <param name="_obj"></param>
+        /// <returns></returns>
+        public bool Edita(Item _obj)
+        {
+            if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
+            {
+                // O item existe na hashtable ?
+                if (this.Remove(_obj))
+                {
+                    // Caso o objecto seja removido existe logo volta a adicionar
+                    this.Adiciona(_obj);
+                    return true;
+                }
+                else
+                {
+                    throw new NotExists("Item não encontrado");
+                }
+            }
+            else
+            {
+                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
+            }
+
+        }
+        #endregion
+
+        #region ==================== PRIVATE METHODS ====================
+        /// <summary>
         /// Guarda a informação da lista de items no ficheiro presistente
         /// </summary>
         /// <returns></returns>
@@ -168,10 +253,11 @@ namespace ITgestao
             {
                 Utils.SerializeHashtable(items, this.InventoryFile);
                 return true;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw ex;
-            }  
+            }
         }
 
         /// <summary>
@@ -187,15 +273,16 @@ namespace ITgestao
                 // Load existing data
                 this.items = Utils.DeserializeHashtable(this.InventoryFile);
                 return true;
-            } else
+            }
+            else
             {
                 // Inicializa um novo ficheiro uma vez que não existe
                 //SaveData();
                 return false;
             }
-            
-            
-            
+
+
+
         }
 
         /// <summary>
@@ -204,49 +291,19 @@ namespace ITgestao
         /// <returns>Caminho do ficheiro</returns>
         private string InventoryFile
         {
-            get {
-                return $"{Config.Instance.DataPath}\\inventario_{entidade}.dat";
-            }
-           
-        }
-
-        /// <summary>
-        /// Edita um objecto
-        /// </summary>
-        /// <param name="_obj"></param>
-        /// <returns></returns>
-        public bool Edita(object _obj)
-        {
-            if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
-            {
-                // O item existe na hashtable ?
-                if (this.Remove(_obj))
-                {
-                    // Caso o objecto seja removido existe logo volta a adicionar
-                    this.Adiciona(_obj);
-                    return true;
-                } else
-                {
-                    throw new NotExists("Item não encontrado");
-                }
-            } else
-            {
-                throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
-            }
-
-        }
-
-        /// <summary>
-        /// Getter
-        /// </summary>
-        public int Empresa
-        {
             get
             {
-                return entidade;
+                return $"{Config.Instance.DataPath}\\inventario_{entidade}.dat";
             }
-        }
 
+        }
+        #endregion
+
+        #region ==================== OVERIDES ====================
+        #endregion
+
+        #region @@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@
+        #endregion
     }
 
 }

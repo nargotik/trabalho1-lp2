@@ -8,6 +8,8 @@ public enum TipoItem
 { 
     Rede, Computador, Generico }
 
+
+
 namespace ITgestao.App
 {
     /// <summary>

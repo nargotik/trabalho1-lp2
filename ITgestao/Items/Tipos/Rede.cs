@@ -13,11 +13,13 @@ namespace ITgestao.ItemsNS
     public sealed class Rede : Item
     {
 
-        public Rede(int _id = 0, string _serial = "0") : base(TipoItem.Computador, _id)
+        public Rede(int _id = 0, string _serial = "0") : base(_id)
         {
-            Item.AddAuthorizedType(this);
-            this.Serial = _serial;
+            // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
+            base.InformBase(this);
 
+            this.Serial = _serial;
+           
         }
 
         public string Serial

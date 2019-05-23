@@ -16,6 +16,11 @@ namespace UtilsNS
     /// </summary>
     static public class Utils
     {
+        public enum MedidasMemoria
+        {
+            B, MB, GB, TB
+        }
+
         /// <summary>
         /// Metodo que verifica se um determinado metodo dando uma string existe.
         /// </summary>
@@ -62,5 +67,36 @@ namespace UtilsNS
             }
             
         }
+
+        /// <summary>
+        /// Converte entre bases de memória em Bytes
+        /// </summary>
+        /// <param name="_from"></param>
+        /// <param name="_to"></param>
+        /// <param name="_valor"></param>
+        /// <returns></returns>
+        public static int ConverteMemoria(MedidasMemoria _from, MedidasMemoria _to, int _valor)
+        {
+            if (_valor == 0)
+                return 0;
+            int re = (int)_to - (int)_from;
+            int conv = (int)Math.Pow(1024, re);
+            if (re == 0)
+            {
+                // Não ha conversao
+                return _valor;
+            } else if (re > 0)
+            {
+                // Conversao para cima (multiplica)
+                return _valor / conv;
+                
+            } else
+            {
+                // Conversao para baixo (divide)
+                return _valor * conv;
+            }
+        }
+
+
     }
 }

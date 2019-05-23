@@ -10,9 +10,11 @@ namespace ITgestao.ItemsNS
     public sealed class Generico : Item
     {
         private string serial;
-        public Generico(int _id = 0, string _serial = "123") : base(TipoItem.Generico, _id)
+        public Generico(int _id = 0, string _serial = "123") : base(_id)
         {
-            Item.AddAuthorizedType(this);
+            // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
+            base.InformBase(this);
+
             this.serial = _serial;
         }
 
