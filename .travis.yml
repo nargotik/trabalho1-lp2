@@ -1,15 +1,10 @@
-language: objective-c
+language: csharp
+solution: ITgestao.sln
 
-env:
- global:
-  - EnableNuGetPackageRestore=true 
- matrix:
-  - MONO_VERSION="3.8.0"
-
-before_install:
- - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
- - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -allowUntrusted -target / 
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore ITgestao.sln
 
 script:
- - ./build.sh 
- - .ci/nunit.sh Tests/bin/Debug/Tests.dll
+  - xbuild ITgestao.sln
+  - nunit-console Tests/bin/Debug/Tests.dll
