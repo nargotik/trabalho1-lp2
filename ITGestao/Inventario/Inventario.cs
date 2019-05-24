@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Xml;
 using System.Xml.Serialization;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,6 @@ using System.IO;
 using ITgestao.App;
 using ITgestao.ItemsNS;
 using UtilsNS;
-
 
 namespace ITgestao
 {
@@ -26,18 +24,15 @@ namespace ITgestao
 
         private const int entidadePredefinida = 0;
 
-
         /// <summary>
         /// Hashtable que guarda as instancias da classe inicializadas
         /// </summary>
         static Dictionary<int, Inventario> instancias = new Dictionary<int, Inventario>();
 
-
         /// <summary>
         /// Hashtable que guarda os items
         /// </summary>
         Dictionary<int, Item> items = new Dictionary<int, Item>();
-
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
@@ -59,9 +54,6 @@ namespace ITgestao
                 return entidade;
             }
         }
-
-        
-        
         #endregion
 
         #region ==================== CONSTRUCTORS ====================
@@ -128,7 +120,6 @@ namespace ITgestao
                 {
                     throw ex;
                 }
-
                 return true;
             }
             else if (!(_obj.GetType().IsAssignableFrom(typeof(Item))))
@@ -309,7 +300,6 @@ namespace ITgestao
             {
                 return Config.Instance.DataPath + "\\inventario_" + entidade + ".dat";
             }
-
         }
         #endregion
 
@@ -319,5 +309,4 @@ namespace ITgestao
         #region @@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@
         #endregion
     }
-
 }
