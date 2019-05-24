@@ -47,7 +47,7 @@ namespace ITgestao
         /// </summary>
         public int TotalItems
         {
-            get => items.Count();
+            get { return items.Count(); }
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace ITgestao
         {
             get
             {
-                return $"{Config.Instance.DataPath}\\inventario_{entidade}.dat";
+                return Config.Instance.DataPath + "\\inventario_" + entidade + ".dat";
             }
 
         }

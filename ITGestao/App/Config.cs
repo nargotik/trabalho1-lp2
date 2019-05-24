@@ -66,7 +66,7 @@ namespace ITgestao.App
         {
             get
             {
-                return $"{this.path}";
+                return this.path;
             }
         } 
     }
