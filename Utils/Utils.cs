@@ -88,7 +88,6 @@ namespace UtilsNS
             return ret;
         }
 
-
         /// <summary>
         /// Serializa uma hashtable e grava em ficheiro
         /// </summary>
@@ -113,8 +112,7 @@ namespace UtilsNS
             {
                 var serializador = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 return (Hashtable)serializador.Deserialize(stream);
-            }
-            
+            } 
         }
 
         /// <summary>
@@ -124,7 +122,11 @@ namespace UtilsNS
         /// <param name="_from">Medida de entreda</param>
         /// <param name="_to">Medida de Saída (Default MB)</param>
         /// <returns>Valor inteiro na medido de saida</returns>
-        public static int ConverteMemoria(int _valor, MedidasMemoria _from, MedidasMemoria _to = MedidasMemoria.MB)
+        public static int ConverteMemoria(
+            int _valor, 
+            MedidasMemoria _from, 
+            MedidasMemoria _to = MedidasMemoria.MB
+            )
         {
             if (_valor == 0)
                 return 0;
@@ -138,7 +140,6 @@ namespace UtilsNS
             {
                 // Conversao para cima (multiplica)
                 return _valor / conv;
-                
             } else
             {
                 // Conversao para baixo (divide)
