@@ -1,0 +1,10 @@
+language: csharp
+mono:
+  - latest
+  - 3.12.0
+  - 3.10.0
+dotnet: 2.1.502
+solution: ITgestao.sln
+script:
+  - dotnet restore
+  - dotnet test
