@@ -10,7 +10,7 @@ namespace ITgestao
     {
         public IdDuplicatedException(string _s = "Id Duplicado") : base(_s)
         {
-
+            // Exeption
         }
     }
 
@@ -18,7 +18,7 @@ namespace ITgestao
     {
         public IdBadException(string _s = "Id não válido") : base(_s)
         {
-
+            // Exeption
         }
     }
 
@@ -26,7 +26,7 @@ namespace ITgestao
     {
         public InitBadException(string _s = "Inicialização do objecto com argumentos em falta") : base(_s)
         {
-
+            // Exeption
         }
     }
 
@@ -34,7 +34,7 @@ namespace ITgestao
     {
         public NotImplementedException(string _s = "Não implementado") : base(_s)
         {
-
+            // Exeption
         }
     }
 
@@ -42,7 +42,7 @@ namespace ITgestao
     {
         public InvalidEquipamentoException(string _s = "Não implementado") : base(_s)
         {
-
+            // Exeption
         }
     }
 
@@ -50,7 +50,7 @@ namespace ITgestao
     {
         public NotExists(string _s = "Item não existe") : base(_s)
         {
-
+            // Exeption
         }
     }
 }
