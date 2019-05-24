@@ -9,6 +9,9 @@ __Autores do Trabalho:__
 - ___Daniel Torres (<a17442@alunos.ipca.pt>)___
 - ___Oscar Silva (<a14383@alunos.ipca.pt>)___
 
+[![CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2/badge)](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
+[![Build Status](https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/trabalho1-lp2)
+
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de 
 desenvolverem metodologias para o controle do seu espólio material e virtual.
