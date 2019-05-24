@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace UtilsNS
 {
@@ -39,6 +39,55 @@ namespace UtilsNS
                 return true;
             }
         }
+
+        /// <summary>
+        /// Serializador de Dictionary
+        /// </summary>
+        /// <typeparam name="Object"></typeparam>
+        /// <param name="_dictionary">Dictionary</param>
+        /// <param name="_fileName">Nome do Ficheiro</param>
+        public static void Serialize<Object>(Object _dictionary, string _fileName)
+        {
+            Stream stream = new FileStream(_fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            try 
+            {
+                using (stream)
+                {
+                    // create BinaryFormatter
+                    BinaryFormatter bin = new BinaryFormatter();
+                    // serialize the collection (dictionary) to file (stream)
+                    bin.Serialize(stream, _dictionary);
+                }
+            }
+            catch (IOException)
+            {
+            }
+        }
+
+        /// <summary>
+        /// DesSerializador de Dictionary
+        /// </summary>
+        /// <typeparam name="Object"></typeparam>
+        /// <param name="_fileName">Nome do Ficheiro</param>
+        public static Object Deserialize<Object>(string _fileName) where Object : new()
+        {
+            Object ret= (Object)Activator.CreateInstance(typeof(Object));
+            try
+            {
+                using (Stream stream = File.Open(_fileName, FileMode.Open))
+                {
+                    // create BinaryFormatter
+                    BinaryFormatter bin = new BinaryFormatter();
+                    // deserialize the collection (Employee) from file (stream)
+                    ret = (Object)bin.Deserialize(stream);
+                }
+            }
+            catch (IOException)
+            {
+            }
+            return ret;
+        }
+
 
         /// <summary>
         /// Serializa uma hashtable e grava em ficheiro
@@ -96,7 +145,5 @@ namespace UtilsNS
                 return _valor * conv;
             }
         }
-
-
     }
 }

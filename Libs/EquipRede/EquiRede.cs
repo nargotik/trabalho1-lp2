@@ -12,20 +12,17 @@ namespace ITgestao.ItemsNS
     [Serializable]
     public sealed class Rede : Item
     {
-
         public Rede(int _id = 0, string _serial = "0") : base(_id)
         {
             // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
             base.InformBase(this);
 
             this.Serial = _serial;
-           
         }
 
         public string Serial
         {
             get; private set;
         }
-
     }
 }

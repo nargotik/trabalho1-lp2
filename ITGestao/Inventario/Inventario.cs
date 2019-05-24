@@ -31,16 +31,25 @@ namespace ITgestao
         /// <summary>
         /// Hashtable que guarda as instancias da classe inicializadas
         /// </summary>
-        static Hashtable instancias = new Hashtable();
+        static Dictionary<int, Inventario> instancias = new Dictionary<int, Inventario>();
+
 
         /// <summary>
         /// Hashtable que guarda os items
         /// </summary>
-        Hashtable items = new Hashtable();
+        Dictionary<int, Item> items = new Dictionary<int, Item>();
 
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
+        /// <summary>
+        /// Devolve o total de items no inventario
+        /// </summary>
+        public int TotalItems
+        {
+            get { return items.Count(); }
+        }
+
         /// <summary>
         /// Getter
         /// </summary>
@@ -86,7 +95,7 @@ namespace ITgestao
         /// <returns>Entidade do inventário</returns>
         public static Inventario getInstance(int _entidade = entidadePredefinida)
         {
-            if (!instancias.Contains(_entidade))
+            if (!instancias.ContainsKey(_entidade))
             {
                 instancias.Add(
                     _entidade,
@@ -98,7 +107,6 @@ namespace ITgestao
         #endregion
 
         #region ==================== PUBLIC METHODS ====================
-
 
         /// <summary>
         /// Adiciona um item ao inventário
@@ -112,7 +120,7 @@ namespace ITgestao
                 // Adiciona o item ao inventário de items
                 try
                 {
-                    items.Add(((Item)_obj).Id, _obj);
+                    items.Add(((Item)_obj).Id, (Item)_obj);
                     SaveData();
                 }
                 catch (ArgumentException ex)
@@ -148,7 +156,7 @@ namespace ITgestao
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
             {
                 // O item existe na hashtable ?
-                if (items.Contains(((Item)_obj).Id))
+                if (items.ContainsKey(((Item)_obj).Id))
                 {
 
                     // Remove o item ao inventário de items
@@ -181,7 +189,7 @@ namespace ITgestao
         /// <returns></returns>
         public object GetItemById(int _id)
         {
-            if (items.Contains(_id))
+            if (items.ContainsKey(_id))
             {
                 return items[_id];
             }
@@ -199,7 +207,7 @@ namespace ITgestao
         public bool RemoveById(int _id)
         {
             // O item existe na hashtable ?
-            if (items.Contains(_id))
+            if (items.ContainsKey(_id))
             {
                 // Remove o item ao inventário de items
                 items.Remove(_id);
@@ -260,7 +268,9 @@ namespace ITgestao
             // Console.WriteLine($"DEBUG: {this.InventoryFile} Criado");
             try
             {
-                Utils.SerializeHashtable(items, this.InventoryFile);
+                //Utils.SerializeHashtable(items, this.InventoryFile);
+                Utils.Serialize(items, this.InventoryFile);
+
                 return true;
             }
             catch (Exception ex)
@@ -280,7 +290,11 @@ namespace ITgestao
                 // Limpa a hashtable
                 this.items.Clear();
                 // Load existing data
-                this.items = Utils.DeserializeHashtable(this.InventoryFile);
+                Dictionary<int, Item> deserializeObject = 
+                    Utils.Deserialize<Dictionary<int, Item>>(
+                        this.InventoryFile
+                        );
+                //this.items = Utils.DeserializeHashtable(this.InventoryFile);
                 return true;
             }
             else
@@ -302,7 +316,7 @@ namespace ITgestao
         {
             get
             {
-                return $"{Config.Instance.DataPath}\\inventario_{entidade}.dat";
+                return Config.Instance.DataPath + "\\inventario_" + entidade + ".dat";
             }
 
         }

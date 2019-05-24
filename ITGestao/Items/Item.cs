@@ -30,7 +30,7 @@ namespace ITgestao.ItemsNS
         #region ==================== GETTERS/SETTERS ====================
         public Type Tipo
         {
-            get => this.tipo;
+            get { return this.tipo; }
         }
 
         /// <summary>
