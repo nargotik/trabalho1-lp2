@@ -108,7 +108,6 @@ namespace ITgestao
 
         #region ==================== PUBLIC METHODS ====================
 
-
         /// <summary>
         /// Adiciona um item ao inventário
         /// </summary>
@@ -272,7 +271,6 @@ namespace ITgestao
                 //Utils.SerializeHashtable(items, this.InventoryFile);
                 Utils.Serialize(items, this.InventoryFile);
 
-                
                 return true;
             }
             catch (Exception ex)

@@ -66,10 +66,7 @@ namespace Tests
                 // Diz ao item para se adicionar ao inventário com instancia 0 2 vezes
                 bool result = _item.AddToInventario(Inventario.getInstance());
                 bool result2 = _item.AddToInventario(Inventario.getInstance());
-
             });
-
-            
 
         }
 
@@ -79,7 +76,6 @@ namespace Tests
         [Test]
         public void GenericItemAddtoInventoryByIdDuplicate()
         {
-
             int idinventario = 100;
             int itemid = 100;
             // Limpa o inventário
@@ -95,7 +91,6 @@ namespace Tests
                 _item.AddToInventario(idinventario);
             });
             
-
             Item _item2 = 
                 (Item)Inventario
                 .getInstance(idinventario)
@@ -159,7 +154,6 @@ namespace Tests
 
         public void Create_GenericItemInvalido()
         {
-            
             Assert.Throws<IdBadException>(() =>
             {
                 Item _item = new Generico(-123);

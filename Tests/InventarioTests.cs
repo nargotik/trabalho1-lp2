@@ -1,9 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-
 using ITgestao;
 using ITgestao.ItemsNS;
-
 
 namespace Tests
 {
@@ -132,7 +130,6 @@ namespace Tests
             {
                 // Id negativo
                 var _inv = Inventario.getInstance(-23);
-
             });
             
         }
@@ -148,7 +145,6 @@ namespace Tests
                 var _inv = Inventario.getInstance(10);
                 // Tenta adicionar um inventário no inventário
                 Inventario.getInstance(20).Adiciona(_inv);
-
             });
             
         }
@@ -165,7 +161,6 @@ namespace Tests
                 //var _inv = Inventario.getInstance(10);
                 // Tenta adicionar um inventário no inventário
                 Inventario.getInstance(20).Adiciona(null);
-
             });
             
         }
@@ -185,7 +180,6 @@ namespace Tests
                 // Tenta adicionar um inventário no inventário
                 _inv.Adiciona(item1);
                 _inv.Adiciona(item2);
-
             });
             
         }
@@ -211,7 +205,6 @@ namespace Tests
                 Assert.AreEqual(_inv.TotalItems, i);
             }
             Assert.AreEqual(_inv.TotalItems, numeroitems);
-
         }
 
         /// <summary>
@@ -229,7 +222,6 @@ namespace Tests
 
                 var item1 = new Generico(22);
                 _inv.Edita(item1);
-
             });
             
         }

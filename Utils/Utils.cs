@@ -145,7 +145,5 @@ namespace UtilsNS
                 return _valor * conv;
             }
         }
-
-
     }
 }
