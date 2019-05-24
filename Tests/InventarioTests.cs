@@ -68,7 +68,6 @@ namespace Tests
             }
         }
 
-
         /// <summary>
         /// Testa a edicao de um inventario
         /// </summary>
