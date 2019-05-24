@@ -6,7 +6,7 @@ install:
   - nuget restore ITgestao.sln
   - nuget install NUnit.framework
   - nuget install NUnit
-  - guget install NUnit3TestAdapter
+  - nuget install NUnit3TestAdapter
   - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
 
 script:
