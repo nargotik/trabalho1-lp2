@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Image", "Image", "{D819F483
 		Doc\Image\DiagramaDeClasses.png = Doc\Image\DiagramaDeClasses.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{58BD006A-D154-441A-9FC6-BC1C8C727C66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipRede", "Libs\EquipRede\EquipRede.csproj", "{3D1E2595-40E9-4D63-8A28-FC486E2818BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computador", "Libs\Computador\Computador.csproj", "{F0C54553-A33B-458E-81AB-D953D632A089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +57,14 @@ Global
 		{79BBA03C-110A-4405-94CC-8DAB5E4F1073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BBA03C-110A-4405-94CC-8DAB5E4F1073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BBA03C-110A-4405-94CC-8DAB5E4F1073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1E2595-40E9-4D63-8A28-FC486E2818BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1E2595-40E9-4D63-8A28-FC486E2818BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1E2595-40E9-4D63-8A28-FC486E2818BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1E2595-40E9-4D63-8A28-FC486E2818BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0C54553-A33B-458E-81AB-D953D632A089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0C54553-A33B-458E-81AB-D953D632A089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0C54553-A33B-458E-81AB-D953D632A089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0C54553-A33B-458E-81AB-D953D632A089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +72,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{68BFBFD3-06BE-466B-BC69-CE23311E7F11} = {60018CD4-6C62-4888-84B8-2C40EA9F4031}
 		{D819F483-090F-4030-85CE-CB6BEDE14778} = {68BFBFD3-06BE-466B-BC69-CE23311E7F11}
+		{3D1E2595-40E9-4D63-8A28-FC486E2818BF} = {58BD006A-D154-441A-9FC6-BC1C8C727C66}
+		{F0C54553-A33B-458E-81AB-D953D632A089} = {58BD006A-D154-441A-9FC6-BC1C8C727C66}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {700A25EE-D012-4C9A-AA7D-87626DB64F92}

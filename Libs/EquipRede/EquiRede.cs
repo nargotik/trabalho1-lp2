@@ -19,7 +19,7 @@ namespace ITgestao.ItemsNS
             base.InformBase(this);
 
             this.Serial = _serial;
-           
+
         }
 
         public string Serial

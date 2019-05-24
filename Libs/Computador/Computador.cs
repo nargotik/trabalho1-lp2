@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ITgestao.ItemsNS;
 
 namespace ITgestao.ItemsNS
 {
@@ -52,7 +53,7 @@ namespace ITgestao.ItemsNS
 
         #region @@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@
         #endregion
-        
+
 
 
         public string Serial

@@ -86,8 +86,11 @@ namespace Tests
         [TestMethod]
         public void EditaItem_Inventario()
         {
+
             int id = 20;
             var _inv = Inventario.getInstance(id);
+
+            _inv.RemoveAll();
 
             var _item1 = new Generico(1, "Serial 1");
             _inv.Adiciona(_item1);
@@ -169,14 +172,40 @@ namespace Tests
         }
 
         /// <summary>
+        /// Testa adição de "numeroitems" items (timeout 30Seg depende do processador/disco/ram)
+        /// </summary>
+        [TestMethod, Timeout(30000)]
+        public void AdicionaInventarioCycle()
+        {
+            int numeroitems = 1100;
+
+            var _inv = Inventario.getInstance(20);
+            _inv.RemoveAll();
+            Assert.AreEqual(_inv.TotalItems, 0);
+
+            _inv.Adiciona(new Generico(1));
+            Assert.AreEqual(_inv.TotalItems, 1);
+
+            for (int i = 2; i <= numeroitems; i++)
+            {
+                _inv.Adiciona(new Generico(i));
+                Assert.AreEqual(_inv.TotalItems, i);
+            }
+            Assert.AreEqual(_inv.TotalItems, numeroitems);
+
+        }
+
+        /// <summary>
         /// Testa a edição de inventários que nao existe
         /// </summary>
         [TestMethod]
         [ExpectedException(typeof(NotExists))]
         public void EditNotExists_Trows()
         {
-
             var _inv = Inventario.getInstance(20);
+
+            _inv.RemoveAll();
+
             var item1 = new Generico(22);
             _inv.Edita(item1);
         }

@@ -47,8 +47,6 @@
     <Compile Include="App\Exceptions.cs" />
     <Compile Include="Inventario\Inventario.cs" />
     <Compile Include="Items\Item.cs" />
-    <Compile Include="Items\Tipos\Rede.cs" />
-    <Compile Include="Items\Tipos\Computador.cs" />
     <Compile Include="Items\Tipos\Generico.cs" />
     <Compile Include="Localizacoes\Localizacao.cs" />
     <Compile Include="Localizacoes\Localizacoes.cs" />

@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{732ED87B-5BA4-4DCA-8D88-757E9BA52D73}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>UI.Cli</RootNamespace>
-    <AssemblyName>UI.Cli</AssemblyName>
+    <ProjectGuid>{F0C54553-A33B-458E-81AB-D953D632A089}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Computador</RootNamespace>
+    <AssemblyName>Computador</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,26 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Computador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ITGestao\ITGestao.csproj">
+    <ProjectReference Include="..\..\ITGestao\ITGestao.csproj">
       <Project>{410099f9-432e-4409-8e51-d47bfa99840c}</Project>
       <Name>ITGestao</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Libs\Computador\Computador.csproj">
-      <Project>{f0c54553-a33b-458e-81ab-d953d632a089}</Project>
-      <Name>Computador</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libs\EquipRede\EquipRede.csproj">
-      <Project>{3d1e2595-40e9-4d63-8a28-fc486e2818bf}</Project>
-      <Name>EquipRede</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
+    <ProjectReference Include="..\..\Utils\Utils.csproj">
       <Project>{76471e9e-fc95-4627-a5c7-cd86043d857d}</Project>
       <Name>Utils</Name>
     </ProjectReference>
