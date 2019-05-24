@@ -7,15 +7,12 @@ using ITgestao.ItemsNS;
 
 namespace ITgestao.ItemsNS
 {
-
     /// <summary>
     /// Classe que trata da informação de um computador
     /// </summary>
     [Serializable]
     public sealed class Computador : Item
     {
-
-
         #region ==================== ATRIBUTOS ====================
 
         private int ram; // MB
@@ -38,7 +35,6 @@ namespace ITgestao.ItemsNS
             base.InformBase(this);
 
             this.Serial = _serial;
-
         }
         #endregion
 
@@ -54,12 +50,9 @@ namespace ITgestao.ItemsNS
         #region @@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@
         #endregion
 
-
-
         public string Serial
         {
             get; private set;
         }
-
     }
 }
