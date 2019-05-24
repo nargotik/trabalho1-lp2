@@ -1,17 +1,17 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using ITgestao;
 using ITgestao.ItemsNS;
 
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class ItemsTests
     {
         /// <summary>
         /// Testa a criação de um item genérico
         /// </summary>
-        [TestMethod]
+        [Test]
         public void Create_GenericItem()
         {
             Item _item = new Generico(123);
@@ -27,7 +27,7 @@ namespace Tests
         /// <summary>
         /// Testa a adição de um item genérico ao inventário
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GenericItemAddtoInventory()
         {
             // Limpa o inventário
@@ -52,18 +52,23 @@ namespace Tests
         /// <summary>
         /// Testa a adição de um item genérico ao inventário em duplicado
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [Test]
+
         public void GenericItemAddtoInventoryDuplicate()
         {
-            // Limpa o inventário
-            Inventario.getInstance().RemoveAll();
-            // Cria um item com o id 123
-            Item _item = new Generico(123);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                // Limpa o inventário
+                Inventario.getInstance().RemoveAll();
+                // Cria um item com o id 123
+                Item _item = new Generico(123);
 
-            // Diz ao item para se adicionar ao inventário com instancia 0 2 vezes
-            bool result = _item.AddToInventario(Inventario.getInstance());
-            bool result2 = _item.AddToInventario(Inventario.getInstance());
+                // Diz ao item para se adicionar ao inventário com instancia 0 2 vezes
+                bool result = _item.AddToInventario(Inventario.getInstance());
+                bool result2 = _item.AddToInventario(Inventario.getInstance());
+
+            });
+
             
 
         }
@@ -71,10 +76,10 @@ namespace Tests
         /// <summary>
         /// Testa a adição de um item genérico ao inventário id inteiro em duplicado
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [Test]
         public void GenericItemAddtoInventoryByIdDuplicate()
         {
+
             int idinventario = 100;
             int itemid = 100;
             // Limpa o inventário
@@ -85,7 +90,11 @@ namespace Tests
 
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(idinventario);
-            _item.AddToInventario(idinventario);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _item.AddToInventario(idinventario);
+            });
+            
 
             Item _item2 = 
                 (Item)Inventario
@@ -99,7 +108,7 @@ namespace Tests
         /// <summary>
         /// Testa a Remocao de um item genérico ao inventário id inteiro em duplicado
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GenericItemDelfromInventoryById()
         {
             int idinventario = 100;
@@ -123,7 +132,7 @@ namespace Tests
         /// <summary>
         /// Testa a Remocao de um item genérico ao inventário id inteiro em duplicado
         /// </summary>
-        [TestMethod]
+        [Test]
         public void GenericItemDelfromInventory()
         {
             int idinventario = 100;
@@ -146,11 +155,15 @@ namespace Tests
         /// <summary>
         /// Testa a criação de um item genérico inválido (negativo)
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(IdBadException))]
+        [Test]
+
         public void Create_GenericItemInvalido()
         {
-            Item _item = new Generico(-123);
+            
+            Assert.Throws<IdBadException>(() =>
+            {
+                Item _item = new Generico(-123);
+            });
         }
     }
 }

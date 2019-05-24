@@ -1,18 +1,19 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using ITgestao;
 using ITgestao.ItemsNS;
 
+
 namespace Tests
 {
-    [TestClass]
+    [TestFixture]
     public class InventarioTests
     {
         /// <summary>
         /// Testa a Remocao de um inventario não existente
         /// </summary>
-        [TestMethod]
+        [Test]
         public void RemoveItemNotExistente_Inventario()
         {
 
@@ -28,7 +29,7 @@ namespace Tests
         /// <summary>
         /// Testa a Remocao de um inventario  existente
         /// </summary>
-        [TestMethod]
+        [Test]
         public void RemoveItemExistente_Inventario()
         {
 
@@ -45,7 +46,7 @@ namespace Tests
         /// <summary>
         /// Testa a Remocao de um inventario existente
         /// </summary>
-        [TestMethod]
+        [Test]
         public void RemoveItemExistenteById_Inventario()
         {
 
@@ -66,7 +67,7 @@ namespace Tests
         /// <summary>
         /// Testa a Remocao de um inventario invexistente
         /// </summary>
-        [TestMethod]
+        [Test]
         public void RemoveItemInexistenteById_Inventario()
         {
             {
@@ -83,7 +84,7 @@ namespace Tests
         /// <summary>
         /// Testa a edicao de um inventario
         /// </summary>
-        [TestMethod]
+        [Test]
         public void EditaItem_Inventario()
         {
 
@@ -110,7 +111,7 @@ namespace Tests
         /// <summary>
         /// Testa a criação de um inventario
         /// </summary>
-        [TestMethod]
+        [Test]
         public void Create_Inventario()
         {
             int id = 20;
@@ -123,58 +124,76 @@ namespace Tests
         /// <summary>
         /// Cria um inventário com id inválido
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(IdBadException))]
+        [Test]
+
         public void Create_Inventario_IdBad_Trows()
         {
-            // Id negativo
-            var _inv = Inventario.getInstance(-23);
+            Assert.Throws<IdBadException>(() =>
+            {
+                // Id negativo
+                var _inv = Inventario.getInstance(-23);
+
+            });
+            
         }
 
         /// <summary>
         /// Teste adicionar ao inventário um item inválido
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(InvalidEquipamentoException))]
+        [Test]
         public void AdicionaInventarioBadObject_Trows()
         {
-            var _inv = Inventario.getInstance(10);
-            // Tenta adicionar um inventário no inventário
-            Inventario.getInstance(20).Adiciona(_inv);
+            Assert.Throws<InvalidEquipamentoException>(() =>
+            {
+                var _inv = Inventario.getInstance(10);
+                // Tenta adicionar um inventário no inventário
+                Inventario.getInstance(20).Adiciona(_inv);
+
+            });
+            
         }
 
         /// <summary>
         /// Teste adicionar ao inventário um item nulo 
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [Test]
+
         public void AdicionaInventarioNullObject_Trows()
         {
-            //var _inv = Inventario.getInstance(10);
-            // Tenta adicionar um inventário no inventário
-            Inventario.getInstance(20).Adiciona(null);
+            Assert.Throws<NullReferenceException>(() =>
+            {
+                //var _inv = Inventario.getInstance(10);
+                // Tenta adicionar um inventário no inventário
+                Inventario.getInstance(20).Adiciona(null);
+
+            });
+            
         }
 
         /// <summary>
         /// Testa adição de inventários duplicados
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [Test]
+
         public void AdicionaInventarioDuplicate_Trows()
         {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                var _inv = Inventario.getInstance(20);
+                var item1 = new Generico(1);
+                var item2 = new Generico(1);
+                // Tenta adicionar um inventário no inventário
+                _inv.Adiciona(item1);
+                _inv.Adiciona(item2);
 
-            var _inv = Inventario.getInstance(20);
-            var item1 = new Generico(1);
-            var item2 = new Generico(1);
-            // Tenta adicionar um inventário no inventário
-            _inv.Adiciona(item1);
-            _inv.Adiciona(item2);
+            });
+            
         }
 
         /// <summary>
         /// Testa adição de "numeroitems" items (timeout 30Seg depende do processador/disco/ram)
         /// </summary>
-        [TestMethod, Timeout(30000)]
+        [Test, Timeout(30000)]
         public void AdicionaInventarioCycle()
         {
             int numeroitems = 1100;
@@ -198,16 +217,21 @@ namespace Tests
         /// <summary>
         /// Testa a edição de inventários que nao existe
         /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(NotExists))]
+        [Test]
+
         public void EditNotExists_Trows()
         {
-            var _inv = Inventario.getInstance(20);
+            Assert.Throws<NotExists>(() =>
+            {
+                var _inv = Inventario.getInstance(20);
 
-            _inv.RemoveAll();
+                _inv.RemoveAll();
 
-            var item1 = new Generico(22);
-            _inv.Edita(item1);
+                var item1 = new Generico(22);
+                _inv.Edita(item1);
+
+            });
+            
         }
 
 

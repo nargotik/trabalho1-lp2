@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{60018CD4-6C62-4888-84B8-2C40EA9F4031}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
+		build.sh = build.sh
 		readme.md = readme.md
 	EndProjectSection
 EndProject
@@ -31,6 +32,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipRede", "Libs\EquipRede\EquipRede.csproj", "{3D1E2595-40E9-4D63-8A28-FC486E2818BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computador", "Libs\Computador\Computador.csproj", "{F0C54553-A33B-458E-81AB-D953D632A089}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".ci", ".ci", "{443BA746-7F63-481F-AB7A-9F1D4F4A01F8}"
+	ProjectSection(SolutionItems) = preProject
+		.ci\nunit.sh = .ci\nunit.sh
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,7 @@ Global
 		{D819F483-090F-4030-85CE-CB6BEDE14778} = {68BFBFD3-06BE-466B-BC69-CE23311E7F11}
 		{3D1E2595-40E9-4D63-8A28-FC486E2818BF} = {58BD006A-D154-441A-9FC6-BC1C8C727C66}
 		{F0C54553-A33B-458E-81AB-D953D632A089} = {58BD006A-D154-441A-9FC6-BC1C8C727C66}
+		{443BA746-7F63-481F-AB7A-9F1D4F4A01F8} = {60018CD4-6C62-4888-84B8-2C40EA9F4031}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {700A25EE-D012-4C9A-AA7D-87626DB64F92}
