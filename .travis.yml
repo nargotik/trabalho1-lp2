@@ -4,7 +4,9 @@ solution: ITgestao.sln
 install:
   - sudo apt-get install nunit-console
   - nuget restore ITgestao.sln
+  - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
 
 script:
-  - xbuild ITgestao.sln
-  - nunit-console Tests/bin/Debug/Tests.dll
+  - xbuild /p:Configuration=Release ITgestao.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
+#  - nunit-console Tests/bin/Debug/Tests.dll
