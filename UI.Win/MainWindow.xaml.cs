@@ -25,8 +25,6 @@ namespace UI.Win
         public MainWindow()
         {
             InitializeComponent();
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,8 +32,6 @@ namespace UI.Win
             try
             {
                 int entidade = Int32.Parse(txtEntidade.Text);
-                
-
             }
             catch (FormatException)
             {
@@ -43,16 +39,13 @@ namespace UI.Win
             }
             catch
             {
-
+                //
             }
-
-
-
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // tes
         }
     }
 }

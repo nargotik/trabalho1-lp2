@@ -11,16 +11,9 @@ namespace UI.Cli
 {
     class Program
     {
-
         static Item[] _equip;
         public static void ShowEquipamento(Item pub)
         {
-
-
-
-
-
-
             int pubDate = pub.Id;
             Console.WriteLine($"{pub.Id}");
 
@@ -28,7 +21,6 @@ namespace UI.Cli
         }
         static void Main(string[] args)
         {
-
             Computador _com = new Computador(12, "222");
 
             ShowEquipamento(_com);
@@ -38,7 +30,6 @@ namespace UI.Cli
             //Console.ReadKey();
 
             Console.WriteLine($"Convert {Utils.ConverteMemoria(10024, Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB)}");
-            
 
             try
             {
@@ -47,11 +38,9 @@ namespace UI.Cli
 
                 Inventario inv = Inventario.getInstance(id);
 
-                
-
                 Console.WriteLine("Insira o numero de computadores/rede/generico random a inserir: ");
                 int numero = Convert.ToInt32(Console.ReadLine());
-                for (int i=1;i<=numero;i++)
+                for (int i=1; i<=numero; i++)
                 {
                     inv.Adiciona(new Computador(i, i.ToString()));
                     Console.WriteLine($"Adicionado Computador {i}...");
@@ -91,7 +80,6 @@ namespace UI.Cli
                 Console.WriteLine("==========\n");
             }
 
-
             try
             {
                 // Tenta inicializar um equipamento 
@@ -100,8 +88,6 @@ namespace UI.Cli
                 Console.WriteLine($"Foi criado {equi.Id}");
 
                 // Adiciona à lista de equipamentos
-
-
             }
             catch (IdBadException ex)
             {
@@ -110,11 +96,10 @@ namespace UI.Cli
                 Console.WriteLine(ex.Message);
             }
             catch (IdDuplicatedException ex)
-            // Exeption that comes from equipments handler for a duplicate entry
-
             {
-
+                throw;
             }
+            // Exeption that comes from equipments handler for a duplicate entry
 
             try
             {
@@ -124,14 +109,10 @@ namespace UI.Cli
             }
             catch (InitBadException)
             {
-
+                throw;
             }
 
             Console.ReadKey();
-
         }
-
-
-
     }
 }

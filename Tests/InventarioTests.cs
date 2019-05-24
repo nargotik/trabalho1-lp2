@@ -14,14 +14,12 @@ namespace Tests
         [Test]
         public void RemoveItemNotExistente_Inventario()
         {
-
             var _item1 = new Generico(1, "Serial 1");
             //_inv.Adiciona(_item1);
 
             Assert.IsFalse(
                 Inventario.getInstance().Remove(_item1)
                 );
-
         }
 
         /// <summary>
@@ -30,15 +28,12 @@ namespace Tests
         [Test]
         public void RemoveItemExistente_Inventario()
         {
-
             var _item1 = new Generico(1, "Serial 1");
             Inventario.getInstance().Adiciona(_item1);
-
 
             Assert.IsTrue(
                 Inventario.getInstance().Remove(_item1)
                 );
-
         }
 
         /// <summary>
@@ -47,7 +42,6 @@ namespace Tests
         [Test]
         public void RemoveItemExistenteById_Inventario()
         {
-
             {
                 Inventario inv = Inventario.getInstance();
 
@@ -58,8 +52,6 @@ namespace Tests
                     inv.RemoveById(1)
                     );
             }
-            
-
         }
 
         /// <summary>
@@ -74,8 +66,6 @@ namespace Tests
                     _inv.RemoveById(9999)
                     );
             }
-            
-
         }
 
 
@@ -85,7 +75,6 @@ namespace Tests
         [Test]
         public void EditaItem_Inventario()
         {
-
             int id = 20;
             var _inv = Inventario.getInstance(id);
 
@@ -95,7 +84,6 @@ namespace Tests
             _inv.Adiciona(_item1);
             var _item2 = new Generico(1, "ADIHDSAUDYAISUDSAD");
 
-
             _inv.Edita(_item2);
 
             Assert.AreEqual(
@@ -103,7 +91,6 @@ namespace Tests
                 , 
                 (_inv.GetItemById(1) as Generico).Serial
                 );
-            
         }
 
         /// <summary>
@@ -116,14 +103,12 @@ namespace Tests
             int expected = 20;
             var _inv = Inventario.getInstance(id);
             Assert.AreEqual(_inv.Empresa, expected);
-
         }
 
         /// <summary>
         /// Cria um inventário com id inválido
         /// </summary>
         [Test]
-
         public void Create_Inventario_IdBad_Trows()
         {
             Assert.Throws<IdBadException>(() =>
@@ -131,7 +116,6 @@ namespace Tests
                 // Id negativo
                 var _inv = Inventario.getInstance(-23);
             });
-            
         }
 
         /// <summary>
@@ -146,14 +130,12 @@ namespace Tests
                 // Tenta adicionar um inventário no inventário
                 Inventario.getInstance(20).Adiciona(_inv);
             });
-            
         }
 
         /// <summary>
         /// Teste adicionar ao inventário um item nulo 
         /// </summary>
         [Test]
-
         public void AdicionaInventarioNullObject_Trows()
         {
             Assert.Throws<NullReferenceException>(() =>
@@ -161,15 +143,13 @@ namespace Tests
                 //var _inv = Inventario.getInstance(10);
                 // Tenta adicionar um inventário no inventário
                 Inventario.getInstance(20).Adiciona(null);
-            });
-            
+            }); 
         }
 
         /// <summary>
         /// Testa adição de inventários duplicados
         /// </summary>
         [Test]
-
         public void AdicionaInventarioDuplicate_Trows()
         {
             Assert.Throws<ArgumentException>(() =>
@@ -181,7 +161,6 @@ namespace Tests
                 _inv.Adiciona(item1);
                 _inv.Adiciona(item2);
             });
-            
         }
 
         /// <summary>
@@ -211,7 +190,6 @@ namespace Tests
         /// Testa a edição de inventários que nao existe
         /// </summary>
         [Test]
-
         public void EditNotExists_Trows()
         {
             Assert.Throws<NotExists>(() =>
@@ -222,9 +200,7 @@ namespace Tests
 
                 var item1 = new Generico(22);
                 _inv.Edita(item1);
-            });
-            
+            }); 
         }
-
     }
 }

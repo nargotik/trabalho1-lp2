@@ -21,7 +21,6 @@ namespace ITgestao
     [Serializable]
     public class Inventario
     {
-
         #region ==================== ATRIBUTOS ====================
         private readonly int entidade;
 
@@ -83,8 +82,6 @@ namespace ITgestao
                 LoadData();
                 this.entidade = _entidade;
             }
-
-
         }
 
         /// <summary>
@@ -158,7 +155,6 @@ namespace ITgestao
                 // O item existe na hashtable ?
                 if (items.ContainsKey(((Item)_obj).Id))
                 {
-
                     // Remove o item ao inventário de items
                     items.Remove(((Item)_obj).Id);
                     SaveData();
@@ -168,7 +164,6 @@ namespace ITgestao
                 {
                     return false;
                 }
-
             }
             else if (!(_obj.GetType().IsAssignableFrom(typeof(Item))))
             {
@@ -254,7 +249,6 @@ namespace ITgestao
             {
                 throw new NotImplementedException("Objecto a adicionar no inventário não implementado");
             }
-
         }
         #endregion
 
@@ -303,9 +297,6 @@ namespace ITgestao
                 //SaveData();
                 return false;
             }
-
-
-
         }
 
         /// <summary>

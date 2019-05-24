@@ -21,7 +21,6 @@ namespace Tests
             Assert.IsTrue(_item.Initialized);
             // Verifica o tipo de item no inventário
             Assert.AreEqual(_item.Tipo, (new Generico(1)).GetType());
-
         }
 
         /// <summary>
@@ -46,14 +45,12 @@ namespace Tests
 
             // Verifica se foi adicionado
             Assert.IsTrue(result);
-
         }
 
         /// <summary>
         /// Testa a adição de um item genérico ao inventário em duplicado
         /// </summary>
         [Test]
-
         public void GenericItemAddtoInventoryDuplicate()
         {
             Assert.Throws<ArgumentException>(() =>
@@ -67,7 +64,6 @@ namespace Tests
                 bool result = _item.AddToInventario(Inventario.getInstance());
                 bool result2 = _item.AddToInventario(Inventario.getInstance());
             });
-
         }
 
         /// <summary>
@@ -97,7 +93,6 @@ namespace Tests
                 .GetItemById(itemid);
 
             Assert.AreEqual(_item2.Id, itemid);
-
         }
 
         /// <summary>
@@ -118,10 +113,7 @@ namespace Tests
             _item.AddToInventario(idinventario);
             bool res = _item.RemoveFromInventario(idinventario);
 
-
-
             Assert.IsTrue(res);
-
         }
 
         /// <summary>
@@ -143,7 +135,6 @@ namespace Tests
             bool res = _item.RemoveFromInventario(idinventario);
 
             Assert.IsTrue(res);
-
         }
 
 
@@ -151,7 +142,6 @@ namespace Tests
         /// Testa a criação de um item genérico inválido (negativo)
         /// </summary>
         [Test]
-
         public void Create_GenericItemInvalido()
         {
             Assert.Throws<IdBadException>(() =>
