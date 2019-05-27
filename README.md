@@ -10,7 +10,7 @@ __Autores do Trabalho:__
 - ___Oscar Silva (<a14383@alunos.ipca.pt>)___
 
 [![CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2/badge)](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
-[![Build Status](https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/trabalho1-lp2)
+[![Build Status](https://travis-ci.org/nargotik/trabalho1-lp2.svg?branch=master)](https://travis-ci.org/nargotik/trabalho1-lp2)
 
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de 
@@ -40,6 +40,8 @@ Permite ainda dividir a carga de trabalho pois permite que cada elemento do grup
 desenvolva uma classe específica da aplicação.
 
 ## Estrutura de Ficheiros
+- __./Libs/Folder/...__
+  - Pasta que contem exemplos de items, esta pasta irá gerar dll's a serem utilizadas pelo ITGestão
 - __./ITGEstao/__
   - Projecto (VS 2017) de um dll ITGestao.dll que pode ser reutilizada
 - __./Tests/__
@@ -47,7 +49,8 @@ desenvolva uma classe específica da aplicação.
 - __./UI.Cli/__
   - Interface de Utilizador (Linha de Comandos)
 - __./UI.Win/__
-  - Interface Utilizador (Windows)
+  - Interface Utilizador (Windows) 
+    - Apenas serve como prova de conceito da forma que foi dividido o UI da parte Lógica
 - __./Utils/__
   - Vários Utilitários a serem usados
 - __ITgestao.sln__
@@ -56,6 +59,8 @@ desenvolva uma classe específica da aplicação.
   - Diagrama de classes do projecto ITGestao
 - __readme.md__
   - Relatório
+- __.travis.yml__
+  - Ficheiro de compilação automática e Testes GIT
 - __LICENSE__
   - Licença de Utilização
 
@@ -148,14 +153,36 @@ Ainda não está definido na altura do desenvolvimento deste relatório os atributo
 ### Inventário
 O Objeto Inventário está encarregue de armazenar e tratar objetos do tipo __*Item*__.
 
+Foi utilizada padrão singleton com multiplas instancias pelo id da entidade de inventário.
+Para utilizar a class apenas é necessario:
+```c#
+// Instancia com entidade = 0 por defeito
+Inventario.getInstance().metodo; 
+...
+// Instancia com entidade = 10
+Inventario.getInstance(10).metodo;
+```
+
+De salientar que o armazenamento dos dados é feito automáticamente quando se 
+adiciona/edita/remove um item com os métodos privados __SaveData()__ e __LoadData()__.
+
+O inventário foi desenvolvido de forma a poder ser reutilizado nas mais variadas áreas, sendo
+a abordagem feita o mais abstrata possivel de forma a que o mesmo tanto armazene computadores 
+como fruta ou viaturas.
+
 1. __Atributos__
-	- (__*empresa*__) - Valor que identifica uma empresa da instancia do inventário;
+	- (__*entidade*__) - Valor que identifica uma entidade da instancia do inventário;
 	- (__*itens*__) - Lista de objetos do tipo Item;
 2. __Métodos__
 	- __*Adiciona(...)*__ - Método que adiciona um objeto ao inventário;
 	- __*Remove(...)*__ - Método que elimina um objeto do inventário;
-	- __*Edita(...)*__ - Método que edita um objeto do inventário
-
+	- __*GetItemById(...)*__ - Método que devolve um objeto do inventário pelo ID
+    - __*RemoveItemById(...)*__ - Método que remove um objeto do inventário pelo ID
+    - __*RemoveAll(...)*__ - Método que remove todos os items do inventário
+    - __*Edita(...)*__ - Método que edita um objeto do inventário
+3. __Testes Unitários__
+    - Foram desenvolvidos vários testes unitários básicos unitários de forma a que qualquer modificação na classe
+obdeça às regras do desenvolvimento.
 ---
 ### Cliente
 O Objecto Cliente define e cria os objetos do tipo Cliente.
@@ -230,3 +257,7 @@ Algumas das exceções já tratadas:
 - [Padrão Singleton](https://pt.wikipedia.org/wiki/Singleton)
 - [Testes Unitários - Unit Testing](https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019)
 - [Windows Presentation Foundation](https://docs.microsoft.com/en-us/dotnet/framework/wpf/)
+- [CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
+- [Travis-ci](https://travis-ci.org/nargotik/trabalho1-lp2)
+- [NUnit Framework - Unit Testing](https://nunit.org/)
+- [GitHub](https://github.com/)
