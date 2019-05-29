@@ -58,7 +58,7 @@ namespace UI.Cli
 
                 for (int i = 1+1000; i <= numero+1000; i++)
                 {
-                    inv.Adiciona(new Rede(i, i.ToString()));
+                    inv.Adiciona(new EquipRede(i, EquipRede.EquipRedeTipos.Router));
                     Console.WriteLine($"Adicionado Rede {i}...");
                 }
 
@@ -110,7 +110,7 @@ namespace UI.Cli
 
             try
             {
-                Rede _rede = new Rede(66, "1234");
+                EquipRede _rede = new EquipRede(66, EquipRede.EquipRedeTipos.Switch);
                 Console.WriteLine($"Foi criado {_rede.Id}");
                 Console.WriteLine($"Foi criado {Utils.HasMethod(_rede, "Adiciona")}");
             }
