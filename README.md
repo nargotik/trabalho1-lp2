@@ -3,7 +3,7 @@
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
 É a realização deste trabalho realizar uma abordagem de Aprendizagem de técnicas e métodos de Programação Orientada por Objectos, 
-assim como a utilização de ferramentes e métodos de trabalho colaborativo.
+assim como a utilização de ferramentas e métodos de trabalho colaborativo.
 
 __Autores do Trabalho:__
 - ___Daniel Torres (<a17442@alunos.ipca.pt>)___
@@ -16,7 +16,7 @@ A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez
 desenvolverem metodologias para o controle do seu espólio material e virtual.
 
 - A aplicação deverá:
-  - Ser abstrata o suficiente para a reutilização de codigo para outros setores/aplicações.
+  - Ser abstracta o suficiente para a reutilização de código para outros setores/aplicações.
   - Ter uma visão Macro e Micro de todo o inventário presente na Entidade.
     - Listagem de equipamentos
     - Listagem por tipo de Equipamentos
@@ -27,15 +27,17 @@ desenvolverem metodologias para o controle do seu espólio material e virtual.
 
 Foi pensado em criar um Interface de utilizador por Windows/Consola no entanto ainda será um grande desafio aprender WPF
 
-Não tendo sido possivel a aprendizagem de WPF e ao aprofundamento de outras técnicas à frente faladas
+Não tendo sido possível a aprendizagem de WPF e ao aprofundamento de outras técnicas à frente faladas
 o projecto UI.Win apenas foi deixado como prova de conceito, assim como não foi muito desenvolvido o UI.Cli.
+
+Foi primordialmente focado o desenvolvimento de capacidades de trabalho em grupo e automatizadas, assim como a funcionalidade de uma livraria (DLL) que poderá ser reutilizada em outros contextos.
 
 No entanto todos os métodos e classes foram testados usando testes unitários que podem ser vistos no projecto de Tests.
 
 Os resultados a obter com o desenvolvimento desta solução é criação de uma aplicação versátil e adaptativa às 
 necessidades das diferentes entidades e deverá potencializar uma melhor organização do parque informáticos.
 
-## Método de Trabalho adotado
+## Método de Trabalho adoptado
 Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite 
 a todos os membros do grupo desenvolvam simultaneamente a aplicação e que haja um 
 controle de versões desenvolvidas através do Git. 
@@ -50,7 +52,7 @@ Algumas ferramentas utilizadas:
 - Travis-ci
   - Travis CI é um serviço de integração contínua 
 - Codefector
-  - Analizador automático de syntax de código
+  - Analisador automático de syntax de código
 
 ## Estrutura de Ficheiros
 - __./Libs/Folder/...__
@@ -128,6 +130,8 @@ No dashboard do *Travis-CI* podemos ver o log assim como o tempo utilizado nos t
 Log dos testes:
 ![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_ok.png?raw=true)
 
+Log com exemplo de falhas nos testes.
+![Falha nos testes](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_fail.png?raw=true)
 O *Travis-CI* fornece ainda uma pequena imagem dinâmica que está presente na introdução do nosso trabalho que indica se o projecto está com os testes em "passing" ou "fail".
 
 ### CodeFactor
@@ -167,8 +171,8 @@ Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no e
 ---
 
 ### Item
-A classe Item é a classe abstrata que define e cria os objetos do tipo Item.
-É a classe "pai" responsável por armazenar e tratar um objeto do tipo Item o mais genérico possível.
+A classe Item é a classe abstracta que define e cria os objectos do tipo Item.
+É a classe "pai" responsável por armazenar e tratar um objecto do tipo Item o mais genérico possível.
 Esta classe têm dois métodos **static** muito importantes de forma a que qualquer filho possa informar a classe base
 que existe mais um tipo de child.
 
@@ -179,15 +183,15 @@ que existe mais um tipo de child.
 	
 2. Métodos
     - (__*AddAuthorizedType(object  _obj)*__) - Permite adicionar um novo tipo de item autorizado;
-      - Este metodo utiliza a classe *__Config__* para armazenar na aplicação transversalmente o estado dos items autorizados.
-    - (__*Type AuthorizedType(object  _obj)*__) - Devolve o tipo do objecto colocado como parametro se fôr um objecto autorizado.
+      - Este método utiliza a classe *__Config__* para armazenar na aplicação transversalmente o estado dos items autorizados.
+    - (__*Type AuthorizedType(object  _obj)*__) - Devolve o tipo do objecto colocado como parâmetro se for um objecto autorizado.
       - Este método utiliza a classe *__Config__* para verificar se o objecto está na lista dos autorizados.
 
 ---
 #### Extensões de Item (ClasseName:Item)
-Todas as classes que extendam de Item devem informar a classe Item que existe um novo tipo de Item que será tratado pelo inventário.
+Todas as classes que estendam de Item devem informar a classe Item que existe um novo tipo de Item que será tratado pelo inventário.
 
-Esta tipo de objetos deverão ser sealed de forma a que não hajam mais extensões do mesmo, a menos que para tal seja necessário extender.
+Esta tipo de objectos deverão ser sealed de forma a que não hajam mais extensões do mesmo, a menos que para tal seja necessário extender.
 
 ```c#
 public ClasseName(...) : base(...)
@@ -197,7 +201,7 @@ public ClasseName(...) : base(...)
 
 ---
 #### Genérico (Generico:Item)
-É um objecto que extenderá *__Item__*.
+É um objecto que estenderá *__Item__*.
 
 
 
@@ -205,7 +209,7 @@ public ClasseName(...) : base(...)
 
 ---
 #### Computador (Computador:Item)
-É um objecto que extenderá *__Item__*.
+É um objecto que estenderá *__Item__*.
 
 Esta classe irá criar items do tipo Computador.
 
@@ -220,7 +224,7 @@ Ainda não está definido na altura do desenvolvimento deste relatório os atributo
 
 Esta classe irá criar items do tipo Rede.
 
-Ainda não está definido na altura do desenvolvimento deste relatório os atributos, deverão ser do tipo: ENDERECO/TIPO(Switch/router)...
+Ainda não está definido na altura do desenvolvimento deste relatório os atributos, deverão ser do tipo: ENDEREÇO/TIPO(Switch/router)...
 
 1. __Métodos/Construtores__
 	- (__*Rede(...)*__) - Construtor que cria um objeto do tipo Rede.
@@ -229,10 +233,10 @@ Ainda não está definido na altura do desenvolvimento deste relatório os atributo
 ---
 
 ### Inventário
-O Objeto Inventário está encarregue de armazenar e tratar objetos do tipo __*Item*__.
+O Objecto Inventário está encarregue de armazenar e tratar objectos do tipo __*Item*__.
 
-Foi utilizada padrão singleton com multiplas instancias pelo id da entidade de inventário.
-Para utilizar a class apenas é necessario:
+Foi utilizada padrão singleton com múltiplas instancias pelo id da entidade de inventário.
+Para utilizar a class apenas é necessário:
 ```c#
 // Instancia com entidade = 0 por defeito
 Inventario.getInstance().metodo; 
@@ -241,31 +245,31 @@ Inventario.getInstance().metodo;
 Inventario.getInstance(10).metodo;
 ```
 
-De salientar que o armazenamento dos dados é feito automáticamente quando se 
+De salientar que o armazenamento dos dados é feito automaticamente quando se 
 adiciona/edita/remove um item com os métodos privados __SaveData()__ e __LoadData()__.
 
 O inventário foi desenvolvido de forma a poder ser reutilizado nas mais variadas áreas, sendo
-a abordagem feita o mais abstrata possivel de forma a que o mesmo tanto armazene computadores 
+a abordagem feita o mais abstracta possível de forma a que o mesmo tanto armazene computadores 
 como fruta ou viaturas.
 
 1. __Atributos__
 	- (__*entidade*__) - Valor que identifica uma entidade da instancia do inventário;
-	- (__*itens*__) - Lista de objetos do tipo Item;
+	- (__*itens*__) - Lista de objectos do tipo Item;
 2. __Métodos__
-	- __*Adiciona(...)*__ - Método que adiciona um objeto ao inventário;
-	- __*Remove(...)*__ - Método que elimina um objeto do inventário;
-	- __*GetItemById(...)*__ - Método que devolve um objeto do inventário pelo ID
-    - __*RemoveItemById(...)*__ - Método que remove um objeto do inventário pelo ID
+	- __*Adiciona(...)*__ - Método que adiciona um objecto ao inventário;
+	- __*Remove(...)*__ - Método que elimina um objecto do inventário;
+	- __*GetItemById(...)*__ - Método que devolve um objecto do inventário pelo ID
+    - __*RemoveItemById(...)*__ - Método que remove um objecto do inventário pelo ID
     - __*RemoveAll(...)*__ - Método que remove todos os items do inventário
-    - __*Edita(...)*__ - Método que edita um objeto do inventário
+    - __*Edita(...)*__ - Método que edita um objecto do inventário
 3. __Testes Unitários__
     - Foram desenvolvidos vários testes unitários básicos unitários de forma a que qualquer modificação na classe
-obdeça às regras do desenvolvimento.
+obedeça às regras do desenvolvimento.
 ---
 ### Cliente
-O Objecto Cliente define e cria os objetos do tipo Cliente.
+O Objecto Cliente define e cria os objecto do tipo Cliente.
 
-Os atributos deste objeto ainda não foram desenvolvidos na totalidade.
+Os atributos deste objecto ainda não foram desenvolvidos na totalidade.
 
 1. __Atributos__
 	- (__*id*__) - Valor único de identifica um cliente;
@@ -291,8 +295,8 @@ O Objectivo desta classe é armazenar informação necessária para o runtime da apl
 classe que necessite de informação sobre a aplicação posso consumir informação da mesma.
 
 Algumas das informações pensadas a colocar nesta classe futuramente.
-- Directorio Actual
-- Directorio de Armazenamento dos ficheiros de dados persistentes.
+- Directório Actual
+- Directório de Armazenamento dos ficheiros de dados persistentes.
 - Tipos de item autorizados pela aplicação ITGestao.dll a serem tratados pelo __Inventário__
 
 Optou-se pela utilização do Padrão Singleton nesta classe de forma que só exista uma só 
@@ -324,10 +328,10 @@ public sealed class Config {
 ### Exceptions
 Classe que permite lidar com erros que ocorrem durante a execução da aplicação.
 
-Algumas das exceções já tratadas:
+Algumas das excepções já tratadas:
 - ID duplicado;
 - ID inválido;
-- Tentativa de iniciação de objeto com argumentos em falta. 
+- Tentativa de iniciação de objecto com argumentos em falta. 
 
 ---
 
