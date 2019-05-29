@@ -139,9 +139,9 @@ Existem muitos outros serviços deste género, no entanto verificamos que este era
 
 Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no entanto seria necessário fazer testes bem mais complexos que os unitários para testar problemas comuns de syntax.
 
-![Codefactor Print1](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefactor1.png?raw=true)
+![Codefactor Print1](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefacor1.png?raw=true)
 
-![Codefactor Print2](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefactor1.png?raw=true)
+![Codefactor Print2](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefacor2.png?raw=true)
 
 ## Diagrama de Objectos
 ![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
