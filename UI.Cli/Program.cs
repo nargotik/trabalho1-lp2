@@ -62,6 +62,7 @@ namespace UI.Cli
                     Console.WriteLine($"Adicionado Generico {i}...");
                 }
 
+                //Adicionar equipamento de rede ao inventario
 
                 //Equipamento.Rede _rede = new Equipamento.Rede(12);
                 //inv.Adiciona(_rede);
