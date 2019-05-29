@@ -29,7 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Computador", "Libs\Computad
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{1181F1B7-E19D-4507-B70B-54B6EBD7F69E}"
 	ProjectSection(SolutionItems) = preProject
+		Doc\img\codefacor1.png = Doc\img\codefacor1.png
+		Doc\img\codefacor2.png = Doc\img\codefacor2.png
+		Doc\img\pull_request_test_ok.png = Doc\img\pull_request_test_ok.png
 		Doc\img\pull_request_testing.png = Doc\img\pull_request_testing.png
+		Doc\img\pull_request_testing_okmerge.png = Doc\img\pull_request_testing_okmerge.png
+		Doc\img\pull_request_unit_summary_ok.png = Doc\img\pull_request_unit_summary_ok.png
+		Doc\img\travis-badge.png = Doc\img\travis-badge.png
 	EndProjectSection
 EndProject
 Global

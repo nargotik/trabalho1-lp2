@@ -110,7 +110,7 @@ namespace ITgestao
                 // Adiciona o item ao inventário de items
                 try
                 {
-                    items.Add(((Item)_obj).Id, (Item)_obj);
+                    //items.Add(((Item)_obj).Id, (Item)_obj);
                     SaveData();
                 }
                 catch (ArgumentException ex)
