@@ -1,4 +1,3 @@
-
 # Relatório Trabalho Prático LP1
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
@@ -78,11 +77,11 @@ Algumas ferramentas utilizadas:
   - Licença de Utilização
 
 ## Ferramentas / Serviços utilizados
-## Travis-ci
-![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/TravisCI-Mascot-1.png?raw=true)
+### Travis-CI
 
+Em resumo o *Travis-CI* é um serviço no qual nos é permitido correr uma instância de software (ex docker) de forma a que sejam feitos testes de compilação e testes unitários à solução.
 
-Em resumo o travis-ci é um serviço no qual nos é permitido correr uma instancia de software (ex docker) de forma a que sejam feitos testes de compilação e testes unitários à solução.
+Travis-CI (Continuous Improvement) é um serviço de melhoria continua de código e analise do mesmo.
 
 Para a utilização deste serviço com C# tivemos de mudar a framework de testes de [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) para a ferramenta [NUnit Framework - Unit Testing](https://nunit.org/)
 pois a execução de testes em ambiente Linux/MacOsx é incompativel com a ferramenta MSTest.
@@ -105,27 +104,39 @@ script:
   - xbuild /p:Configuration=Release ITgestao.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
 ```
-A configuração do travis é feita através de um ficheiro que é deixado na raiz do projecto (.travis.yml) de forma a informar ao agent do travis quais as configurações necessárias para correr/testar a nossa solução.
+A configuração do *Travis-CI* é feita através de um ficheiro que é deixado na raiz do projecto (**.travis.yml**) de forma a informar ao agent do *Travis-CI* quais as configurações necessárias para correr/testar a nossa solução.
 
 O ficheiro de configuração do nosso trabalho utiliza Linux e mono para compilar e testar a aplicação, de notar que de momento não é possivel realizar testes em WPF de forma que o subprojecto WPF é removido do travis antes de iniciar a execução.
 
-O travis é capaz de correr os mais variados ambientes quer de sistemas operativos quer de pacotes já feitos [MultiOS](https://docs.travis-ci.com/user/multi-os/) / [Docker](https://docs.travis-ci.com/user/docker/).
+O *Travis-CI* é capaz de correr os mais variados ambientes quer de sistemas operativos quer de pacotes já feitos [MultiOS](https://docs.travis-ci.com/user/multi-os/) / [Docker](https://docs.travis-ci.com/user/docker/).
 
-### Funcionamento:
-O travis efectua testes de forma configuravel pelo administrador do repositorio.
+#### Funcionamento:
+O *Travis-CI* efectua testes de forma configurável pelo administrador do repositório.
 
-Preferimos utilizar o travis para confirmar os pull requests para o branch master e para testar c compilação do branch master.
+Preferimos utilizar o *Travis-CI* para confirmar os pull requests para o branch master e para testar c compilação do branch master.
 
-Desta forma sempre que fôr efectuado um pull request ao master do repositório o travis automáticamente inicia os testes como podem ver na imagem abaixo:
+Desta forma sempre que for efectuado um pull request ao master do repositório o *Travis-CI* automaticamente inicia os testes como podem ver na imagem abaixo:
 
 ![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing.png?raw=true)
 
-Após a finalização dos testes é dado o ok para se efectuar o merge no respositório, cabe sempre a quem efectua a manutenção do repositório a decisão final se quer efectuar um merge que falhou à sua responsabilidade.
+Após a finalização dos testes é dado o "__ok__" para se efectuar o merge no repositório, cabe sempre a quem efectua a manutenção do repositório a decisão final se quer efectuar um merge que falhou à sua responsabilidade.
 ![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing_okmerge.png?raw=true)
 
-No dashboard do travis podemos ver o log completo dos testes:
+No dashboard do *Travis-CI* podemos ver o log assim como o tempo utilizado nos testes:
 ![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_test_ok.png?raw=true)
+Log dos testes:
 ![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_ok.png?raw=true)
+
+O *Travis-CI* fornece ainda uma pequena imagem dinâmica que está presente na introdução do nosso trabalho que indica se o projecto está com os testes em "passing" ou "fail".
+
+### CodeFactor
+O CodeFactor é um serviço de analise de syntax de código de forma a que sejam cumpridas algumas regras básicas de realização de código.
+
+Este serviço é importante, principalmente se quisermos manter um projecto com muitos programadores onde uniformizamos a forma como é colocado o código no projecto, garantindo assim desta forma homogeneidade dessas regras básicas de código.
+
+Existem muitos outros serviços deste género, no entanto verificamos que este era de momento o que mais se enquadrava para a linguagem c#.
+
+Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no entanto seria necessário fazer testes bem mais complexos que os unitários para testar problemas comuns de syntax.
 
 
 ## Diagrama de Objectos
@@ -326,3 +337,5 @@ Algumas das exceções já tratadas:
 - [GitHub](https://github.com/)
 - [DEVHINTS.IO](https://devhints.io/)
 - [Docker Hub](https://hub.docker.com/)
+- [AppVeyor](https://www.appveyor.com/)
+- [CoverAlls.IO](https://coveralls.io/)
