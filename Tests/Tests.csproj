@@ -54,16 +54,29 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputadorItemTests.cs" />
     <Compile Include="LocalicacoesTests.cs" />
     <Compile Include="InventarioTests.cs" />
     <Compile Include="ClientsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ItemsTests.cs" />
+    <Compile Include="GenericItemTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ITGestao\ITGestao.csproj">
       <Project>{410099f9-432e-4409-8e51-d47bfa99840c}</Project>
       <Name>ITGestao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\Computador\Computador.csproj">
+      <Project>{f0c54553-a33b-458e-81ab-d953d632a089}</Project>
+      <Name>Computador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\EquipRede\EquipRede.csproj">
+      <Project>{3d1e2595-40e9-4d63-8a28-fc486e2818bf}</Project>
+      <Name>EquipRede</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{76471e9e-fc95-4627-a5c7-cd86043d857d}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

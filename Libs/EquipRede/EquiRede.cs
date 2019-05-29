@@ -24,5 +24,10 @@ namespace ITgestao.ItemsNS
         {
             get; private set;
         }
+
+        public override bool IsValid()
+        {
+            return true;
+        }
     }
 }

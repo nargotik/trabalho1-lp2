@@ -158,6 +158,8 @@ namespace ITgestao.ItemsNS
             this.initialized = true;
         }
 
+        public abstract bool IsValid();
+
         #endregion
 
         #region ==================== PRIVATE METHODS ====================.

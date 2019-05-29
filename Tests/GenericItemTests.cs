@@ -6,8 +6,24 @@ using ITgestao.ItemsNS;
 namespace Tests
 {
     [TestFixture]
-    public class ItemsTests
+    public class GenericItemTests
     {
+        /// <summary>
+        /// Testa a criação de um item genérico e verifica se é válido
+        /// </summary>
+        [Test]
+        public void Create_GenericItemValid()
+        {
+            Item _item = new Generico(123);
+            // Verifica o Id do item correspondo ao inicializado
+            Assert.AreEqual(_item.Id, 123);
+            // Verifica se ficou inicializado
+            Assert.IsTrue(_item.Initialized);
+            // Verifica o tipo de item no inventário
+            Assert.AreEqual(_item.Tipo, (new Generico(1)).GetType());
+            Assert.IsTrue(_item.IsValid());
+        }
+
         /// <summary>
         /// Testa a criação de um item genérico
         /// </summary>

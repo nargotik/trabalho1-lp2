@@ -9,23 +9,33 @@ namespace ITgestao.ItemsNS
     [Serializable]
     public sealed class Generico : Item
     {
-        private string serial;
-        public Generico(int _id = 0, string _serial = "123") : base(_id)
+        private string descricao;
+        public Generico(int _id = 0, string _descricao = "") : base(_id)
         {
             // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
             base.InformBase(this);
 
-            this.serial = _serial;
+            this.descricao = _descricao;
         }
 
-        public string Serial
+        /// <summary>
+        /// Devolve a Descrição
+        /// </summary>
+        public string Descricao
         {
 
-            get { return this.serial; }
-            set { this.serial = value; }
+            get { return this.descricao; }
+            set { this.descricao = value; }
         }
 
-        
+        /// <summary>
+        /// Verifica se é válido o object
+        /// </summary>
+        /// <returns>true/false</returns>
+        public override bool IsValid()
+        {
+            return (this.Id > 0);
+        }
 
     }
 }

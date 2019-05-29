@@ -23,10 +23,11 @@ namespace UI.Cli
         {
             Computador _com = new Computador(12, "222");
 
+            
             ShowEquipamento(_com);
 
             Console.WriteLine($"{_com.ToString()}");
-            Console.WriteLine($"Serial: {_com.Serial}");
+            Console.WriteLine($"Serial: {_com.Descricao}");
             //Console.ReadKey();
 
             Console.WriteLine($"Convert {Utils.ConverteMemoria(10024, Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB)}");
