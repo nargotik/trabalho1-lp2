@@ -77,6 +77,56 @@ Algumas ferramentas utilizadas:
 - __LICENSE__
   - Licença de Utilização
 
+## Ferramentas / Serviços utilizados
+## Travis-ci
+![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/TravisCI-Mascot-1.png?raw=true)
+
+
+Em resumo o travis-ci é um serviço no qual nos é permitido correr uma instancia de software (ex docker) de forma a que sejam feitos testes de compilação e testes unitários à solução.
+
+Para a utilização deste serviço com C# tivemos de mudar a framework de testes de [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) para a ferramenta [NUnit Framework - Unit Testing](https://nunit.org/)
+pois a execução de testes em ambiente Linux/MacOsx é incompativel com a ferramenta MSTest.
+
+__Ficheiro de Configuração .travis.yml__
+```yaml
+language: csharp
+solution: ITgestao.sln
+
+install:
+  - sudo apt-get install nunit-console
+  - nuget restore ITgestao.sln
+  - nuget install NUnit.framework
+  - nuget install NUnit
+  - nuget install NUnit3TestAdapter
+  - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
+
+script:
+  - rm -rf ./UI.Win
+  - xbuild /p:Configuration=Release ITgestao.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
+```
+A configuração do travis é feita através de um ficheiro que é deixado na raiz do projecto (.travis.yml) de forma a informar ao agent do travis quais as configurações necessárias para correr/testar a nossa solução.
+
+O ficheiro de configuração do nosso trabalho utiliza Linux e mono para compilar e testar a aplicação, de notar que de momento não é possivel realizar testes em WPF de forma que o subprojecto WPF é removido do travis antes de iniciar a execução.
+
+O travis é capaz de correr os mais variados ambientes quer de sistemas operativos quer de pacotes já feitos [MultiOS](https://docs.travis-ci.com/user/multi-os/) / [Docker](https://docs.travis-ci.com/user/docker/).
+
+### Funcionamento:
+O travis efectua testes de forma configuravel pelo administrador do repositorio.
+
+Preferimos utilizar o travis para confirmar os pull requests para o branch master e para testar c compilação do branch master.
+
+Desta forma sempre que fôr efectuado um pull request ao master do repositório o travis automáticamente inicia os testes como podem ver na imagem abaixo:
+
+![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing.png?raw=true)
+
+Após a finalização dos testes é dado o ok para se efectuar o merge no respositório, cabe sempre a quem efectua a manutenção do repositório a decisão final se quer efectuar um merge que falhou à sua responsabilidade.
+![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing_okmerge.png?raw=true)
+
+No dashboard do travis podemos ver o log completo dos testes:
+![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_test_ok.png?raw=true)
+![Pull Request Testing](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_ok.png?raw=true)
+
 
 ## Diagrama de Objectos
 ![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
@@ -274,3 +324,5 @@ Algumas das exceções já tratadas:
 - [Travis-ci](https://travis-ci.org/)
 - [NUnit Framework - Unit Testing](https://nunit.org/)
 - [GitHub](https://github.com/)
+- [DEVHINTS.IO](https://devhints.io/)
+- [Docker Hub](https://hub.docker.com/)
