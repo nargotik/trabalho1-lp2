@@ -168,7 +168,7 @@ namespace Tests
         [Test, Timeout(30000)]
         public void AdicionaInventarioCycle()
         {
-            int numeroitems = 1100;
+            int numeroitems = 1200;
 
             var _inv = Inventario.getInstance(20);
             _inv.RemoveAll();

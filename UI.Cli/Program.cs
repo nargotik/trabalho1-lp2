@@ -46,9 +46,14 @@ namespace UI.Cli
                     Console.WriteLine($"Adicionado Computador {i}...");
                     Inventario.getInstance(28).Adiciona(new Computador(i, i.ToString()));
 
+                    
+
                     (new Computador(i, i.ToString())).AddToInventario(Inventario.getInstance(30));
 
                 }
+
+                object ob = Inventario.getInstance(28).linqtest(12);
+
 
                 for (int i = 1+1000; i <= numero+1000; i++)
                 {

@@ -106,6 +106,7 @@ namespace ITgestao
         {
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
             {
+                
                 // Adiciona o item ao inventário de items
                 try
                 {
@@ -134,6 +135,14 @@ namespace ITgestao
             }
         }
 
+        public object linqtest(int id)
+        {
+            var ret = from i in items
+                      where i.Value.Id == id
+                      select i;
+            return ret;
+                      
+        }
         /// <summary>
         /// Remove um item do inventário
         /// </summary>

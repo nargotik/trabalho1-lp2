@@ -10,8 +10,7 @@ __Autores do Trabalho:__
 - ___Oscar Silva (<a14383@alunos.ipca.pt>)___
 
 [![CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2/badge)](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
-[![Build Status](https://travis-ci.org/nargotik/trabalho1-lp2.svg?branch=master)](https://travis-ci.org/nargotik/trabalho1-lp2)
-
+[![Build Status](https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/trabalho1-lp2)
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de 
 desenvolverem metodologias para o controle do seu espólio material e virtual.
@@ -28,6 +27,11 @@ desenvolverem metodologias para o controle do seu espólio material e virtual.
 
 Foi pensado em criar um Interface de utilizador por Windows/Consola no entanto ainda será um grande desafio aprender WPF
 
+Não tendo sido possivel a aprendizagem de WPF e ao aprofundamento de outras técnicas à frente faladas
+o projecto UI.Win apenas foi deixado como prova de conceito, assim como não foi muito desenvolvido o UI.Cli.
+
+No entanto todos os métodos e classes foram testados usando testes unitários que podem ser vistos no projecto de Tests.
+
 Os resultados a obter com o desenvolvimento desta solução é criação de uma aplicação versátil e adaptativa às 
 necessidades das diferentes entidades e deverá potencializar uma melhor organização do parque informáticos.
 
@@ -38,6 +42,15 @@ controle de versões desenvolvidas através do Git.
 
 Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo 
 desenvolva uma classe específica da aplicação.
+
+O GitHub em conjunto com outras ferramentas que serão abordadas mais à frente no tópico de Ferramentas/Serviços de Desenvolvimento 
+trazem uma enorme mais valia à produção de Software.
+
+Algumas ferramentas utilizadas:
+- Travis-ci
+  - Travis CI é um serviço de integração contínua 
+- Codefector
+  - Analizador automático de syntax de código
 
 ## Estrutura de Ficheiros
 - __./Libs/Folder/...__
@@ -257,7 +270,7 @@ Algumas das exceções já tratadas:
 - [Padrão Singleton](https://pt.wikipedia.org/wiki/Singleton)
 - [Testes Unitários - Unit Testing](https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019)
 - [Windows Presentation Foundation](https://docs.microsoft.com/en-us/dotnet/framework/wpf/)
-- [CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
-- [Travis-ci](https://travis-ci.org/nargotik/trabalho1-lp2)
+- [CodeFactor](https://www.codefactor.io/)
+- [Travis-ci](https://travis-ci.org/)
 - [NUnit Framework - Unit Testing](https://nunit.org/)
 - [GitHub](https://github.com/)
