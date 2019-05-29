@@ -1,3 +1,4 @@
+
 # Relatório Trabalho Prático LP1
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
@@ -138,6 +139,9 @@ Existem muitos outros serviços deste género, no entanto verificamos que este era
 
 Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no entanto seria necessário fazer testes bem mais complexos que os unitários para testar problemas comuns de syntax.
 
+![Codefactor Print1](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefactor1.png?raw=true)
+
+![Codefactor Print2](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefactor1.png?raw=true)
 
 ## Diagrama de Objectos
 ![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
