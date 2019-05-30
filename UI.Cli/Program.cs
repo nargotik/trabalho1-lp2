@@ -11,6 +11,9 @@ namespace UI.Cli
 {
     class Program
     {
+
+
+        #region ANTES DO MENU
         static Item[] _equip;
         public static void ShowEquipamento(Item pub)
         {
@@ -18,9 +21,16 @@ namespace UI.Cli
             Console.WriteLine($"{pub.Id}");
 
             Console.WriteLine($"{pub.ToString()}");
+
         }
+        #endregion
         static void Main(string[] args)
         {
+            #region ATRIBUTOS
+            int opcao;
+            #endregion
+
+            #region Antes Menu
             Computador _com = new Computador(12, "222");
 
             ShowEquipamento(_com);
@@ -40,7 +50,7 @@ namespace UI.Cli
 
                 Console.WriteLine("Insira o numero de computadores/rede/generico random a inserir: ");
                 int numero = Convert.ToInt32(Console.ReadLine());
-                for (int i=1; i<=numero; i++)
+                for (int i = 1; i <= numero; i++)
                 {
                     inv.Adiciona(new Computador(i, i.ToString()));
                     Console.WriteLine($"Adicionado Computador {i}...");
@@ -50,13 +60,13 @@ namespace UI.Cli
 
                 }
 
-                for (int i = 1+1000; i <= numero+1000; i++)
+                for (int i = 1 + 1000; i <= numero + 1000; i++)
                 {
                     inv.Adiciona(new Rede(i, i.ToString()));
                     Console.WriteLine($"Adicionado Rede {i}...");
                 }
 
-                for (int i = 1+2000; i <= numero+2000; i++)
+                for (int i = 1 + 2000; i <= numero + 2000; i++)
                 {
                     inv.Adiciona(new Generico(i, i.ToString()));
                     Console.WriteLine($"Adicionado Generico {i}...");
@@ -114,6 +124,149 @@ namespace UI.Cli
             }
 
             Console.ReadKey();
+            #endregion
+
+            #region MENU
+            do
+            {
+                Console.WriteLine("[ 1 ] Adicionar Objecto");
+                Console.WriteLine("[ 2 ] Editar objecto");
+                Console.WriteLine("[ 3 ] Remover objecto");
+                Console.WriteLine("[ 4 ] Procurar Localização");
+                Console.WriteLine("[ 0 ] Terminar Aplicação");
+                Console.WriteLine("---------------------------------");
+                Console.Write("Opção: ");
+                opcao = Int32.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        MenuAdicionar();
+                        Console.Clear();
+                        break;
+                    case 2:
+                        MenuEditar();
+                        Console.Clear();
+                        break;
+                    case 3:
+                        MenuRemover();
+                        Console.Clear();
+                        break;
+                    case 4:
+                        Console.ReadKey(); // Colocar aqui a função de procura
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opção não disponível");
+                        break;
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }
+            while (opcao != 0);
+
+            #endregion
+        }
+
+        static void MenuAdicionar()
+        {
+            int opcao;
+
+            do
+            {
+                Console.WriteLine("[ 1 ] Adicionar Inventário");
+                Console.WriteLine("[ 2 ] Adicionar Localização");
+                Console.WriteLine("[ 0 ] Terminar Aplicação");
+                Console.WriteLine("---------------------------------");
+                Console.Write("Opção: ");
+                opcao = Int32.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        //Função de adicionar inventário
+                        Console.Clear();
+                        break;
+                    case 2:
+                        //Função de adicionar Localização
+                        Console.Clear();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opção não disponível");
+                        break;
+                }
+            }
+            while (opcao != 0);
+        }
+
+        static void MenuEditar()
+        {
+            int opcao;
+
+            do
+            {
+                Console.WriteLine("[ 1 ] Editar Inventário");
+                Console.WriteLine("[ 2 ] Editar Localização");
+                Console.WriteLine("[ 0 ] Terminar Aplicação");
+                Console.WriteLine("---------------------------------");
+                Console.Write("Opção: ");
+                opcao = Int32.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        //Função de editar inventário
+                        Console.Clear();
+                        break;
+                    case 2:
+                        //Função de editar Localização
+                        Console.Clear();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opção não disponível");
+                        break;
+                }
+            }
+            while (opcao != 0);
+        }
+
+        static void MenuRemover()
+        {
+            int opcao;
+
+            do
+            {
+                Console.WriteLine("[ 1 ] Remover Inventário");
+                Console.WriteLine("[ 2 ] Remover Localização");
+                Console.WriteLine("[ 0 ] Terminar Aplicação");
+                Console.WriteLine("---------------------------------");
+                Console.Write("Opção: ");
+                opcao = Int32.Parse(Console.ReadLine());
+
+                switch (opcao)
+                {
+                    case 1:
+                        //Função de remover inventário
+                        Console.Clear();
+                        break;
+                    case 2:
+                        //Função de remover Localização
+                        Console.Clear();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opção não disponível");
+                        break;
+                }
+            }
+            while (opcao != 0);
         }
     }
 }
+
