@@ -33,10 +33,11 @@ namespace UI.Cli
             #region Antes Menu
             Computador _com = new Computador(12, "222");
 
+            
             ShowEquipamento(_com);
 
             Console.WriteLine($"{_com.ToString()}");
-            Console.WriteLine($"Serial: {_com.Serial}");
+            Console.WriteLine($"Serial: {_com.Descricao}");
             //Console.ReadKey();
 
             Console.WriteLine($"Convert {Utils.ConverteMemoria(10024, Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB)}");
@@ -56,9 +57,12 @@ namespace UI.Cli
                     Console.WriteLine($"Adicionado Computador {i}...");
                     Inventario.getInstance(28).Adiciona(new Computador(i, i.ToString()));
 
+                    
+
                     (new Computador(i, i.ToString())).AddToInventario(Inventario.getInstance(30));
 
                 }
+
 
                 for (int i = 1 + 1000; i <= numero + 1000; i++)
                 {

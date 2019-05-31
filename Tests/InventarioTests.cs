@@ -79,16 +79,16 @@ namespace Tests
 
             _inv.RemoveAll();
 
-            var _item1 = new Generico(1, "Serial 1");
+            var _item1 = new Generico(1, "DESC");
             _inv.Adiciona(_item1);
             var _item2 = new Generico(1, "ADIHDSAUDYAISUDSAD");
 
             _inv.Edita(_item2);
 
             Assert.AreEqual(
-                _item2.Serial
+                _item2.Descricao
                 , 
-                (_inv.GetItemById(1) as Generico).Serial
+                (_inv.GetItemById(1) as Generico).Descricao
                 );
         }
 
@@ -168,7 +168,7 @@ namespace Tests
         [Test, Timeout(30000)]
         public void AdicionaInventarioCycle()
         {
-            int numeroitems = 1100;
+            int numeroitems = 1200;
 
             var _inv = Inventario.getInstance(20);
             _inv.RemoveAll();

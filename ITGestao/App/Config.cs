@@ -62,6 +62,9 @@ namespace ITgestao.App
             }
         }
 
+        /// <summary>
+        /// Retorna o caminho para os ficheiros de dados
+        /// </summary>
         public string DataPath
         {
             get
