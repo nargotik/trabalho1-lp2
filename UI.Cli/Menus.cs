@@ -21,8 +21,6 @@ namespace UI.Cli
         public static int RendeMenu(Dictionary<int, string> _menu)
         {
             MostraMenu(_menu);
-
-
             return LeOpcaoMenu(_menu);
         }
 
@@ -32,21 +30,21 @@ namespace UI.Cli
             {
                 Console.WriteLine("{0} - {1}", menuItem.Key, menuItem.Value);
             }
-
-            Console.ReadKey();
         }
 
         static int LeOpcaoMenu(Dictionary<int, string> _menu)
         {
             int opcao;
             string value;
-
+            bool valid = false;
             do
             {
                 Console.Write("Opção:");
-                opcao = Console.Read();
+                valid = int.TryParse(Console.ReadLine(), out opcao);
+                if (valid == false || _menu.ContainsKey(opcao) == false)
+                    Console.WriteLine("Opção Inválida");
             }
-            while (!_menu.TryGetValue(opcao, out value) == true);
+            while (valid == false || _menu.ContainsKey(opcao) == false);
 
             return opcao;
         }
