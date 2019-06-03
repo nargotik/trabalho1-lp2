@@ -35,7 +35,6 @@ namespace UI.Cli
         static int LeOpcaoMenu(Dictionary<int, string> _menu)
         {
             int opcao;
-            string value;
             bool valid = false;
             do
             {
