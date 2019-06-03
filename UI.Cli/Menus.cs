@@ -41,10 +41,17 @@ namespace UI.Cli
             {
                 Console.Write("Opção:");
                 valid = int.TryParse(Console.ReadLine(), out opcao);
-                if (valid == false || _menu.ContainsKey(opcao) == false)
+
+                if (valid == false)
+                {
                     Console.WriteLine("Opção Inválida");
+                } else
+                {
+                    valid = _menu.ContainsKey(opcao);
+                }
+                    
             }
-            while (valid == false || _menu.ContainsKey(opcao) == false);
+            while (valid == false);
 
             return opcao;
         }
