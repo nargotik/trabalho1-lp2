@@ -15,27 +15,38 @@ using System.Threading.Tasks;
 
 namespace UI.Cli
 {
+    class MenuItem
+    {
+        public string description { get; set; }
+        public Action callback { get; set; }
+
+        public MenuItem(string _text, Action _callback)
+        {
+            callback = _callback;
+            description = _text;
+        }
+    }
     class Menus
     {
 
-        public static int RendeMenu(Dictionary<int, string> _menu)
+        public static int RendeMenu(Dictionary<int, MenuItem> _menu)
         {
             MostraMenu(_menu);
             return LeOpcaoMenu(_menu);
         }
 
-        static void MostraMenu(Dictionary<int, string> _menu)
+        static void MostraMenu(Dictionary<int, MenuItem> _menu)
         {
-            foreach (KeyValuePair<int, string> menuItem in _menu)
+            foreach (KeyValuePair<int, MenuItem> menuItem in _menu)
             {
-                Console.WriteLine("{0} - {1}", menuItem.Key, menuItem.Value);
+                Console.WriteLine("{0} - {1}", menuItem.Key, menuItem.Value.description);
             }
         }
 
-        static int LeOpcaoMenu(Dictionary<int, string> _menu)
+        static int LeOpcaoMenu(Dictionary<int, MenuItem> _menu)
         {
             int opcao;
-            string value;
+            MenuItem value;
             bool valid = false;
             do
             {
@@ -52,6 +63,11 @@ namespace UI.Cli
                     
             }
             while (valid == false);
+
+            _menu.TryGetValue(opcao, out value);
+
+            if (value.callback != null)
+                value.callback();
 
             return opcao;
         }

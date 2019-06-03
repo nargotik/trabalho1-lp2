@@ -26,15 +26,24 @@ namespace UI.Cli
         #endregion
         static void Main(string[] args)
         {
-
-            Dictionary<int, string> menuInicial = new Dictionary<int, string>
+            Dictionary<int, MenuItem> menu3 = new Dictionary<int, MenuItem>
                 {
-                    {1, "Adicionar Objeto" },
-                    {2, "Editar Objeto" },
-                    {3, "Remover Objeto" },
-                    {4, "Procurar Localização" },
-                    {0, "Terminar aplicação" }
+                    {1, new MenuItem("teste", () => Console.WriteLine("Teste")) },
+                    {2, new MenuItem("teste", () => Console.WriteLine("Funcao que corre depois da opcao 2 escolhida")) },
+                    {0, new MenuItem("Sair", null) }
                 };
+
+            Dictionary<int, MenuItem> menuInicial = new Dictionary<int, MenuItem>
+                {
+                    {1, new MenuItem("teste", () => Console.WriteLine("Teste")) },
+                    {2, new MenuItem("teste", () => Console.WriteLine("Funcao que corre depois da opcao 2 escolhida")) },
+                    {3, new MenuItem("teste", () => Menus.RendeMenu(menu3)) },
+                    {4, new MenuItem("teste", () => Console.WriteLine("Teste4")) },
+                    {0, new MenuItem("Sair", null) }
+                };
+
+            int opcaoEscolhida = Menus.RendeMenu(menuInicial);
+            Console.ReadLine();
 
 
             #region Antes Menu
@@ -134,8 +143,7 @@ namespace UI.Cli
             #endregion
 
             #region MENU
-  
-            int opcaoEscolhida = Menus.RendeMenu(menuInicial);
+
 
             #endregion
         }
