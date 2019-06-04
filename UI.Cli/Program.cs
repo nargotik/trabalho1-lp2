@@ -13,27 +13,11 @@ namespace UI.Cli
     class Program
     {
 
-
-        #region ANTES DO MENU
-        //static Item[] _equip;
-        //public static void ShowEquipamento(Item pub)
-        //{
-        //    int pubDate = pub.Id;
-        //    Console.WriteLine($"{pub.Id}");
-
-        //    Console.WriteLine($"{pub.ToString()}");
-
-        //}
-        #endregion
         static void Main(string[] args)
         {
-
             InicializaMenus();
             Run();
-
             Console.ReadKey();
-
-            
         }
 
         static void InicializaMenus()
@@ -55,11 +39,11 @@ namespace UI.Cli
             #region MENU INVENTARIO
             inventario.Descricao = "Menu INVENTARIO";
             inventario
-                .Add("Adicionar Item")
-                .Add("Editar Item")
+                .Add("Adicionar Item", () => AdicionaItem())
+                .Add("Editar Item", () => EditaItem())
                 .Add("Remover Item")
                 .Add("Listar Items")
-                .Add("Eliminar tudo")
+                .Add("Eliminar tudo" , () => Inventario.getInstance().RemoveAll() )
                 .Add("< Voltar", () => principal.RendeMenu())
             ;
             #endregion
@@ -80,6 +64,16 @@ namespace UI.Cli
         {
             // Arranca com o menu inicial
             Menu.getInstance(0).RendeMenu();
+        }
+
+        static void AdicionaItem()
+        {
+            // Codigo para adicao de um item
+        }
+
+        static void EditaItem()
+        {
+            // Codigo para Edicao de um item
         }
     }
 }

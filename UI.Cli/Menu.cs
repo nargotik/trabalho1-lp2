@@ -94,7 +94,7 @@ namespace UI.Cli
         {
             int escolha = Input.LeInt("Escolhe uma opção:", 1, Opcoes.Count);
             if (Opcoes[escolha - 1].Callback != null)
-                Opcoes[escolha - 1].Callback();
+                Opcoes[escolha - 1].Callback.Invoke();
             return escolha;
         }
     }
