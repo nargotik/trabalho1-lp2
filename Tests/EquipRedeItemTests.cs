@@ -183,6 +183,8 @@ namespace Tests
             // Cria um item com o id 123
             Item _item = new EquipRede(123, EquipRede.EquipRedeTipos.Router);
 
+            (_item as EquipRede).IpInsere("127.0.0.1");
+
             // Diz ao item para se adicionar ao inventário com instancia 0
             bool result = _item.AddToInventario(Inventario.getInstance());
 
@@ -207,26 +209,30 @@ namespace Tests
             Inventario.getInstance(20).RemoveAll();
             var _inv = Inventario.getInstance(20);
 
-            EquipRede _comp = new EquipRede(1, EquipRede.EquipRedeTipos.Router);
+            EquipRede _item = new EquipRede(1, EquipRede.EquipRedeTipos.Router);
+
+            (_item as EquipRede).IpInsere("127.0.0.1");
+
             Assert.AreEqual(_inv.TotalItems, 0);
 
-            _inv.Adiciona(_comp);
+            _inv.Adiciona(_item);
+
             Assert.AreEqual(_inv.TotalItems, 1);
 
             for (int i = 2; i <= numeroitems; i++)
             {
-                EquipRede _comp2 = new EquipRede(i, EquipRede.EquipRedeTipos.Router);
-                _comp2.IpInsere("127.0.0.1");
-                _comp2.IpInsere("127.0.0.2");
-                _comp2.IpInsere("127.0.0.3");
-                _comp2.IpInsere("127.0.0.4");
-                _comp2.IpInsere("127.0.0.5");
-                _comp2.MacInsere("00:00:00:00:00:01");
-                _comp2.MacInsere("00:00:00:00:00:02");
-                _comp2.MacInsere("00:00:00:00:00:03");
-                _comp2.MacInsere("00:00:00:00:00:04");
-                _comp2.MacInsere("00:00:00:00:00:05");
-                _comp2.AddToInventario(20);
+                EquipRede _item2 = new EquipRede(i, EquipRede.EquipRedeTipos.Router);
+                _item2.IpInsere("127.0.0.1");
+                _item2.IpInsere("127.0.0.2");
+                _item2.IpInsere("127.0.0.3");
+                _item2.IpInsere("127.0.0.4");
+                _item2.IpInsere("127.0.0.5");
+                _item2.MacInsere("00:00:00:00:00:01");
+                _item2.MacInsere("00:00:00:00:00:02");
+                _item2.MacInsere("00:00:00:00:00:03");
+                _item2.MacInsere("00:00:00:00:00:04");
+                _item2.MacInsere("00:00:00:00:00:05");
+                _item2.AddToInventario(20);
                 Assert.AreEqual(_inv.TotalItems, i);
             }
             Assert.AreEqual(_inv.TotalItems, numeroitems);
@@ -244,6 +250,8 @@ namespace Tests
                 Inventario.getInstance().RemoveAll();
                 // Cria um item com o id 123
                 Item _item = new EquipRede(123, EquipRede.EquipRedeTipos.Router);
+
+                (_item as EquipRede).IpInsere("127.0.0.1");
 
                 // Diz ao item para se adicionar ao inventário com instancia 0 2 vezes
                 bool result = _item.AddToInventario(Inventario.getInstance());
@@ -264,6 +272,8 @@ namespace Tests
 
             // Cria um item com o id itemid
             Item _item = new EquipRede(itemid, EquipRede.EquipRedeTipos.Router);
+
+            (_item as EquipRede).IpInsere("127.0.0.1");
 
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(idinventario);
@@ -294,6 +304,8 @@ namespace Tests
             // Cria um item com o id itemid
             Item _item = new EquipRede(itemid, EquipRede.EquipRedeTipos.Router);
 
+            (_item as EquipRede).IpInsere("127.0.0.1");
+
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(idinventario);
             bool res = _item.RemoveFromInventario(idinventario);
@@ -314,6 +326,8 @@ namespace Tests
 
             // Cria um item com o id itemid
             Item _item = new EquipRede(itemid, EquipRede.EquipRedeTipos.Router);
+
+            (_item as EquipRede).IpInsere("127.0.0.1");
 
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(Inventario.getInstance(idinventario));
