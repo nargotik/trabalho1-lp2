@@ -51,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes\Cliente.cs" />
-    <Compile Include="Clientes\Clientes.cs" />
     <Compile Include="App\Config.cs" />
     <Compile Include="App\Exceptions.cs" />
     <Compile Include="Inventario\Inventario.cs" />

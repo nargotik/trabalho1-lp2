@@ -1,4 +1,13 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="ComputadorItemTests.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using NUnit.Framework;
 using ITgestao;
 using ITgestao.ItemsNS;
@@ -188,6 +197,9 @@ namespace Tests
             // Cria um item com o id 123
             Item _item = new Computador(123);
 
+            (_item as Computador).RamInsere(23);
+            (_item as Computador).DiscoInsere(1024);
+
             // Diz ao item para se adicionar ao inventário com instancia 0
             bool result = _item.AddToInventario(Inventario.getInstance());
 
@@ -214,6 +226,9 @@ namespace Tests
                 // Cria um item com o id 123
                 Item _item = new Computador(123);
 
+                (_item as Computador).RamInsere(23);
+                (_item as Computador).DiscoInsere(1024);
+
                 // Diz ao item para se adicionar ao inventário com instancia 0 2 vezes
                 bool result = _item.AddToInventario(Inventario.getInstance());
                 bool result2 = _item.AddToInventario(Inventario.getInstance());
@@ -233,6 +248,9 @@ namespace Tests
 
             // Cria um item com o id itemid
             Item _item = new Computador(itemid);
+
+            (_item as Computador).RamInsere(23);
+            (_item as Computador).DiscoInsere(1024);
 
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(idinventario);
@@ -263,6 +281,9 @@ namespace Tests
             // Cria um item com o id itemid
             Item _item = new Computador(itemid);
 
+            (_item as Computador).RamInsere(23);
+            (_item as Computador).DiscoInsere(1024);
+
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(idinventario);
             bool res = _item.RemoveFromInventario(idinventario);
@@ -283,6 +304,9 @@ namespace Tests
 
             // Cria um item com o id itemid
             Item _item = new Computador(itemid);
+
+            (_item as Computador).RamInsere(23);
+            (_item as Computador).DiscoInsere(1024);
 
             // Diz ao item para se adicionar ao inventário com instancia idinventario 2 vezes
             _item.AddToInventario(Inventario.getInstance(idinventario));

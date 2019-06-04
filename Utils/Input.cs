@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------
+// <copyright file="Input.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 
 namespace UtilsNS
 {
@@ -71,6 +76,5 @@ namespace UtilsNS
             Output.MostraTexto(_texto);
             return Console.ReadLine();
         }
-
     }
 }

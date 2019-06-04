@@ -1,8 +1,14 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="Menu.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UtilsNS;
 
 namespace UI.Cli

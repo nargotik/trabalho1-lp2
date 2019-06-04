@@ -1,8 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------
+// <copyright file="Item.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 // App subclasses
 using ITgestao.App;
 
@@ -158,7 +163,7 @@ namespace ITgestao.ItemsNS
             this.initialized = true;
         }
 
-        public abstract bool IsValid();
+
 
         #endregion
 
@@ -166,18 +171,13 @@ namespace ITgestao.ItemsNS
 
         #endregion
 
-        #region ==================== OVERIDES ====================
-        /*public sealed override string ToString()
-        {
-            return this.Id.ToString();
-        }*/
+        #region ==================== ABSTRACTS ====================
+        public abstract bool IsValid();
         #endregion
 
         #region @@@@@@@@@@@@@@@@@@@@ TODO @@@@@@@@@@@@@@@@@@@@
 
         #endregion
-
-
 
     }
 }

@@ -30,6 +30,14 @@ namespace ITgestao
         }
     }
 
+    public class ItemInvalido : ApplicationException
+    {
+        public ItemInvalido(string _s = "Item Inválido") : base(_s)
+        {
+            // Exeption
+        }
+    }
+
     public class NotImplementedException : ApplicationException
     {
         public NotImplementedException(string _s = "Não implementado") : base(_s)

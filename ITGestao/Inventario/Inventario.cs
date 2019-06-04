@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Xml;
-using System.Xml.Serialization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using ITgestao.App;
 using ITgestao.ItemsNS;
@@ -32,7 +27,7 @@ namespace ITgestao
         /// <summary>
         /// Hashtable que guarda os items
         /// </summary>
-        Dictionary<int, Item> items = new Dictionary<int, Item>();
+        Dictionary<int, Object> items = new Dictionary<int, Object>();
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
@@ -110,6 +105,10 @@ namespace ITgestao
                 // Adiciona o item ao inventário de items
                 try
                 {
+                    if (!(_obj as Item).IsValid())
+                    {
+                        throw new ItemInvalido("Item a adicionar inválido");
+                    }
                     items.Add(((Item)_obj).Id, (Item)_obj);
                     SaveData();
                 }
@@ -135,14 +134,6 @@ namespace ITgestao
             }
         }
 
-        public object linqtest(int id)
-        {
-            var ret = from i in items
-                      where i.Value.Id == id
-                      select i;
-            return ret;
-                      
-        }
         /// <summary>
         /// Remove um item do inventário
         /// </summary>
@@ -284,8 +275,8 @@ namespace ITgestao
                 // Limpa a hashtable
                 this.items.Clear();
                 // Load existing data
-                Dictionary<int, Item> deserializeObject = 
-                    Utils.Deserialize<Dictionary<int, Item>>(
+                Dictionary<int, object> deserializeObject = 
+                    Utils.Deserialize<Dictionary<int, object>>(
                         this.InventoryFile
                         );
                 //this.items = Utils.DeserializeHashtable(this.InventoryFile);

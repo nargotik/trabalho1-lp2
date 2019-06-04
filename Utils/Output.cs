@@ -1,4 +1,13 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="Output.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
