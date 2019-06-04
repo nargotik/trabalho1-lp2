@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>
 // LP2 - 2018-2019
-// <desc></desc>
+// <desc>Testes unitários á classe Inventario</desc>
 // </summary>
 //-------------------------------------------------
 
