@@ -1,4 +1,13 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="Item.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc>Classe abstrata que define e cria objetos do tipo Item. Armazena e trata objetos do tipo Item o mais genéricos possível</desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

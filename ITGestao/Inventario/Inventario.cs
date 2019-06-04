@@ -1,4 +1,13 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="Item.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc>Classe com função de armazenar e tratar objetos do tipo Item/desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -40,7 +49,7 @@ namespace ITgestao
         }
 
         /// <summary>
-        /// Getter
+        /// Getter de Entidade
         /// </summary>
         public int Empresa
         {
@@ -75,7 +84,7 @@ namespace ITgestao
         /// Metodo de implementação singleton de instancias com um parametro
         /// O parametro deve ser o id da entidade do inventario
         /// </summary>
-        /// <param name="_entidade"></param>
+        /// <param name="_entidade">Entidade do inventário</param>
         /// <returns>Entidade do inventário</returns>
         public static Inventario getInstance(int _entidade = entidadePredefinida)
         {
@@ -137,8 +146,8 @@ namespace ITgestao
         /// <summary>
         /// Remove um item do inventário
         /// </summary>
-        /// <param name="_obj"></param>
-        /// <returns></returns>
+        /// <param name="_obj">Objeto a a remover</param>
+        /// <returns>boolean Value</returns>
         public bool Remove(object _obj)
         {
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
@@ -169,10 +178,10 @@ namespace ITgestao
         }
 
         /// <summary>
-        /// Devolve um item atravez de um id
+        /// Devolve um item atraves de um id
         /// </summary>
-        /// <param name="_id"></param>
-        /// <returns></returns>
+        /// <param name="_id">ID do item</param>
+        /// <returns>Item correspondente ao ID ou NULL</returns>
         public object GetItemById(int _id)
         {
             if (items.ContainsKey(_id))
@@ -189,7 +198,7 @@ namespace ITgestao
         /// Remove um item do inventário por id
         /// </summary>
         /// <param name="_id">Id do item do inventário a remover</param>
-        /// <returns></returns>
+        /// <returns>Boolean Value</returns>
         public bool RemoveById(int _id)
         {
             // O item existe na hashtable ?
@@ -207,7 +216,7 @@ namespace ITgestao
         }
 
         /// <summary>
-        /// REmove todos os items do inventário
+        /// Remove todos os items do inventário
         /// </summary>
         public void RemoveAll()
         {
@@ -218,8 +227,8 @@ namespace ITgestao
         /// <summary>
         /// Edita um objecto
         /// </summary>
-        /// <param name="_obj"></param>
-        /// <returns></returns>
+        /// <param name="_obj">Objeto a editar</param>
+        /// <returns>Boolean Value or exception</returns>
         public bool Edita(Item _obj)
         {
             if (Config.Instance.AuthorizedType(_obj) == _obj.GetType())
@@ -247,7 +256,7 @@ namespace ITgestao
         /// <summary>
         /// Guarda a informação da lista de items no ficheiro presistente
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Boolean Value</returns>
         private bool SaveData()
         {
             // Console.WriteLine($"DEBUG: {this.InventoryFile} Criado");
@@ -267,7 +276,7 @@ namespace ITgestao
         /// <summary>
         /// Carrega o inventário que existe em ficheiro para a memória
         /// </summary>
-        /// <returns>verdadeiro ou falso</returns>
+        /// <returns>Boolean Value</returns>
         private bool LoadData()
         {
             if (File.Exists(this.InventoryFile))
