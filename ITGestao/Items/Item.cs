@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>
 // LP2 - 2018-2019
-// <desc></desc>
+// <desc>Classe abstrata que define e cria objetos do tipo Item. Armazena e trata objetos do tipo Item o mais genéricos possível</desc>
 // </summary>
 //-------------------------------------------------
 
@@ -33,6 +33,9 @@ namespace ITgestao.ItemsNS
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
+        /// <summary>
+        /// Getter de Tipo
+        /// </summary>
         public Type Tipo
         {
             get { return this.tipo; }
@@ -60,6 +63,9 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Getter de IdLocalizacao
+        /// </summary>
         public int IdLocalizacao
         {
             get
@@ -81,7 +87,7 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Construtor de item
         /// </summary>
-        /// <param name="_id"></param>
+        /// <param name="_id">ID do Item</param>
         public Item(int _id = 0)
         {
             if (_id <= 0)
@@ -155,15 +161,13 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Recebe informação do child
         /// </summary>
-        /// <param name="_item"></param>
+        /// <param name="_item">Item</param>
         public void InformBase(Item _item)
         {
             this.tipo = _item.GetType();
             Item.AddAuthorizedType(_item);
             this.initialized = true;
         }
-
-
 
         #endregion
 
