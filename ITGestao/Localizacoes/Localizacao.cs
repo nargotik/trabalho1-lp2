@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>
 // LP2 - 2018-2019
-// <desc></desc>
+// <desc>Classe responsável pela identificação de uma Localização</desc>
 // </summary>
 //-------------------------------------------------
 
@@ -15,6 +15,9 @@ namespace ITgestao.LocalizacoesNS
         private double lat;
         private double lon;
 
+        /// <summary>
+        /// Define qual o valor de ID
+        /// </summary>
         public int Id
         {
             set
