@@ -227,6 +227,9 @@ namespace Tests
             Computador _comp = new Computador(1);
             Assert.AreEqual(_inv.TotalItems, 0);
 
+            _comp.RamInsere(1024);
+            _comp.DiscoInsere(1024);
+
             _inv.Adiciona(_comp);
             Assert.AreEqual(_inv.TotalItems, 1);
 
@@ -243,6 +246,8 @@ namespace Tests
                 _comp2.MacInsere("00:00:00:00:00:03");
                 _comp2.MacInsere("00:00:00:00:00:04");
                 _comp2.MacInsere("00:00:00:00:00:05");
+                _comp2.RamInsere(1024);
+                _comp2.DiscoInsere(1024);
                 _comp2.AddToInventario(20);
                 Assert.AreEqual(_inv.TotalItems, i);
             }
