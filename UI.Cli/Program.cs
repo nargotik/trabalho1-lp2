@@ -176,7 +176,7 @@ namespace UI.Cli
         }
         static void ListaLocalizacao()
         {
-            Output.MostraLinha("======================= Altera Localização =======================");
+            Output.MostraLinha("======================= Lista Localização =======================");
             GoBack(Menu.getInstance(2));
         }
         #endregion
