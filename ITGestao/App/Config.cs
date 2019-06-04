@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>
 // LP2 - 2018-2019
-// <desc>Classe abstrata que define e cria objetos do tipo Item. Armazena e trata objetos do tipo Item o mais genéricos possível</desc>
+// <desc>Classe cujo objetivo é armazenar informação necessária para o runtime da aplicação/desc>
 // </summary>
 //-------------------------------------------------
 
@@ -18,12 +18,12 @@ using System.IO;
 namespace ITgestao.App
 {
     /// <summary>
-    /// 
+    /// Classe que gere o armanezamento da informação necessária para o runtime da aplicação
     /// </summary>
     /// 
     public sealed class Config
     {
-        private string path; 
+        private string path; // Localização do ficheiro
 
         private Config()
         {
@@ -43,9 +43,9 @@ namespace ITgestao.App
         private List<Type> allowedtypes = new List<Type>();
 
         /// <summary>
-        /// 
+        /// Permite verificar se o objeto está autorizado a ser adicionado
         /// </summary>
-        /// <param name="_obj"></param>
+        /// <param name="_obj">Objeto a adicionar</param>
         public void AddAuthorizedType(object _obj)
         {
             // Adiciona o tipo de objecto aos permitidos desde que não exista na lista
@@ -54,10 +54,10 @@ namespace ITgestao.App
         }
 
         /// <summary>
-        /// 
+        /// verifica se o objeto é de um tipo permitido
         /// </summary>
-        /// <param name="_obj"></param>
-        /// <returns></returns>
+        /// <param name="_obj">Objeto a adicionar</param>
+        /// <returns>Tipo permitivo ou NULL</returns>
         public Type AuthorizedType(object _obj)
         {
             // Adiciona o tipo de objecto aos permitidos desde que não exista na lista
