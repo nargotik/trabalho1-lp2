@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>
 // LP2 - 2018-2019
-// <desc></desc>
+// <desc>Classe extendida de Item. Permite criar itens do tipo Equipamento de Rede</desc>
 // </summary>
 //-------------------------------------------------
 using System;
@@ -26,7 +26,7 @@ namespace ITgestao.ItemsNS
         List<string> macs = new List<string>(); // endereços mac
         private string serial; // Numero de serie
         private DateTime fabrico; // Data de fabrico
-        private DateTime aquisicao; // Data de fabrico
+        private DateTime aquisicao; // Data de aquisição
         private string descricao;
         private string marca; // Futuramente utilizar um objecto marcas
         private EquipRedeTipos tipoequip;
@@ -49,7 +49,7 @@ namespace ITgestao.ItemsNS
         /// Construtor de Computador
         /// </summary>
         /// <param name="_id">Id do equipamento</param>
-        /// <param name="_descricao"></param>
+        /// <param name="_descricao">Descrição do equipamento</param>
         public EquipRede(int _id, EquipRedeTipos _tipo, string _descricao = "") : base(_id)
         {
             // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
@@ -87,6 +87,11 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Permite verificar a data de aquisição do equipamento
+        /// </summary>
+        /// <param name="_aquisicao">Data da aquisição do equipamento</param>
+        /// <returns>Erro caso a data de aquisição seja superior à data atual senão retorna booleano True</returns>
         public bool DataAquisicaoSet(DateTime _aquisicao)
         {
             if (_aquisicao > DateTime.Now)
@@ -100,6 +105,9 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Permite a leitura da data de aquisição do equipamento
+        /// </summary>
         public DateTime DataAquisicaoGet
         {
             get
@@ -108,6 +116,11 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Permite verificar a data de fabrico do equipamento
+        /// </summary>
+        /// <param name="_fabrico">Data do fabrico do equipamento</param>
+        /// <returns>Erro caso a data de aquisição seja superior à data atual senão retorna booleano True</returns>
         public bool DataFabricoSet(DateTime _fabrico)
         {
             if (_fabrico > DateTime.Now)
@@ -121,6 +134,9 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Permite a leitura da data de fabrico do equipamento
+        /// </summary>
         public DateTime DataFabricoGet
         {
             get
@@ -130,7 +146,7 @@ namespace ITgestao.ItemsNS
         }
 
         /// <summary>
-        /// Setter/Getter Descricao
+        /// Setter/Getter Serial
         /// </summary>
         public string Serial
         {
@@ -144,6 +160,9 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Setter/Getter Marca
+        /// </summary>
         public string Marca
         {
             get
@@ -159,8 +178,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Remove um Mac
         /// </summary>
-        /// <param name="_mac"></param>
-        /// <returns></returns>
+        /// <param name="_mac">MAC Address do equipamento</param>
+        /// <returns>Booleano True caso consiga remover mac, senão lança exceção</returns>
         public bool MacRemove(string _mac)
         {
             var _convertedmac = MacConvert(_mac);
@@ -178,8 +197,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Insere um MacAddress
         /// </summary>
-        /// <param name="_mac"></param>
-        /// <returns></returns>
+        /// <param name="_mac">MAC Address do equipamento</param>
+        /// <returns>Booleano True caso consiga adicionar mac, senão lança exceção</returns>
         public bool MacInsere(string _mac)
         {
             var _convertedmac = MacConvert(_mac);
@@ -195,10 +214,10 @@ namespace ITgestao.ItemsNS
         }
 
         /// <summary>
-        /// Converte um IP
+        /// Converte um mac
         /// </summary>
-        /// <param name="_ip"></param>
-        /// <returns></returns>
+        /// <param name="_mac">Mac Address do equipamento</param>
+        /// <returns>Mac convertido</returns>
         private string MacConvert(string _mac)
         {
             _mac.Replace(@"-", string.Empty);
@@ -209,8 +228,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Valida se um mac Address é válido
         /// </summary>
-        /// <param name="_mac"></param>
-        /// <returns></returns>
+        /// <param name="_mac">MAC Address do equipamento</param>
+        /// <returns>Booleano True caso seja válido, senão booleano False</returns>
         private bool MacValid(string _mac)
         {
             Regex reg = new Regex("^(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}|(?:[0-9a-fA-F]{2}-){5}[0-9a-fA-F]{2}|(?:[0-9a-fA-F]{2}){5}[0-9a-fA-F]{2}$");
@@ -227,8 +246,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Verifica se um mac existe
         /// </summary>
-        /// <param name="_ip"></param>
-        /// <returns></returns>
+        /// <param name="_mac">MAC Address do equipamento</param>
+        /// <returns>Booleano true caso exista, senão lança exception</returns>
         public bool MacExiste(string _mac)
         {
             var _convertedmac = MacConvert(_mac);
@@ -242,6 +261,9 @@ namespace ITgestao.ItemsNS
             }
         }
 
+        /// <summary>
+        /// Conta o número de MACs existentes
+        /// </summary>
         public int MacCount
         {
             get { return macs.Count(); }
@@ -251,7 +273,7 @@ namespace ITgestao.ItemsNS
         /// Insere um ip
         /// </summary>
         /// <param name="_ip">IP</param>
-        /// <returns></returns>
+        /// <returns>Booleano true caso inserido, senão lança exception</returns>
         public bool IpInsere(string _ip)
         {
             IPAddress addr;
@@ -269,8 +291,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Remove um Mac
         /// </summary>
-        /// <param name="_mac"></param>
-        /// <returns></returns>
+        /// <param name="_mac">MAC Address do equipamento</param>
+        /// <returns>Booleano True caso removido, senão lança exceção</returns>
         public bool IpRemove(string _ip)
         {
             IPAddress addr;
@@ -292,14 +314,17 @@ namespace ITgestao.ItemsNS
         {
             get { return ips.Count(); }
         }
-
+        
+        /// <summary>
+        /// Atributo que devolve o tipo de equipamento possivel
+        /// </summary>
         public EquipRedeTipos Tipoequip { get => tipoequip; set => tipoequip = value; }
 
         /// <summary>
         /// Verifica se um ip é valido
         /// </summary>
-        /// <param name="_ip"></param>
-        /// <returns></returns>
+        /// <param name="_ip">IP</param>
+        /// <returns>Booleano True ou False</returns>
         private bool IpValid(string _ip)
         {
             IPAddress addr;
@@ -309,8 +334,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Converte um IP
         /// </summary>
-        /// <param name="_ip"></param>
-        /// <returns></returns>
+        /// <param name="_ip">IP</param>
+        /// <returns>IP convertido</returns>
         private IPAddress IpConvert(string _ip)
         {
             IPAddress addr;
@@ -321,8 +346,8 @@ namespace ITgestao.ItemsNS
         /// <summary>
         /// Verifica se um ip existe
         /// </summary>
-        /// <param name="_ip"></param>
-        /// <returns></returns>
+        /// <param name="_ip">IP</param>
+        /// <returns>Booleano True caso exista, senão lança exceção</returns>
         public bool IpExiste(string _ip)
         {
             IPAddress addr;
