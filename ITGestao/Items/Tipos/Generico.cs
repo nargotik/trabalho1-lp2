@@ -1,4 +1,13 @@
-﻿using System;
+﻿// -------------------------------------------------
+// <copyright file="Item.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc>Classe que trata da informação de um item genérico. Extende a classe Item</desc>
+// </summary>
+//-------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +19,11 @@ namespace ITgestao.ItemsNS
     public sealed class Generico : Item
     {
         private string descricao;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_id">ID do item</param>
+        /// <param name="_descricao">Descrição do Item</param>
         public Generico(int _id = 0, string _descricao = "") : base(_id)
         {
             // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
