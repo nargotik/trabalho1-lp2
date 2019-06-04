@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP2</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+<style>
+div
+@media print {
+	h2 {
+		page-break-before: always;
+		float: none !important; position: static !important; display: inline; 
+        box-sizing: content-box !important;	
+    }
+	div { float: none !important; position: static !important; display: inline; 
+          box-sizing: content-box !important;
+    }
+}
+</style>
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#relatório-trabalho-prático-lp1">Relatório Trabalho Prático LP1</a>
+<ul>
+<li><a href="#introdução">Introdução</a></li>
+<li><a href="#método-de-trabalho-adoptado">Método de Trabalho adoptado</a></li>
+<li><a href="#estrutura-de-ficheiros">Estrutura de Ficheiros</a></li>
+<li><a href="#ferramentas--serviços-utilizados">Ferramentas / Serviços utilizados</a></li>
+<li><a href="#diagrama-de-objectos">Diagrama de Objectos</a></li>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#bibliografia--referências">Bibliografia / Referências</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="relatório-trabalho-prático-lp1">Relatório Trabalho Prático LP1</h1>
+<p>A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.</p>
+<p>É a realização deste trabalho realizar uma abordagem de Aprendizagem de técnicas e métodos de Programação Orientada por Objectos,<br>
+assim como a utilização de ferramentas e métodos de trabalho colaborativo.</p>
+<p><strong>Autores do Trabalho:</strong></p>
+<ul>
+<li><em><strong>Daniel Torres (<a href="mailto:a17442@alunos.ipca.pt">a17442@alunos.ipca.pt</a>)</strong></em></li>
+<li><em><strong>Oscar Silva (<a href="mailto:a14383@alunos.ipca.pt">a14383@alunos.ipca.pt</a>)</strong></em></li>
+</ul>
+<p><a href="https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2"><img src="https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2/badge" alt="CodeFactor"></a><br>
+<a href="https://travis-ci.com/nargotik/trabalho1-lp2"><img src="https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&amp;branch=master" alt="Build Status"></a></p>
+<div></div>
+<h2 id="introdução">Introdução</h2>
+<p>A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de<br>
+desenvolverem metodologias para o controle do seu espólio material e virtual.</p>
+<ul>
+<li>A aplicação deverá:
+<ul>
+<li>Ser abstracta o suficiente para a reutilização de código para outros sectores/aplicações.</li>
+<li>Ter uma visão Macro e Micro de todo o inventário presente na Entidade.
+<ul>
+<li>Listagem de equipamentos</li>
+<li>Listagem por tipo de Equipamentos</li>
+<li>Listagem por ano de fabrico</li>
+<li>Listagem por fabricante</li>
+<li>…</li>
+</ul>
+</li>
+<li>Adição/Remoção/Edição de Items no Inventário</li>
+</ul>
+</li>
+</ul>
+<p>Foi pensado em criar um Interface de utilizador por Windows/Consola no entanto ainda será um grande desafio aprender WPF</p>
+<p>Não tendo sido possível a aprendizagem de WPF e ao aprofundamento de outras técnicas à frente faladas<br>
+o projecto UI.Win apenas foi deixado como prova de conceito, assim como não foi muito desenvolvido o UI.Cli.</p>
+<p>Foi primordialmente focado o desenvolvimento de capacidades de trabalho em grupo e automatizadas, assim como a funcionalidade de uma livraria (DLL) que poderá ser reutilizada em outros contextos.</p>
+<p>No entanto todos os métodos e classes foram testados usando testes unitários que podem ser vistos no projecto de Tests.</p>
+<p>Os resultados a obter com o desenvolvimento desta solução é criação de uma aplicação versátil e adaptativa às<br>
+necessidades das diferentes entidades e deverá potencializar uma melhor organização do parque informáticos.</p>
+<div></div>
+<h2 id="método-de-trabalho-adoptado">Método de Trabalho adoptado</h2>
+<p>Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite<br>
+a todos os membros do grupo desenvolvam simultaneamente a aplicação e que haja um<br>
+controle de versões desenvolvidas através do Git.</p>
+<p>Permite ainda dividir a carga de trabalho pois permite que cada elemento do grupo<br>
+desenvolva uma classe específica da aplicação.</p>
+<p>O GitHub em conjunto com outras ferramentas que serão abordadas mais à frente no tópico de Ferramentas/Serviços de Desenvolvimento<br>
+trazem uma enorme mais valia à produção de Software.</p>
+<p>Algumas ferramentas utilizadas:</p>
+<ul>
+<li>Travis-ci
+<ul>
+<li>Travis CI é um serviço de integração contínua</li>
+</ul>
+</li>
+<li>Codefector
+<ul>
+<li>Analisador automático de syntax de código</li>
+</ul>
+</li>
+</ul>
+<div></div>
+<h2 id="estrutura-de-ficheiros">Estrutura de Ficheiros</h2>
+<ul>
+<li><strong>./Libs/Folder/…</strong>
+<ul>
+<li>Pasta que contem exemplos de items, esta pasta irá gerar dll’s a serem utilizadas pelo ITGestão</li>
+</ul>
+</li>
+<li><strong>./ITGEstao/</strong>
+<ul>
+<li>Projecto (VS 2017) de um dll ITGestao.dll que pode ser reutilizada</li>
+</ul>
+</li>
+<li><strong>./Tests/</strong>
+<ul>
+<li>Projecto de testes unitários</li>
+</ul>
+</li>
+<li><strong>./UI.Cli/</strong>
+<ul>
+<li>Interface de Utilizador (Linha de Comandos)</li>
+</ul>
+</li>
+<li><strong>./UI.Win/</strong>
+<ul>
+<li>Interface Utilizador (Windows)
+<ul>
+<li>Apenas serve como prova de conceito da forma que foi dividido o UI da parte Lógica</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>./Utils/</strong>
+<ul>
+<li>Vários Utilitários a serem usados</li>
+</ul>
+</li>
+<li><strong>ITgestao.sln</strong>
+<ul>
+<li>Solução (VS 2017)</li>
+</ul>
+</li>
+<li><strong>diagram.png</strong>
+<ul>
+<li>Diagrama de classes do projecto ITGestao</li>
+</ul>
+</li>
+<li><strong><a href="http://readme.md">readme.md</a></strong>
+<ul>
+<li>Relatório</li>
+</ul>
+</li>
+<li><strong>.travis.yml</strong>
+<ul>
+<li>Ficheiro de compilação automática e Testes GIT</li>
+</ul>
+</li>
+<li><strong>LICENSE</strong>
+<ul>
+<li>Licença de Utilização</li>
+</ul>
+</li>
+</ul>
+<div></div>
+<h2 id="ferramentas--serviços-utilizados">Ferramentas / Serviços utilizados</h2>
+<h3 id="travis-ci">Travis-CI</h3>
+<p>Em resumo o <em>Travis-CI</em> é um serviço no qual nos é permitido correr uma instância de software (ex docker) de forma a que sejam feitos testes de compilação e testes unitários à solução.</p>
+<p>Travis-CI (Continuous Improvement) é um serviço de melhoria continua de código e analise do mesmo.</p>
+<p>Para a utilização deste serviço com C# tivemos de mudar a framework de testes de <a href="https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest">MSTest</a> para a ferramenta <a href="https://nunit.org/">NUnit Framework - Unit Testing</a><br>
+pois a execução de testes em ambiente Linux/MacOsx é incompativel com a ferramenta MSTest.</p>
+<p><strong>Ficheiro de Configuração .travis.yml</strong></p>
+<pre class=" language-yaml"><code class="prism  language-yaml"><span class="token key atrule">language</span><span class="token punctuation">:</span> csharp
+<span class="token key atrule">solution</span><span class="token punctuation">:</span> ITgestao.sln
+
+<span class="token key atrule">install</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> sudo apt<span class="token punctuation">-</span>get install nunit<span class="token punctuation">-</span>console
+  <span class="token punctuation">-</span> nuget restore ITgestao.sln
+  <span class="token punctuation">-</span> nuget install NUnit.framework
+  <span class="token punctuation">-</span> nuget install NUnit
+  <span class="token punctuation">-</span> nuget install NUnit3TestAdapter
+  <span class="token punctuation">-</span> nuget install NUnit.Runners <span class="token punctuation">-</span>Version 3.7.0 <span class="token punctuation">-</span>OutputDirectory testrunner
+
+<span class="token key atrule">script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> rm <span class="token punctuation">-</span>rf ./UI.Win
+  <span class="token punctuation">-</span> xbuild /p<span class="token punctuation">:</span>Configuration=Release ITgestao.sln
+  <span class="token punctuation">-</span> mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3<span class="token punctuation">-</span>console.exe ./Tests/bin/Release/Tests.dll
+</code></pre>
+<p>A configuração do <em>Travis-CI</em> é feita através de um ficheiro que é deixado na raiz do projecto (<strong>.travis.yml</strong>) de forma a informar ao agent do <em>Travis-CI</em> quais as configurações necessárias para correr/testar a nossa solução.</p>
+<p>O ficheiro de configuração do nosso trabalho utiliza Linux e mono para compilar e testar a aplicação, de notar que de momento não é possivel realizar testes em WPF de forma que o subprojecto WPF é removido do travis antes de iniciar a execução.</p>
+<p>O <em>Travis-CI</em> é capaz de correr os mais variados ambientes quer de sistemas operativos quer de pacotes já feitos <a href="https://docs.travis-ci.com/user/multi-os/">MultiOS</a> / <a href="https://docs.travis-ci.com/user/docker/">Docker</a>.</p>
+<h4 id="funcionamento">Funcionamento:</h4>
+<p>O <em>Travis-CI</em> efectua testes de forma configurável pelo administrador do repositório.</p>
+<p>Preferimos utilizar o <em>Travis-CI</em> para confirmar os pull requests para o branch master e para testar c compilação do branch master.</p>
+<p>Desta forma sempre que for efectuado um pull request ao master do repositório o <em>Travis-CI</em> automaticamente inicia os testes como podem ver na imagem abaixo:</p>
+<p><img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing.png?raw=true" alt="Pull Request Testing"></p>
+<p>Após a finalização dos testes é dado o “<strong>ok</strong>” para se efectuar o merge no repositório, cabe sempre a quem efectua a manutenção do repositório a decisão final se quer efectuar um merge que falhou à sua responsabilidade.<br>
+<img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_testing_okmerge.png?raw=true" alt="Pull Request Testing"></p>
+<p>No dashboard do <em>Travis-CI</em> podemos ver o log assim como o tempo utilizado nos testes:<br>
+<img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_test_ok.png?raw=true" alt="Pull Request Testing"><br>
+Log dos testes:<br>
+<img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_ok.png?raw=true" alt="Pull Request Testing"></p>
+<p>Log com exemplo de falhas nos testes.<br>
+<img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_fail.png?raw=true" alt="Falha nos testes"><br>
+O <em>Travis-CI</em> fornece ainda uma pequena imagem dinâmica que está presente na introdução do nosso trabalho que indica se o projecto está com os testes em “passing” ou “fail”.</p>
+<div></div>
+<h3 id="codefactor">CodeFactor</h3>
+<p>O CodeFactor é um serviço de analise de syntax de código de forma a que sejam cumpridas algumas regras básicas de realização de código.</p>
+<p>Este serviço é importante, principalmente se quisermos manter um projecto com muitos programadores onde uniformizamos a forma como é colocado o código no projecto, garantindo assim desta forma homogeneidade dessas regras básicas de código.</p>
+<p>Existem muitos outros serviços deste género, no entanto verificamos que este era de momento o que mais se enquadrava para a linguagem c#.</p>
+<p>Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no entanto seria necessário fazer testes bem mais complexos que os unitários para testar problemas comuns de syntax.</p>
+<p><img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefacor1.png?raw=true" alt="Codefactor Print1"></p>
+<p><img src="https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefacor2.png?raw=true" alt="Codefactor Print2"></p>
+<div></div>
+<h2 id="diagrama-de-objectos">Diagrama de Objectos</h2>
+<p><img src="https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true" alt="Diagrama de Classes"></p>
+<div></div>
+<h2 id="classes">Classes</h2>
+<ul>
+<li>Item
+<ul>
+<li>ClasseName:Item (<em>Extensões de Item</em>)</li>
+<li>Generico:Item</li>
+<li>Rede:Item</li>
+<li>Computador:Item</li>
+<li>…</li>
+</ul>
+</li>
+<li>Inventario</li>
+<li>Localizacao</li>
+<li>Localizacoes</li>
+<li>Config</li>
+<li>Exceptions</li>
+<li>Menu</li>
+<li>MenuOpcao</li>
+</ul>
+<hr>
+<h3 id="item">Item</h3>
+<p>A classe Item é a classe abstracta que define e cria os objectos do tipo Item.<br>
+É a classe “pai” responsável por armazenar e tratar um objecto do tipo Item o mais genérico possível.<br>
+Esta classe têm dois métodos <strong>static</strong> muito importantes de forma a que qualquer filho possa informar a classe base<br>
+que existe mais um tipo de child.</p>
+<ol>
+<li>
+<p>Atributos</p>
+<ul>
+<li>(<strong><em>id</em></strong>) - Valor único que identifica o item (id do item);</li>
+<li>(<strong><em>idCliente</em></strong>) - Valor identifica o cliente ao qual pertence o item;</li>
+<li>(<strong><em>idLocalizacao</em></strong>) - Valor que identifica a localização do item.</li>
+</ul>
+</li>
+<li>
+<p>Métodos</p>
+<ul>
+<li>(<strong><em>AddAuthorizedType(object  _obj)</em></strong>) - Permite adicionar um novo tipo de item autorizado;
+<ul>
+<li>Este método utiliza a classe <em><strong>Config</strong></em> para armazenar na aplicação transversalmente o estado dos items autorizados.</li>
+</ul>
+</li>
+<li>(<strong><em>Type AuthorizedType(object  _obj)</em></strong>) - Devolve o tipo do objecto colocado como parâmetro se for um objecto autorizado.
+<ul>
+<li>Este método utiliza a classe <em><strong>Config</strong></em> para verificar se o objecto está na lista dos autorizados.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="extensões-de-item-classenameitem">Extensões de Item (ClasseName:Item)</h4>
+<p>Todas as classes que estendam de Item devem informar a classe Item que existe um novo tipo de Item que será tratado pelo inventário.</p>
+<p>Esta tipo de objectos deverão ser sealed de forma a que não hajam mais extensões do mesmo, a menos que para tal seja necessário extender.</p>
+<pre class=" language-c"><code class="prism # language-c">public <span class="token function">ClasseName</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token function">base</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            Item<span class="token punctuation">.</span><span class="token function">AddAuthorizedType</span><span class="token punctuation">(</span>this<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<hr>
+<h4 id="genérico-genericoitem">Genérico (Generico:Item)</h4>
+<p>É um objecto que estenderá <em><strong>Item</strong></em>.</p>
+<p>É a classe que trata da informação de um item genérico.</p>
+<hr>
+<h4 id="computador-computadoritem">Computador (Computador:Item)</h4>
+<p>É um objecto que estenderá <em><strong>Item</strong></em>.</p>
+<p>Esta classe irá criar items do tipo Computador.</p>
+<p>Ainda não está definido na altura do desenvolvimento deste relatório os atributos, deverão ser do tipo: RAM/CPU…</p>
+<ol>
+<li><strong>Métodos/Construtores</strong>
+<ul>
+<li>(<strong><em>Computador(…)</em></strong>) - Construtor que cria um objeto do tipo Computador.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="rede-redeitem">Rede (Rede:Item)</h4>
+<p>É um objecto que extenderá <em><strong>Item</strong></em>.</p>
+<p>Esta classe irá criar items do tipo Rede.</p>
+<p>Ainda não está definido na altura do desenvolvimento deste relatório os atributos, deverão ser do tipo: ENDEREÇO/TIPO(Switch/router)…</p>
+<ol>
+<li><strong>Métodos/Construtores</strong>
+<ul>
+<li>(<strong><em>Rede(…)</em></strong>) - Construtor que cria um objeto do tipo Rede.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="inventário">Inventário</h3>
+<p>O Objecto Inventário está encarregue de armazenar e tratar objectos do tipo <strong><em>Item</em></strong>.</p>
+<p>Foi utilizada padrão singleton com múltiplas instancias pelo id da entidade de inventário.<br>
+Para utilizar a class apenas é necessário:</p>
+<pre class=" language-c"><code class="prism # language-c"><span class="token comment">// Instancia com entidade = 0 por defeito</span>
+Inventario<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>metodo<span class="token punctuation">;</span> 
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment">// Instancia com entidade = 10</span>
+Inventario<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>metodo<span class="token punctuation">;</span>
+</code></pre>
+<p>De salientar que o armazenamento dos dados é feito automaticamente quando se<br>
+adiciona/edita/remove um item com os métodos privados <strong>SaveData()</strong> e <strong>LoadData()</strong>.</p>
+<p>O inventário foi desenvolvido de forma a poder ser reutilizado nas mais variadas áreas, sendo<br>
+a abordagem feita o mais abstracta possível de forma a que o mesmo tanto armazene computadores<br>
+como fruta ou viaturas.</p>
+<ol>
+<li><strong>Atributos</strong>
+<ul>
+<li>(<strong><em>entidade</em></strong>) - Valor que identifica uma entidade da instancia do inventário;</li>
+<li>(<strong><em>itens</em></strong>) - Lista de objectos do tipo Item;</li>
+</ul>
+</li>
+<li><strong>Métodos</strong>
+<ul>
+<li><strong><em>Adiciona(…)</em></strong> - Método que adiciona um objecto ao inventário;</li>
+<li><strong><em>Remove(…)</em></strong> - Método que elimina um objecto do inventário;</li>
+<li><strong><em>GetItemById(…)</em></strong> - Método que devolve um objecto do inventário pelo ID</li>
+<li><strong><em>RemoveItemById(…)</em></strong> - Método que remove um objecto do inventário pelo ID</li>
+<li><strong><em>RemoveAll(…)</em></strong> - Método que remove todos os items do inventário</li>
+<li><strong><em>Edita(…)</em></strong> - Método que edita um objecto do inventário</li>
+</ul>
+</li>
+<li><strong>Testes Unitários</strong>
+<ul>
+<li>Foram desenvolvidos vários testes unitários básicos unitários de forma a que qualquer modificação na classe<br>
+obedeça às regras do desenvolvimento.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="config">Config</h3>
+<p>O Objectivo desta classe é armazenar informação necessária para o runtime da aplicação de forma a que qualquer<br>
+classe que necessite de informação sobre a aplicação posso consumir informação da mesma.</p>
+<p>Algumas das informações pensadas a colocar nesta classe futuramente.</p>
+<ul>
+<li>Directório Actual</li>
+<li>Directório de Armazenamento dos ficheiros de dados persistentes.</li>
+<li>Tipos de item autorizados pela aplicação ITGestao.dll a serem tratados pelo <strong>Inventário</strong></li>
+</ul>
+<p>Optou-se pela utilização do Padrão Singleton nesta classe de forma que só exista uma só<br>
+instancia da classe config sendo que a mesma é inicializada na primeira vez que é chamada.</p>
+<pre class=" language-c"><code class="prism # language-c">public sealed class Config <span class="token punctuation">{</span>
+	private <span class="token function">Config</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+	<span class="token comment">// Código a correr na inicialização da classe</span>
+	<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+	private <span class="token keyword">static</span> Config instance <span class="token operator">=</span> null<span class="token punctuation">;</span>
+	public <span class="token keyword">static</span> Config Instance
+	<span class="token punctuation">{</span>
+		get
+		<span class="token punctuation">{</span>
+			<span class="token comment">// A classe não está instanciada</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> null<span class="token punctuation">)</span>
+				instance <span class="token operator">=</span> new <span class="token function">Config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">// Se a classe está instanciada retorna a instancia.</span>
+			<span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<hr>
+<h3 id="exceptions">Exceptions</h3>
+<p>Classe que permite lidar com erros que ocorrem durante a execução da aplicação.</p>
+<p>Algumas das excepções já tratadas:</p>
+<ul>
+<li>ID duplicado;</li>
+<li>ID inválido;</li>
+<li>Tentativa de iniciação de objecto com argumentos em falta.</li>
+</ul>
+<hr>
+<h3 id="menu">Menu</h3>
+<p>Foi criada uma classe de forma a podermos agilizar os menus no UI.Cli</p>
+<p>Para tal utilizamos também Delegates de forma a que uma opção de um Menu tivesse um acção (Action) atribuída (Callback).</p>
+<h3 id="menuopcao">MenuOpcao</h3>
+<p>É uma classe que armazena opções do menu e respectivos Actions</p>
+<div></div>
+<h2 id="bibliografia--referências">Bibliografia / Referências</h2>
+<ul>
+<li><a href="https://pt.wikipedia.org/wiki/Singleton">Padrão Singleton</a></li>
+<li><a href="https://docs.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2019">Testes Unitários - Unit Testing</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/">Windows Presentation Foundation</a></li>
+<li><a href="https://www.codefactor.io/">CodeFactor</a></li>
+<li><a href="https://travis-ci.org/">Travis-ci</a></li>
+<li><a href="https://nunit.org/">NUnit Framework - Unit Testing</a></li>
+<li><a href="https://github.com/">GitHub</a></li>
+<li><a href="https://devhints.io/">DEVHINTS.IO</a></li>
+<li><a href="https://hub.docker.com/">Docker Hub</a></li>
+<li><a href="https://www.appveyor.com/">AppVeyor</a></li>
+<li><a href="https://coveralls.io/">CoverAlls.IO</a></li>
+</ul>
+
+    </div>
+  </div>
+</body>
+
+</html>
