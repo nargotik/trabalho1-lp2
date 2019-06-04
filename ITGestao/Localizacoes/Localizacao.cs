@@ -7,7 +7,7 @@
 // </summary>
 //-------------------------------------------------
 
-namespace ITGestao.LocalizacoesNS
+namespace ITgestao.LocalizacoesNS
 {
     class Localizacao
     {

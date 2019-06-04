@@ -12,6 +12,8 @@ __Autores do Trabalho:__
 
 [![CodeFactor](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2/badge)](https://www.codefactor.io/repository/github/nargotik/trabalho1-lp2)
 [![Build Status](https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/trabalho1-lp2)
+<div style="page-break-after: always;"></div>
+
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de 
 desenvolverem metodologias para o controle do seu espólio material e virtual.
@@ -37,6 +39,7 @@ No entanto todos os métodos e classes foram testados usando testes unitários que
 
 Os resultados a obter com o desenvolvimento desta solução é criação de uma aplicação versátil e adaptativa às 
 necessidades das diferentes entidades e deverá potencializar uma melhor organização do parque informáticos.
+<div style="page-break-after: always;"></div>
 
 ## Método de Trabalho adoptado
 Para o desenvolvimento deste trabalho, utilizamos uma metodologia que permite 
@@ -54,6 +57,7 @@ Algumas ferramentas utilizadas:
   - Travis CI é um serviço de integração contínua 
 - Codefector
   - Analisador automático de syntax de código
+<div style="page-break-after: always;"></div>
 
 ## Estrutura de Ficheiros
 - __./Libs/Folder/...__
@@ -79,6 +83,7 @@ Algumas ferramentas utilizadas:
   - Ficheiro de compilação automática e Testes GIT
 - __LICENSE__
   - Licença de Utilização
+<div style="page-break-after: always;"></div>
 
 ## Ferramentas / Serviços utilizados
 ### Travis-CI
@@ -134,6 +139,7 @@ Log dos testes:
 Log com exemplo de falhas nos testes.
 ![Falha nos testes](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/pull_request_unit_summary_fail.png?raw=true)
 O *Travis-CI* fornece ainda uma pequena imagem dinâmica que está presente na introdução do nosso trabalho que indica se o projecto está com os testes em "passing" ou "fail".
+<div style="page-break-after: always;"></div>
 
 ### CodeFactor
 O CodeFactor é um serviço de analise de syntax de código de forma a que sejam cumpridas algumas regras básicas de realização de código.
@@ -148,9 +154,12 @@ Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no e
 
 ![Codefactor Print2](https://github.com/nargotik/trabalho1-lp2/blob/master/Doc/img/codefacor2.png?raw=true)
 
+<div style="page-break-after: always;"></div>
+
 ## Diagrama de Objectos
 ![Diagrama de Classes](https://github.com/nargotik/trabalho1-lp2/blob/master/diagram.png?raw=true)
 
+<div style="page-break-after: always;"></div>
 
 ## Classes
 
@@ -317,6 +326,8 @@ Para tal utilizamos também Delegates de forma a que uma opção de um Menu tivesse
 
 ### MenuOpcao
 É uma classe que armazena opções do menu e respectivos Actions
+
+<div style="page-break-after: always;"></div>
 
 ## Bibliografia / Referências
 - [Padrão Singleton](https://pt.wikipedia.org/wiki/Singleton)
