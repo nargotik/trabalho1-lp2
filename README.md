@@ -1,4 +1,5 @@
 
+
 # Relatório Trabalho Prático LP1
 A aplicação a ser desenvolvida no decorrer deste trabalho prático tem como finalidade a gestão de parques informáticos de uma ou várias entidades.
 
@@ -16,7 +17,7 @@ A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez
 desenvolverem metodologias para o controle do seu espólio material e virtual.
 
 - A aplicação deverá:
-  - Ser abstracta o suficiente para a reutilização de código para outros setores/aplicações.
+  - Ser abstracta o suficiente para a reutilização de código para outros sectores/aplicações.
   - Ter uma visão Macro e Micro de todo o inventário presente na Entidade.
     - Listagem de equipamentos
     - Listagem por tipo de Equipamentos
@@ -163,10 +164,10 @@ Este tipo de testes pode também ser efectuado de forma manual no Travis-CI, no e
  - Inventario
  - Localizacao
  - Localizacoes
- - Cliente
- - Clientes
  - Config
  - Exceptions
+ - Menu
+ - MenuOpcao
  
 ---
 
@@ -266,31 +267,7 @@ como fruta ou viaturas.
     - Foram desenvolvidos vários testes unitários básicos unitários de forma a que qualquer modificação na classe
 obedeça às regras do desenvolvimento.
 ---
-### Cliente
-O Objecto Cliente define e cria os objecto do tipo Cliente.
-
-Os atributos deste objecto ainda não foram desenvolvidos na totalidade.
-
-1. __Atributos__
-	- (__*id*__) - Valor único de identifica um cliente;
-	- (__*nome*__) - Primeiro nome do cliente;
-	- (__*apelido*__) - Apelido do cliente.
----
-### Clientes
-A classe Clientes é a classe que encarregue de armazenar objetos do tipo __*Cliente*__.
-
-1. __Atributos__
-	- clientes- Lista de objetos do tipo Cliente;
-
-2. __Métodos__
-	- __*Adiciona(...)*__ - Método que adiciona um cliente à lista;
-	- __*Remove(...)*__ - Método que elimina um cliente da lista;
-	- __*Edita(...)*__ - Método que edita um cliente da lista;
-
----
 ### Config
-
-
 O Objectivo desta classe é armazenar informação necessária para o runtime da aplicação de forma a que qualquer 
 classe que necessite de informação sobre a aplicação posso consumir informação da mesma.
 
@@ -332,8 +309,14 @@ Algumas das excepções já tratadas:
 - ID duplicado;
 - ID inválido;
 - Tentativa de iniciação de objecto com argumentos em falta. 
-
 ---
+### Menu
+Foi criada uma classe de forma a podermos agilizar os menus no UI.Cli
+
+Para tal utilizamos também Delegates de forma a que uma opção de um Menu tivesse um acção (Action) atribuída (Callback).
+
+### MenuOpcao
+É uma classe que armazena opções do menu e respectivos Actions
 
 ## Bibliografia / Referências
 - [Padrão Singleton](https://pt.wikipedia.org/wiki/Singleton)

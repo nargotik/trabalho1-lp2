@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cegid.Point.Integration">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Cegid\Cegid Business\APP\Mode\Cegid.Point.Integration.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -48,8 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes\Cliente.cs" />
-    <Compile Include="Clientes\Clientes.cs" />
     <Compile Include="App\Config.cs" />
     <Compile Include="App\Exceptions.cs" />
     <Compile Include="Inventario\Inventario.cs" />
@@ -69,6 +70,7 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

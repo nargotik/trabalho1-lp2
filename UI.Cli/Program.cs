@@ -1,125 +1,151 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -------------------------------------------------
+// <copyright file="UI.Cli.cs" company="IPCA">
+// </copyright>
+// <summary>
+// LP2 - 2018-2019
+// <desc></desc>
+// </summary>
+//-------------------------------------------------
+
 using ITgestao;
-using ITgestao.ItemsNS;
 using UtilsNS;
+
 
 namespace UI.Cli
 {
     class Program
     {
-        static Item[] _equip;
-        public static void ShowEquipamento(Item pub)
-        {
-            int pubDate = pub.Id;
-            Console.WriteLine($"{pub.Id}");
 
-            Console.WriteLine($"{pub.ToString()}");
-        }
         static void Main(string[] args)
         {
-            Computador _com = new Computador(12, "222");
+            ConstroiMenus();
+            RunMenu(0);
+            Input.LeString("Prima qualquer tecla para terminar.");
+        }
 
-            
-            ShowEquipamento(_com);
+        static void ConstroiMenus()
+        {
+            Menu principal  = Menu.getInstance(0);
+            Menu inventario0 = Menu.getInstance(1);
+            Menu localizacoes = Menu.getInstance(2);
+            Menu inventario1 = Menu.getInstance(3);
+            Menu pesquisa0 = Menu.getInstance(4);
 
-            Console.WriteLine($"{_com.ToString()}");
-            Console.WriteLine($"Serial: {_com.Descricao}");
-            //Console.ReadKey();
+            #region MENU INICIAL
+            principal.Descricao = "======================= Menu Inicial =======================";
 
-            Console.WriteLine($"Convert {Utils.ConverteMemoria(10024, Utils.MedidasMemoria.B, Utils.MedidasMemoria.MB)}");
+            principal
+                .Add("- Inventário Armazem 0", () => inventario0.RendeMenu())
+                .Add("- Inventário Armazem 1", () => inventario1.RendeMenu())
+                .Add("- Localizacoes", () => localizacoes.RendeMenu())
+                .Add("+ Sair");
+            #endregion
 
-            try
-            {
-                Console.WriteLine("Insira o id da entidade > 0: ");
-                int id = Convert.ToInt32(Console.ReadLine());
+            #region MENU INVENTARIO
+            inventario1.Descricao = "======================= INVENTARIO: Armazem 1 =======================";
+            inventario1
+                .Add("Adicionar Item", () => AdicionaItem(1))
+                .Add("Editar Item", () => EditaItem(1))
+                .Add("Remover Item", () => RemoveItem(1))
+                .Add("Listar Items", () => ListaItems(1))
+                .Add("Pesquisa Items", () => ListaItems(1))
+                .Add("Mostra Total de Items", () => ContaItems(1))
+                .Add("Eliminar tudo", () => RemoveItems(1))
+                .Add("< Voltar", () => principal.RendeMenu());
+            #endregion
 
-                Inventario inv = Inventario.getInstance(id);
+            #region MENU INVENTARIO Empresa 0
+            inventario0.Descricao = "======================= INVENTARIO: Armazem 0 =======================";
+            inventario0
+                .Add("Adicionar Item", () => AdicionaItem(0))
+                .Add("Editar Item", () => EditaItem(0))
+                .Add("Remover Item", () => RemoveItem(0))
+                .Add("Listar Items", () => ListaItems(0))
+                .Add("Mostra Total de Items", () => ContaItems(0))
+                .Add("Eliminar tudo" , () => RemoveItems(0) )
+                .Add("< Voltar", () => principal.RendeMenu());
+            #endregion
 
-                Console.WriteLine("Insira o numero de computadores/rede/generico random a inserir: ");
-                int numero = Convert.ToInt32(Console.ReadLine());
-                for (int i=1; i<=numero; i++)
-                {
-                    inv.Adiciona(new Computador(i, i.ToString()));
-                    Console.WriteLine($"Adicionado Computador {i}...");
-                    Inventario.getInstance(28).Adiciona(new Computador(i, i.ToString()));
+            #region MENU LOCALIZACOES
+            localizacoes.Descricao = "======================= LOCALIZACOES =======================";
+            localizacoes
+                .Add("Adicionar Localizacao")
+                .Add("Remover Localizacao")
+                .Add("< Voltar", () => principal.RendeMenu());
+            #endregion
 
-                    
+            #region MENU PESQUISA
+            pesquisa0.Descricao = "======================= PESQUISA: Armazem 0 =======================";
+            pesquisa0
+                .Add("Pesquisa por Nome")
+                .Add("Perquisar por Id")
+                .Add("Perquisar por Data de Fabrico")
+                .Add("Perquisar por Tipo")
+                .Add("< Voltar", () => principal.RendeMenu());
+            #endregion
+            #region MENU PESQUISA
+            pesquisa0.Descricao = "======================= PESQUISA: Armazem 0 =======================";
+            pesquisa0
+                .Add("Pesquisa por Nome")
+                .Add("Perquisar por Id")
+                .Add("Perquisar por Data de Fabrico")
+                .Add("Perquisar por Tipo")
+                .Add("< Voltar", () => principal.RendeMenu());
+            #endregion
+        }
 
-                    (new Computador(i, i.ToString())).AddToInventario(Inventario.getInstance(30));
+        /// <summary>
+        /// Corre o menu com o id passado por parametro
+        /// </summary>
+        /// <param name="_id">Id do menu</param>
+        static void RunMenu(int _id)
+        {
+            Menu.getInstance(_id).RendeMenu();
+        }
 
-                }
+        static void AdicionaItem(int _entidade)
+        {
+            Output.MostraLinha("======================= Adiciona Item =======================");
+            Menu.getInstance(1).RendeMenu();
+        }
 
-                object ob = Inventario.getInstance(28).linqtest(12);
+        static void EditaItem(int _entidade)
+        {
+            Output.MostraLinha("======================= Edita Item =======================");
+            Menu.getInstance(1).RendeMenu();
+        }
+        static void RemoveItem(int _entidade)
+        {
+            Output.MostraLinha("======================= Remove Item =======================");
+            Menu.getInstance(1).RendeMenu();
+        }
+        static void ListaItems(int _entidade)
+        {
+            Output.MostraLinha("======================= Lista Items =======================");
+            Menu.getInstance(1).RendeMenu();
+        }
 
-
-                for (int i = 1+1000; i <= numero+1000; i++)
-                {
-                    inv.Adiciona(new EquipRede(i, EquipRede.EquipRedeTipos.Router));
-                    Console.WriteLine($"Adicionado Rede {i}...");
-                }
-
-                for (int i = 1+2000; i <= numero+2000; i++)
-                {
-                    inv.Adiciona(new Generico(i, i.ToString()));
-                    Console.WriteLine($"Adicionado Generico {i}...");
-                }
-
-                //Adicionar equipamento de rede ao inventario
-
-                //Equipamento.Rede _rede = new Equipamento.Rede(12);
-                //inv.Adiciona(_rede);
-
-                //IFormatter formatter = new BinaryFormatter();
-                //Stream stream = new FileStream(@"ExampleNew.txt", FileMode.Create, FileAccess.Write);
-
-                //formatter.Serialize(stream, _rede);
-                //stream.Close();
-            }
-            catch (Exception ex)
-            {
-                // Exception that comes from creation of Equipment
-                Console.WriteLine("==========\nNão foi criado");
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("==========\n");
-            }
-
-            try
-            {
-                // Tenta inicializar um equipamento 
-                Item equi = new Generico(1, "123");
-                // Mostra a mensagem de sucesso
-                Console.WriteLine($"Foi criado {equi.Id}");
-
-                // Adiciona à lista de equipamentos
-            }
-            catch (IdBadException ex)
-            {
-                // Exception that comes from creation of Equipment
-                Console.WriteLine("Não foi criado");
-                Console.WriteLine(ex.Message);
-            }
-            catch (IdDuplicatedException ex)
-            {
-                throw;
-            }
-            // Exeption that comes from equipments handler for a duplicate entry
-
-            try
-            {
-                EquipRede _rede = new EquipRede(66, EquipRede.EquipRedeTipos.Switch);
-                Console.WriteLine($"Foi criado {_rede.Id}");
-                Console.WriteLine($"Foi criado {Utils.HasMethod(_rede, "Adiciona")}");
-            }
-            catch (InitBadException)
-            {
-                throw;
-            }
-
-            Console.ReadKey();
+        /// <summary>
+        /// Mostra a cotnagem de Items
+        /// </summary>
+        /// <param name="_entidade">Armazem</param>
+        static void ContaItems(int _entidade)
+        {
+            Output.MostraLinha("======================= Contagem Items =======================");
+            Output.MostraLinha($"Total de Items: {Inventario.getInstance(_entidade).TotalItems}");
+            Menu.getInstance(1).RendeMenu();
+        }
+        
+        /// <summary>
+        /// Remove todos os Items do Armazem
+        /// </summary>
+        /// <param name="_entidade">Armazem</param>
+        static void RemoveItems(int _entidade)
+        {
+            Output.MostraLinha("======================= Remove Items =======================");
+            Inventario.getInstance(_entidade).RemoveAll();
+            Input.LeString("Todos os Items foram Removidos ... \nPrima enter para continuar...");
+            Menu.getInstance(1).RendeMenu();
         }
     }
 }
