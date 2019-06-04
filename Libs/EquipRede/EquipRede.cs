@@ -11,12 +11,9 @@ namespace ITgestao.ItemsNS
     /// Classe que trata da informação de um computador
     /// </summary>
     [Serializable]
-    public sealed class Computador : Item
+    public sealed class EquipRede : Item
     {
         #region ==================== ATRIBUTOS ====================
-
-        private int ram; // MB
-        private int disco; // MB
         List<IPAddress> ips = new List<IPAddress>(); // endereços ip
         List<string> macs = new List<string>(); // endereços mac
         private string serial; // Numero de serie
@@ -24,6 +21,9 @@ namespace ITgestao.ItemsNS
         private DateTime aquisicao; // Data de fabrico
         private string descricao;
         private string marca; // Futuramente utilizar um objecto marcas
+        private EquipRedeTipos tipoequip;
+
+        public enum EquipRedeTipos { Router, Switch };
         #endregion
 
         #region ==================== GETTERS/SETTERS ====================
@@ -31,15 +31,23 @@ namespace ITgestao.ItemsNS
 
         #region ==================== CONSTRUCTORS ====================
         /// <summary>
+        /// Default constructor
+        /// </summary>
+        public EquipRede() : base(-1)
+        {
+            base.InformBase(this);
+        }
+        /// <summary>
         /// Construtor de Computador
         /// </summary>
         /// <param name="_id">Id do equipamento</param>
         /// <param name="_descricao"></param>
-        public Computador(int _id = 0, string _descricao = "") : base(_id)
+        public EquipRede(int _id, EquipRedeTipos _tipo, string _descricao = "") : base(_id)
         {
             // Informa a base que existe um novo item (para a base ter conhecimento dos filhos :))
             base.InformBase(this);
 
+            this.tipoequip = _tipo;
             this.descricao = _descricao;
         }
         #endregion
@@ -97,7 +105,8 @@ namespace ITgestao.ItemsNS
             if (_fabrico > DateTime.Now)
             {
                 throw new ArgumentException("Data de Fabrico Inválida");
-            } else
+            }
+            else
             {
                 fabrico = _fabrico;
                 return true;
@@ -137,70 +146,6 @@ namespace ITgestao.ItemsNS
             {
                 marca = value;
             }
-        }
-
-        /// <summary>
-        /// Insere Capacidade Memoria Disco
-        /// </summary>
-        /// <param name="_disco"></param>
-        /// <returns>Quantidade de disco após edição</returns>
-        public int DiscoInsere(uint _disco)
-        {
-            disco = (int)_disco + disco;
-            return disco;
-        }
-        
-        /// <summary>
-        /// Remove Capacidade Memoria disco
-        /// </summary>
-        /// <param name="_ram"></param>
-        /// <returns>Quantidade de Ram Restante</returns>
-        public int DiscoRemove(uint _disco)
-        {
-            disco = disco - (int)_disco;
-            if (disco < 0) disco = 0;
-            return disco;
-        }
-
-        /// <summary>
-        /// Devolve Capacidade Memoria disco
-        /// </summary>
-        /// <returns>Quantidade Capacidade Memoria disco</returns>
-        public int DiscoGet()
-        {
-            return disco;
-        }
-
-        /// <summary>
-        /// Insere Memoria Ram
-        /// </summary>
-        /// <param name="_ram"></param>
-        /// <returns>Quantidade de Ram após edição</returns>
-        public int RamInsere(uint _ram)
-        {
-            ram = (int)_ram + ram;
-            return ram;
-        }
-        
-        /// <summary>
-        /// Remove Memoria Ram
-        /// </summary>
-        /// <param name="_ram"></param>
-        /// <returns>Quantidade de Ram Restante</returns>
-        public int RamRemove(uint _ram)
-        {
-            ram = ram - (int)_ram;
-            if (ram < 0) ram = 0;
-            return ram;
-        }
-
-        /// <summary>
-        /// Devolve a Ram
-        /// </summary>
-        /// <returns>Quantidade de Ram</returns>
-        public int RamGet()
-        {
-            return ram;
         }
 
         /// <summary>
@@ -264,7 +209,8 @@ namespace ITgestao.ItemsNS
             if (reg.IsMatch(_mac))
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -303,11 +249,12 @@ namespace ITgestao.ItemsNS
         public bool IpInsere(string _ip)
         {
             IPAddress addr;
-            if ( IpValid(_ip) && ((addr = IpConvert(_ip)) != null) &&  (!IpExiste(_ip)) )
+            if (IpValid(_ip) && ((addr = IpConvert(_ip)) != null) && (!IpExiste(_ip)))
             {
                 ips.Add(addr);
                 return true;
-            } else
+            }
+            else
             {
                 throw new ArgumentException("IP Inválido");
             }
@@ -334,8 +281,10 @@ namespace ITgestao.ItemsNS
 
         public int IpCount
         {
-            get { return ips.Count();  }
+            get { return ips.Count(); }
         }
+
+        public EquipRedeTipos Tipoequip { get => tipoequip; set => tipoequip = value; }
 
         /// <summary>
         /// Verifica se um ip é valido
@@ -385,8 +334,7 @@ namespace ITgestao.ItemsNS
         public override bool IsValid()
         {
             return (
-                (this.ram > 0) &&
-                (this.disco >0)
+                (this.IpCount > 0) 
                 )
             ;
         }
