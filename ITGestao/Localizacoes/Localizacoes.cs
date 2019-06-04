@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 
 
-namespace ITGestao.LocalizacoesNS
+namespace ITgestao.LocalizacoesNS
 {
     class Localizacoes
     {
