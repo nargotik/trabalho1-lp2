@@ -1,5 +1,15 @@
 language: csharp
 solution: ITgestao.sln
+sudo: false 
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - doxygen
 
 install:
   - sudo apt-get install nunit-console
@@ -10,6 +20,15 @@ install:
   - nuget install NUnit.Runners -Version 3.7.0 -OutputDirectory testrunner
 
 script:
+  - doxygen Doxyfile
   - rm -rf ./UI.Win
   - xbuild /p:Configuration=Release ITgestao.sln
   - mono ./testrunner/NUnit.ConsoleRunner.3.7.0/tools/nunit3-console.exe ./Tests/bin/Release/Tests.dll
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
