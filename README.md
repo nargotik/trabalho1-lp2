@@ -14,6 +14,10 @@ __Autores do Trabalho:__
 [![Build Status](https://travis-ci.com/nargotik/trabalho1-lp2.svg?token=qNfqiYyxNzmWoPqpyHnZ&branch=master)](https://travis-ci.com/nargotik/trabalho1-lp2)
 <div style="page-break-after: always;"></div>
 
+Documentação Doxygen:
+
+https://nargotik.github.io/trabalho1-lp2/
+
 ## Introdução
 A escolha do tema a desenvolver no trabalho prende-se com a necessidade cada vez maior das empresas de 
 desenvolverem metodologias para o controle do seu espólio material e virtual.
